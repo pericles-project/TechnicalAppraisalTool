@@ -32,18 +32,16 @@
 1. Upload all files in “pericles-analysis” to the server.
 
 #### Start/Restart Tomcat server
-1. Change to Tomcat’s “bin” folder, e.g. cd /vol/pericles/webroot/dev/apache-tomcat-7.0.70/bin
-1. Shutdown Tomcat server if it is running, e.g. sudo ./shutdown.sh
-1. Start Tomcat server, e.g. sudo ./startup.sh
+1. Start/Restart tomcat server.
 
 #### Configuration of the web service
-1. Change to the folder which contains the configuration file “config.properties” of the web service – “appraisaltoolws/WEB-INF/classes”, e.g. cd /vol/pericles/webroot/dev/apache-tomcat-7.0.70/webapps/appraisaltoolws/WEB-INF/classes.
+1. Change to the folder which contains the configuration file “config.properties” of the web service – “appraisaltoolws/WEB-INF/classes”, e.g. cd /opt/tomcat8/webapps/appraisaltoolws/WEB-INF/classes.
 1. Open the “config.properties” file and edit where necessary.
 1. Save and exit.
 1. Restart Tomcat server if any configuration is changed.
 
 #### Start/Restart Fuseki server
-1. Change to the Fuseki’s root folder, e.g. cd /vol/pericles/webroot/dev/fuseki/fuseki/apache-jena-fuseki-2.4.0
+1. Change to the Fuseki’s root folder, e.g. cd /srv/fuseki/apache-jena-fuseki-2.4.0
 1. Kill Fuseki’s process if it is already running, e.g. kill -9 3172
 1. Start Fuseki server, e.g. sudo ./fuseki-server --update --mem /ds
 
@@ -52,7 +50,7 @@
 1. Select and upload ttl files (e.g. “test_dva.ttl” and “test_exp.ttl”) from “upload files” tab.
 
 #### Test if everything is working
-1. Open a web browser and access Appraisal tool’s UI, e.g. https://pericles-dev.dighum.kcl.ac.uk/appraisaltool/pages/index.html
+1. Open a web browser and access Appraisal tool’s UI, e.g. http://localhost:8080/appraisaltool/pages/index.html
 1. Browse pages and try links and buttons to see if there is any problem.
-1. Tomcat log file: {Tomcat root folder}/logs/catalina.out, e.g. /vol/pericles/webroot/dev/apache-tomcat-7.0.70/logs/catalina.out
+1. Tomcat log file: {Tomcat root folder}/logs/catalina.out, e.g. /opt/tomcat8/logs/catalina.out
 

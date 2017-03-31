@@ -1,13 +1,15 @@
+Pericles Technical Appraisal Tool - A web based application.
+
 ## Getting started
 
-
 #### Prerequisite
-* Tomcat 8, e.g. Tomcat 8.0.42 http://tomcat.apache.org/ (Note: The web pages might not displayed correctly in Tomcat 8.5.xx)
-* Java 8, e.g. JRE8u121 http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
-* Fuseki 1 or 2, e.g. Fuseki 2.5.0 https://jena.apache.org/download/#jena-fuseki
-* Python 2, e.g. Python 2.7 https://www.python.org/downloads/
-* R 3, e.g. R 3.2.5 https://www.r-project.org/
+* Tomcat 8 http://tomcat.apache.org/ (Note: The web pages might not displayed correctly in Tomcat 8.5.xx)
+* Java 8 http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+* Fuseki 1 or 2 https://jena.apache.org/download/#jena-fuseki
+* Python 2.7 https://www.python.org/downloads/
+* R 3 https://www.r-project.org/
 * MediaInfo https://mediaarea.net/en/MediaInfo
+* Maven 3 https://maven.apache.org/
 
 #### Upload appraisaltool (web application) to the server
 1. Upload all files in “appraisaltool” to the server.

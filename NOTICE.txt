@@ -1,0 +1,10 @@
+PERICLES Technical Appraisal Tool
+Copyright 2017 King's College London.
+
+This product includes software developed at
+King's College London (http://www.kcl.ac.uk/) 
+as part of the EU FP7 PERICLES project (http://www.pericles-project.eu/).
+
+The work was supported by the European Commission Seventh Framework Programme 
+under Grant Agreement Number FP7-601138 PERICLES. 
+

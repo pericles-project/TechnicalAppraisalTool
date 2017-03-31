@@ -46,7 +46,7 @@
 1. Start Fuseki server, e.g. sudo ./fuseki-server --update --mem /ds
 
 #### Upload TTL files
-1. Open a web browser and access Fuseki’s UI, e.g. http://pericles.cch.kcl.ac.uk:3030
+1. Open a web browser and access Fuseki’s UI, e.g. http://localhost:3030
 1. Select and upload ttl files (e.g. “test_dva.ttl” and “test_exp.ttl”) from “upload files” tab.
 
 #### Test if everything is working

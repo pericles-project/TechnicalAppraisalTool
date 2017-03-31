@@ -11,14 +11,14 @@
 
 #### Upload appraisaltool (web application) to the server
 1. Upload all files in “appraisaltool” to the server.
-1. Move the “appraisaltool” to Tomcat’s “webapps” folder.
+1. Make sure the “appraisaltool” are placed Tomcat’s “webapps” folder.
 
 #### Build appraisaltoolws.war from source
-1. Use maven to produce .war file from source with command mvn package.
+1. Use maven to produce .war file from source.
 
 #### Upload appraisaltoolws.war (web service) to server
 1. Upload the file “appraisaltoolws.war” to the server.
-1. Move the “appraisaltoolws.war” to Tomcat’s “webapps” folder.
+1. Make sure the “appraisaltoolws.war” to Tomcat’s “webapps” folder.
  
 #### Upload pericles-harvester to server
 1. Upload all files in “pericles-harvester” to the server.

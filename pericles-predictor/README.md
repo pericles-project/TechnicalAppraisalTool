@@ -8,13 +8,21 @@ For operational use, it should be set to FALSE.
 The tool requires R to be installed. We have developed and tested with R version 3.2.3.
 
 The following libraries are required:
+
 > install.packages('DBI')
+
 > install.packages('RSQLite')
+
 > install.packages('fitdistrplus')
+
 > install.packages('MASS')
+
 > install.packages('ggplot2')
+
 > install.packages('stats4')
+
 > install.packages('plyr')
+
 > install.packages('minpack.lm')
 
 To execute the program:

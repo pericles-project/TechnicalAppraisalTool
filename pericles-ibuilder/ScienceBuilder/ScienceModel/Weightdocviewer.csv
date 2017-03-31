@@ -1,0 +1,9 @@
+docviewer,Adobe Acrobat,Evince,Foxit Reader,Ghostview,Inkscape,LibreOffice,Sumatra PDF,Xpdf
+Adobe Acrobat,1,0.9,0.8,0.7,0.6,0.5,0.5,0.5
+Evince,0.9,1,0.9,0.8,0.7,0.5,0.5,0.5
+Foxit Reader,0.8,0.9,1,0.9,0.8,0.5,0.5,0.5
+Ghostview,0.7,0.8,0.9,1,0.9,0.5,0.5,0.5
+Inkscape,0.6,0.7,0.8,0.9,1,0.5,0.5,0.5
+LibreOffice,0.5,0.5,0.5,0.5,0.5,1,0.5,0.5
+Sumatra PDF,0.5,0.5,0.5,0.5,0.5,0.5,1,0.9
+Xpdf,0.5,0.5,0.5,0.5,0.5,0.5,0.9,1

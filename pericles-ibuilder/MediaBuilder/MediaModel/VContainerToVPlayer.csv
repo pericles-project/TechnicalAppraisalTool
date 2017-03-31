@@ -1,0 +1,9 @@
+Container/Player,ALLPlayer,Core Pocket Media Player,CrystalPlayer,DSPlayer,GOM Player,iTunes,jetAudio,JRiver Media Center,Kodi,KM Player,Mac Bluray Player,MediaPortal,MPlayer,Mplayerxp,Plex Media Player,SMPlayer,Songbird,Splash Lite,TotalMedia Theatre,GNOME Videos,VLC media player,Winamp,Windows Media Player,Xine
+AVI,1,1,1,1,1,0.5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+ASF,1,1,1,1,1,0.5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+QuickTime,1,1,1,0,1,1,0.5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0.5,0,1
+Ogg,1,1,1,1,0,0.5,0,1,1,1,1,1,1,1,1,1,0,0.5,1,1,1,0,0.5,1
+Matroska,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0.5,1,0,0.5,1,1,0.5,0.5,1
+MPEG 4 Part 14,1,1,1,1,1,1,0.5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1
+Flash Video,1,1,1,0,1,0,0,1,1,1,1,1,1,1,1,0,1,0,1,1,1,0,1,1
+MXF,1,0.5,1,0,0.5,0.5,0.5,0.5,1,1,1,0,0,0,0,0,0,0,0,1,1,0,0,0

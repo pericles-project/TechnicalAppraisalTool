@@ -1,0 +1,9 @@
+DocViewer/DocFormat,DocBook,DTD,HTML5,OpenDocument,OpenXPS,PDF,PostScript,RTF,Symbolic link,TeX,XHTML,WordPerfect
+Adobe Acrobat,0,1,1,0.5,0,0,0,1,0,0,0.5,1
+Evince,1,1,1,1,0,0,1,1,0,0,0,0.5
+Foxit Reader,1,1,1,1,1,1,1,0,1,1,1,0
+Ghostview,0,1,1,1,0.5,0.5,0,1,0.5,0,0,1
+Inkscape,0,0,0,1,1,1,1,1,0,0.5,0.5,1
+LibreOffice,1,1,1,1,1,1,0,0,0,0,0,0.5
+Sumatra PDF,1,1,1,1,1,1,1,1,1,1,0,0
+Xpdf,1,0.5,1,1,1,1,1,1,0.5,0.5,1,1

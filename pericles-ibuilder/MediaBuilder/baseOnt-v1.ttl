@@ -1,0 +1,1647 @@
+@prefix : <https://dl.dropboxusercontent.com/u/27469926/dva_t.owl> .
+@prefix LRM: <http://xrce.xerox.com/LRM#> .
+@prefix dva: <https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix TIME: <http://xrce.xerox.com/TIME#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://dl.dropboxusercontent.com/u/27469926/dva_t.owl> .
+
+<https://dl.dropboxusercontent.com/u/27469926/dva_t.owl> rdf:type owl:Ontology ;
+                                                          owl:imports LRM:LRM-schema ,
+                                                                      <https://dl.dropboxusercontent.com/u/3157623/ontologies/crmdig/crmdig.owl> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#object
+rdf:object rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate
+rdf:predicate rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#changedBy
+LRM:changedBy rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#created
+LRM:created rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#creationTime
+LRM:creationTime rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#deletion
+LRM:deletion rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#executedBy
+LRM:executedBy rdf:type owl:ObjectProperty ;
+               owl:equivalentProperty dva:performedBy .
+
+
+###  http://xrce.xerox.com/LRM#executes
+LRM:executes rdf:type owl:ObjectProperty ;
+             owl:equivalentProperty dva:performs .
+
+
+###  http://xrce.xerox.com/LRM#from
+LRM:from rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#hasPart
+LRM:hasPart rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#identification
+LRM:identification rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#impact
+LRM:impact rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#insertion
+LRM:insertion rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#intention
+LRM:intention rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#preceding
+LRM:preceding rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#precondition
+LRM:precondition rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#realizedAs
+LRM:realizedAs rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#specification
+LRM:specification rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#to
+LRM:to rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#transformed
+LRM:transformed rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#triggers
+LRM:triggers rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#used
+LRM:used rdf:type owl:ObjectProperty .
+
+
+### Added by SW
+### https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#isMemberOf
+dva:isMemberOf rdf:type owl:ObjectProperty ;
+               rdfs:domain dva:DigitalVideoArtwork ;
+               rdfs:range dva:DigitalVideoArtworkCollection ;
+               rdfs:comment "Indicates if an artwork (the subject) is a member of a given collection (the object)." ;
+               rdfs:label "is member of collection" .
+
+
+#### Added by SW
+dva:hasRecoveryOption rdf:type owl:ObjectProperty ;
+                      rdfs:domain dva:DigitalVideoArtwork ;
+                      rdfs:range dva:Change ;
+                      rdfs:comment "Indicates if an artwork (the subject) is a member of a given collection (the object)." ;
+                      rdfs:label "has Recovery Option" .
+
+
+#### Added by SW
+dva:hasChange rdf:type owl:ObjectProperty ;
+              rdfs:domain dva:RecoveryOption ;
+              rdfs:range  dva:Change;
+              rdfs:comment "Associates a " ;
+              rdfs:label "has Change" .
+
+
+#### Added by SW
+dva:hasChangeType rdf:type owl:ObjectProperty ;
+                  rdfs:domain dva:Change ;
+                  rdfs:range LRM:Resource ;
+                  rdfs:comment "This is the type of an entity to be changed, e.g. dva:MediaPlayer" ;
+                  rdfs:label "has Change Type" .
+
+
+#### Added by SW
+dva:hasChangeValue rdf:type owl:ObjectProperty ;
+                   rdfs:domain dva:Change ;
+                   rdfs:range owl:NamedIndividual ;
+                   rdfs:comment "This is the instance to which an entity should be changed e.g. dva:AVI" ;
+                   rdfs:label "has Change Value" .
+
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#accessesResource
+dva:accessesResource rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf dva:targetsResource ;
+                     rdf:type owl:AsymmetricProperty ,
+                              owl:IrreflexiveProperty ;
+                     rdfs:domain dva:AccessActivity ;
+                     rdfs:range LRM:Resource ;
+                     rdfs:comment "Shows the item accessed by an access activity." ;
+                     rdfs:label "accesses resource" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#acquiresResource
+dva:acquiresResource rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf dva:targetsResource ;
+                     rdfs:domain dva:AcquisitionActivity ;
+                     rdfs:range LRM:Resource ;
+                     rdfs:comment "Shows the item acquired by an acquisition activity." ;
+                     rdfs:label "acquires resource" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#acquisitionActivityPerformedBy
+dva:acquisitionActivityPerformedBy rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf dva:performedBy ;
+                                   owl:inverseOf dva:performsAcquisitionActivity ;
+                                   rdf:type owl:AsymmetricProperty ,
+                                            owl:IrreflexiveProperty ;
+                                   rdfs:domain dva:AcquisitionActivity ;
+                                   rdfs:range LRM:Agent ;
+                                   rdfs:label "acquisition activity performed by" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#acquisitionActivityPerformedByProvider
+dva:acquisitionActivityPerformedByProvider rdf:type owl:ObjectProperty ;
+                                           rdfs:subPropertyOf dva:acquisitionActivityPerformedBy ;
+                                           owl:inverseOf dva:isReceiverInAcquisitionActivity ;
+                                           rdfs:domain dva:AcquisitionActivity ;
+                                           rdfs:range LRM:Agent ;
+                                           rdfs:label "acquisition activity activity performed by provider" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#acquisitionActivityPerformedToReceiver
+dva:acquisitionActivityPerformedToReceiver rdf:type owl:ObjectProperty ;
+                                           rdfs:subPropertyOf dva:acquisitionActivityPerformedBy ;
+                                           owl:inverseOf dva:isProviderInAcquisitionActivity ;
+                                           rdfs:domain dva:AcquisitionActivity ;
+                                           rdfs:range LRM:Agent ;
+                                           rdfs:label "acquisition activity performed to receiver" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#activityLocation
+dva:activityLocation rdf:type owl:ObjectProperty ;
+                     rdfs:domain LRM:Activity ;
+                     rdfs:range LRM:Location ;
+                     rdfs:label "activity location" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#createsResource
+dva:createsResource rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf dva:targetsResource ;
+                    rdf:type owl:FunctionalProperty ,
+                             owl:AsymmetricProperty ,
+                             owl:IrreflexiveProperty ;
+                    rdfs:domain dva:CreationActivity ;
+                    rdfs:range LRM:Resource ;
+                    rdfs:comment "Shows the item created by a creation activity." ;
+                    rdfs:label "creates resource" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#destroysResource
+dva:destroysResource rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf dva:targetsResource ;
+                     rdf:type owl:FunctionalProperty ,
+                              owl:AsymmetricProperty ,
+                              owl:IrreflexiveProperty ;
+                     rdfs:domain dva:DestructionActivity ;
+                     rdfs:range LRM:Resource ;
+                     rdfs:label "destroys resource" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#displaysResource
+dva:displaysResource rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf dva:targetsResource ;
+                     rdf:type owl:FunctionalProperty ,
+                              owl:AsymmetricProperty ,
+                              owl:IrreflexiveProperty ;
+                     rdfs:domain dva:DisplayActivity ;
+                     rdfs:range LRM:Resource ;
+                     rdfs:comment "Shows the item that is displayed by a display activity." ;
+                     rdfs:label "displays resource" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#documentsResource
+dva:documentsResource rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf dva:targetsResource ;
+                      rdfs:domain dva:DocumentationActivity ;
+                      rdfs:range LRM:Resource ;
+                      rdfs:label "documents resource" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasAnalogBroadcastStandard
+dva:hasAnalogBroadcastStandard rdf:type owl:ObjectProperty ;
+                               rdfs:domain dva:DigitalVideo ;
+                               rdfs:range dva:AnalogBroadcastStandard ;
+                               rdfs:comment "Associates a digital video with an analog broadcast standard." ;
+                               rdfs:label "has analog broadcast standard" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasAspectRatio
+dva:hasAspectRatio rdf:type owl:ObjectProperty ;
+                   rdfs:domain dva:VideoStream ;
+                   rdfs:range dva:AspectRatio .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasAudioCodec
+dva:hasAudioCodec rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf dva:hasCodec ;
+                  rdfs:domain dva:DigitalVideo ;
+                  rdfs:range dva:AudioCodec ;
+                  rdfs:label "has audio codec" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasAudioStream
+dva:hasAudioStream rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf dva:hasStream ;
+                   rdfs:domain dva:DigitalVideo ;
+                   rdfs:range dva:AudioStream ;
+                   rdfs:comment "Associates a digital video with an audio stream." ;
+                   rdfs:label "has audio stream" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasBitRate
+dva:hasBitRate rdf:type owl:ObjectProperty ;
+               rdfs:domain [ rdf:type owl:Class ;
+                             owl:unionOf ( dva:AudioStream
+                                           dva:VideoStream
+                                         )
+                           ] ;
+               rdfs:range dva:BitRate ;
+               rdfs:comment "Associates an audio or video stream with a bit rate." ;
+               rdfs:label "has bitrate" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasChromaFormat
+dva:hasChromaFormat rdf:type owl:ObjectProperty ;
+                    rdfs:domain dva:VideoStream ;
+                    rdfs:range dva:ChromaFormat ;
+                    rdfs:comment "Associates a video stream with a chroma format." ,
+                                 "Possible values are \"4:2:0\", \"4:1:1\", etc." ;
+                    rdfs:label "has chroma format" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasCodec
+dva:hasCodec rdf:type owl:ObjectProperty ;
+             rdfs:domain dva:DigitalVideo ;
+             rdfs:range dva:Codec ;
+             rdfs:label "has codec" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasCodingStandard
+dva:hasCodingStandard rdf:type owl:ObjectProperty ;
+                      rdfs:domain [ rdf:type owl:Class ;
+                                    owl:unionOf ( dva:AudioStream
+                                                  dva:VideoStream
+                                                )
+                                  ] ;
+                      rdfs:range dva:CodingStandard ;
+                      rdfs:comment "Associates a video or audio stream with a coding standard." ;
+                      rdfs:label "has coding standard" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasColourSpaceType
+dva:hasColourSpaceType rdf:type owl:ObjectProperty ;
+                       rdfs:domain dva:VideoStream ;
+                       rdfs:range dva:ColourSpaceType ;
+                       rdfs:comment "Associates a video stream with a colour space type." ;
+                       rdfs:label "has colour space type" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasCompressionType
+dva:hasCompressionType rdf:type owl:ObjectProperty ;
+                       rdfs:domain [ rdf:type owl:Class ;
+                                     owl:unionOf ( dva:AudioCodec
+                                                   dva:VideoCodec
+                                                 )
+                                   ] ;
+                       rdfs:range dva:CompressionType ;
+                       rdfs:comment "Associates a video or audio codec with a compression type." ;
+                       rdfs:label "has compression type" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasContainer
+dva:hasContainer rdf:type owl:ObjectProperty ;
+                 rdfs:domain dva:DigitalVideo ;
+                 rdfs:range dva:Container ;
+                 rdfs:comment "Associates a digital video file with a container type." ;
+                 rdfs:label "has container" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasCopyInput
+dva:hasCopyInput rdf:type owl:ObjectProperty ,
+                          owl:FunctionalProperty ,
+                          owl:AsymmetricProperty ,
+                          owl:IrreflexiveProperty ;
+                 rdfs:domain dva:CopyActivity ;
+                 rdfs:range LRM:Resource ;
+                 rdfs:comment "Shows the item that is copied by a copy activity." ;
+                 rdfs:label "has copy input" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasCopyOutput
+dva:hasCopyOutput rdf:type owl:ObjectProperty ,
+                           owl:AsymmetricProperty ,
+                           owl:IrreflexiveProperty ;
+                  rdfs:domain dva:CopyActivity ;
+                  rdfs:range LRM:Resource ;
+                  rdfs:comment "Shows the item that is generated by a copy activity." ;
+                  rdfs:label "has copy output" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasDate
+dva:hasDate rdf:type owl:ObjectProperty ;
+            rdfs:domain LRM:Resource ;
+            rdfs:range <http://purl.org/NET/cidoc-crm/core#E50_Date> .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasEmbeddingType
+dva:hasEmbeddingType rdf:type owl:ObjectProperty ;
+                     rdfs:domain dva:SubtitleStream ;
+                     rdfs:range dva:EmbeddingType ;
+                     rdfs:comment "Associates a subtitle stream with an embedding type." ;
+                     rdfs:label "has embedding type" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasFrameRate
+dva:hasFrameRate rdf:type owl:ObjectProperty ;
+                 rdfs:domain dva:VideoStream ;
+                 rdfs:range dva:FrameRate ;
+                 rdfs:comment "Associates a video stream with a frame rate." ;
+                 rdfs:label "has frame rate" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasFrameSize
+dva:hasFrameSize rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf dva:hasSize ;
+                 rdfs:domain dva:VideoStream ;
+                 rdfs:range dva:Size .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasPlaybackDuration
+dva:hasPlaybackDuration rdf:type owl:ObjectProperty ;
+                        rdfs:domain [ rdf:type owl:Class ;
+                                      owl:unionOf ( dva:AudioStream
+                                                    dva:DigitalVideo
+                                                    dva:VideoStream
+                                                  )
+                                    ] ;
+                        rdfs:comment "Associates a digital video, a video stream or an audio stream with a playback duration." ;
+                        rdfs:label "has playback duration" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasRangeType
+dva:hasRangeType rdf:type owl:ObjectProperty ;
+                 rdfs:domain dva:VideoStream ;
+                 rdfs:range dva:RangeType ;
+                 rdfs:comment "Associates a video stream with a range type." ;
+                 rdfs:label "has range type" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasSampleRate
+dva:hasSampleRate rdf:type owl:ObjectProperty ;
+                  rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( dva:AudioStream
+                                              dva:VideoStream
+                                            )
+                              ] ;
+                  rdfs:range dva:SampleRate ;
+                  rdfs:comment "Associates a video stream or audio stream with a sample rate." ;
+                  rdfs:label "has sample rate" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasScanType
+dva:hasScanType rdf:type owl:ObjectProperty ;
+                rdfs:domain dva:VideoStream ;
+                rdfs:range dva:ScanType ;
+                rdfs:comment "Associates a video stream with a scan type." ;
+                rdfs:label "has scan type" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasSetOfStandards
+dva:hasSetOfStandards rdf:type owl:ObjectProperty ;
+                      rdfs:domain dva:VideoStream ;
+                      rdfs:range dva:SetOfStandards ;
+                      rdfs:comment "Associates a video stream with a set of standards." ;
+                      rdfs:label "has set of standards" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasSize
+dva:hasSize rdf:type owl:ObjectProperty ,
+                     owl:AsymmetricProperty ,
+                     owl:IrreflexiveProperty ;
+            rdfs:domain LRM:Resource ;
+            rdfs:range dva:Size ;
+            rdfs:label "has size" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasStream
+dva:hasStream rdf:type owl:ObjectProperty ;
+              rdfs:domain dva:DigitalVideo ;
+              rdfs:range dva:Stream ;
+              rdfs:comment "Associates a digital video with a stream." ;
+              rdfs:label "has stream" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasSubtitleStream
+dva:hasSubtitleStream rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf dva:hasStream ;
+                      rdfs:domain dva:DigitalVideo ;
+                      rdfs:range dva:SubtitleStream ;
+                      rdfs:comment "Associates a digital video with an subtitle stream." ;
+                      rdfs:label "has subtitle stream" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasSubtitleTextFormat
+dva:hasSubtitleTextFormat rdf:type owl:ObjectProperty ;
+                          rdfs:domain dva:SubtitleStream ;
+                          rdfs:range dva:SubtitleTextFormat ;
+                          rdfs:comment "Associates a subtitle stream with a subtitle text format." ;
+                          rdfs:label "has subtitle text format" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasVideoCodec
+dva:hasVideoCodec rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf dva:hasCodec ;
+                  rdfs:domain dva:DigitalVideo ;
+                  rdfs:range dva:VideoCodec ;
+                  rdfs:label "has video codec" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasVideoCodecLevel
+dva:hasVideoCodecLevel rdf:type owl:ObjectProperty ;
+                       rdfs:domain dva:VideoCodec ;
+                       rdfs:range dva:VideoCodecLevel ;
+                       rdfs:comment "Associates a video codec with a video codec level." ;
+                       rdfs:label "has video codec level" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasVideoCodecProfile
+dva:hasVideoCodecProfile rdf:type owl:ObjectProperty ;
+                         rdfs:domain dva:VideoCodec ;
+                         rdfs:range dva:VideoCodecProfile ;
+                         rdfs:comment "Associates a video codec with a video codec profile." ;
+                         rdfs:label "has video codec profile" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasVideoQualityMeasurement
+dva:hasVideoQualityMeasurement rdf:type owl:ObjectProperty ;
+                               rdfs:domain dva:VideoStream ;
+                               rdfs:range dva:VideoQualityMeasurement ;
+                               rdfs:comment "Associates a video stream with a video quality measurement." ;
+                               rdfs:label "has video quality measurement" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasVideoQualityMetric
+dva:hasVideoQualityMetric rdf:type owl:ObjectProperty ;
+                          rdfs:domain dva:VideoStream ;
+                          rdfs:range dva:VideoQualityMetric ;
+                          rdfs:comment "Associates a video stream with a video quality metric." ;
+                          rdfs:label "has video quality metric" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasVideoStream
+dva:hasVideoStream rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf dva:hasStream ;
+                   rdfs:domain dva:DigitalVideo ;
+                   rdfs:range dva:VideoStream ;
+                   rdfs:comment "Associates a digital video with a video stream." ;
+                   rdfs:label "has video stream" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasYUVSampleRange
+dva:hasYUVSampleRange rdf:type owl:ObjectProperty ;
+                      rdfs:domain dva:VideoStream ;
+                      rdfs:range dva:YUVSampleRange ;
+                      rdfs:comment "Associates a video stream with a YUV sample range." ;
+                      rdfs:label "has YUV sample range" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#isBorrowerInLoanActivity
+dva:isBorrowerInLoanActivity rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf dva:performsLoanActivity ;
+                             owl:inverseOf dva:loanActivityPerformedToAgent ;
+                             rdfs:domain LRM:Agent ;
+                             rdfs:range dva:LoanActivity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#isCopyOf
+dva:isCopyOf rdf:type owl:ObjectProperty ,
+                      owl:TransitiveProperty ;
+             rdfs:domain LRM:Resource ;
+             rdfs:range LRM:Resource ;
+             rdfs:comment """Corresponds an item to another item that occured by a copy activity.
+Should be generated automatically from ItemCopy activities with SWRL rules.""" ;
+             rdfs:label "is copy of" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#isLenderInLoanActivity
+dva:isLenderInLoanActivity rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf dva:performsLoanActivity ;
+                           owl:inverseOf dva:loanActivityPerformedFromAgent ;
+                           rdfs:domain LRM:Agent ;
+                           rdfs:range dva:LoanActivity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#isProviderInAcquisitionActivity
+dva:isProviderInAcquisitionActivity rdf:type owl:ObjectProperty ;
+                                    rdfs:subPropertyOf dva:performsAcquisitionActivity ;
+                                    rdfs:domain LRM:Agent ;
+                                    rdfs:range dva:AcquisitionActivity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#isReceiverInAcquisitionActivity
+dva:isReceiverInAcquisitionActivity rdf:type owl:ObjectProperty ;
+                                    rdfs:subPropertyOf dva:performsAcquisitionActivity ;
+                                    rdfs:domain LRM:Agent ;
+                                    rdfs:range dva:AcquisitionActivity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#loanActivityPerformedBy
+dva:loanActivityPerformedBy rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf dva:performedBy ;
+                            owl:inverseOf dva:performsLoanActivity ;
+                            rdf:type owl:AsymmetricProperty ,
+                                     owl:IrreflexiveProperty ;
+                            rdfs:domain dva:LoanActivity ;
+                            rdfs:range LRM:Agent ;
+                            rdfs:label "loan activity performed by" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#loanActivityPerformedFromAgent
+dva:loanActivityPerformedFromAgent rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf dva:loanActivityPerformedBy ;
+                                   rdfs:domain dva:LoanActivity ;
+                                   rdfs:range LRM:Agent ;
+                                   rdfs:comment "\"FromAgent\" indicates the lender" ;
+                                   rdfs:label "loan activity performed from agent" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#loanActivityPerformedToAgent
+dva:loanActivityPerformedToAgent rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf dva:loanActivityPerformedBy ;
+                                 rdfs:domain dva:LoanActivity ;
+                                 rdfs:range LRM:Agent ;
+                                 rdfs:comment "\"ToAgent\" indicates the borrower" ;
+                                 rdfs:label "loan activity performed to agent" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#loansResource
+dva:loansResource rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf dva:targetsResource ;
+                  rdfs:domain dva:LoanActivity ;
+                  rdfs:range LRM:Resource ;
+                  rdfs:comment "Shows the item loaned by a loan activity." ;
+                  rdfs:label "loans resource" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#maintainsResource
+dva:maintainsResource rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf dva:targetsResource ;
+                      rdf:type owl:FunctionalProperty ,
+                               owl:AsymmetricProperty ,
+                               owl:IrreflexiveProperty ;
+                      rdfs:domain dva:MaintenanceActivity ;
+                      rdfs:range LRM:Resource ;
+                      rdfs:comment "Shows the item maintained by a maintenance activity." ;
+                      rdfs:label "maintains resource" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#migratesFromResource
+dva:migratesFromResource rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf dva:targetsResource ;
+                         rdfs:domain dva:MigrationActivity ;
+                         rdfs:range LRM:Resource ;
+                         rdfs:label "migrates from resource" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#migratesToResource
+dva:migratesToResource rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf dva:targetsResource ;
+                       rdfs:domain dva:MigrationActivity ;
+                       rdfs:range LRM:Resource ;
+                       rdfs:label "migrates to resource" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#performedBy
+dva:performedBy rdf:type owl:ObjectProperty ;
+                owl:inverseOf dva:performs ;
+                rdf:type owl:AsymmetricProperty ,
+                         owl:IrreflexiveProperty ;
+                rdfs:domain LRM:Activity ;
+                rdfs:range LRM:Agent ;
+                rdfs:label "performed  by" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#performs
+dva:performs rdf:type owl:ObjectProperty ,
+                      owl:AsymmetricProperty ,
+                      owl:IrreflexiveProperty ;
+             rdfs:domain LRM:Agent ;
+             rdfs:range LRM:Activity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#performsAcquisitionActivity
+dva:performsAcquisitionActivity rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf dva:performs ;
+                                rdf:type owl:AsymmetricProperty ,
+                                         owl:IrreflexiveProperty ;
+                                rdfs:domain LRM:Agent ;
+                                rdfs:range dva:AcquisitionActivity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#performsLoanActivity
+dva:performsLoanActivity rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf dva:performs ;
+                         rdf:type owl:AsymmetricProperty ,
+                                  owl:IrreflexiveProperty ;
+                         rdfs:domain LRM:Agent ;
+                         rdfs:range dva:LoanActivity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#playsResource
+dva:playsResource rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf dva:targetsResource ;
+                  rdfs:domain dva:PlaybackActivity ;
+                  rdfs:range LRM:Resource ;
+                  rdfs:label "plays resource" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#storesResource
+dva:storesResource rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf dva:targetsResource ;
+                   rdf:type owl:FunctionalProperty ,
+                            owl:AsymmetricProperty ,
+                            owl:IrreflexiveProperty ;
+                   rdfs:domain dva:StorageActivity ;
+                   rdfs:range LRM:Resource ;
+                   rdfs:comment "Shows the item stored by a storage activity." ;
+                   rdfs:label "stores resource" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#targetedByActivity
+dva:targetedByActivity rdf:type owl:ObjectProperty ;
+                       owl:inverseOf dva:targetsResource ;
+                       rdfs:domain LRM:Resource ;
+                       rdfs:range LRM:Activity ;
+                       rdfs:label "targeted by activity" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#targetsResource
+dva:targetsResource rdf:type owl:ObjectProperty ;
+                    rdfs:label "targets resource" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+### Added by SW
+dva:hasGoogleName  rdf:type owl:DatatypeProperty ;
+                   rdfs:domain LRM:Entity ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "Name used for entity by Google Trends" .
+
+### Added by SW
+dva:hasWikipediaName  rdf:type owl:DatatypeProperty ;
+                   rdfs:domain LRM:Entity ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "Name used for entity by Wikipedia" .
+
+### Added by SW
+dva:hasGithubName  rdf:type owl:DatatypeProperty ;
+                   rdfs:domain LRM:Entity ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "Name used for software entity by Github repository" .
+
+### Added by SW
+dva:hasSourceForgeName  rdf:type owl:DatatypeProperty ;
+                   rdfs:domain LRM:Entity ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "Name used for software entity by Github repository" .
+
+
+### Added by SW
+dva:hasWeight rdf:type owl:DatatypeProperty , 
+                       owl:FunctionalProperty ;
+              rdfs:domain LRM:Dependency ;
+              rdfs:range xsd:decimal .  # could also add range retriction here
+
+
+### Added by SW
+dva:hasCost rdf:type owl:DatatypeProperty ;
+            rdfs:domain dva:Transformation ;
+            rdfs:range xsd:decimal ;   # could also add range retriction here
+            rdfs:comment "Transformation cost for entity" .
+
+
+### Added by SW
+dva:hasDateForAction rdf:type owl:DatatypeProperty ;
+            rdfs:domain owl:Class ;
+            rdfs:range xsd:date ;   # could also add range retriction here
+            rdfs:comment "Date for performing a potential action on an object" .
+
+
+### Added by SW
+dva:hasImpact rdf:type owl:DatatypeProperty ;
+              rdfs:domain LRM:Entity ;
+              rdfs:range xsd:string ;   # could also add range retriction here
+              rdfs:comment "Magnitude of risk on an entity" .
+
+
+### Added by SW
+dva:hasAccessionDate rdf:type owl:DatatypeProperty ;
+                     rdfs:domain LRM:Entity ;
+                     rdfs:range xsd:date ;   
+                     rdfs:comment "Date the artwork was accessioned" .
+
+
+### Added by SW
+dva:hasRiskLevel rdf:type owl:DatatypeProperty ;
+                     rdfs:domain LRM:Entity ;
+                     rdfs:range xsd:string ;   # could also add range retriction here
+                     rdfs:comment "Risk level of the artwork" .
+
+#### Added by SW
+dva:hasPrimaryRiskType rdf:type owl:DatatypeProperty ;
+                       rdfs:domain dva:DigitalVideoArtwork ;
+                       rdfs:range xsd:string ;   # e.g. Obsolescence
+                       rdfs:comment "Primary risk type of an artwork " .
+
+#### Added by SW
+dva:hasRiskType rdf:type owl:DatatypeProperty ;
+                rdfs:domain LRM:Entity ;
+                rdfs:range xsd:string ;   # e.g. Obsolescence
+                rdfs:comment "Risk type of an artwork component " .
+
+
+### Added by SW
+dva:hasConfidence rdf:type owl:DatatypeProperty ;
+                     rdfs:domain LRM:Entity ;
+                     rdfs:range xsd:duration ;   
+                     rdfs:comment "Date the artwork was accessioned" .
+
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#atTime
+dva:atTime rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:dateTime ;
+           rdfs:comment """Specifies the exact date-time that an Activity or Event took place.
+
+Same as prov:atTime""" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasDescription
+dva:hasDescription rdf:type owl:DatatypeProperty ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "Same as dc:description" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasErrorText
+dva:hasErrorText rdf:type owl:DatatypeProperty ;
+                 rdfs:domain dva:ErrorItem .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasStatusFlag
+dva:hasStatusFlag rdf:type owl:DatatypeProperty ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "A status flag that describes this artwork copy status, e.g. Duplicating copy, Artist Supplied Master, etc." .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasUnit
+dva:hasUnit rdf:type owl:DatatypeProperty ;
+            rdfs:range xsd:string .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasValue
+dva:hasValue rdf:type owl:DatatypeProperty ;
+             rdfs:range xsd:string .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasVersion
+dva:hasVersion rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:string .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#hasWarningText
+dva:hasWarningText rdf:type owl:DatatypeProperty ;
+                   rdfs:domain dva:WarningItem .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#includesAspectRatio
+dva:includesAspectRatio rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf dva:includesMetadata ;
+                        rdfs:domain dva:Container ;
+                        rdfs:range xsd:boolean .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#includesMetadata
+dva:includesMetadata rdf:type owl:DatatypeProperty ;
+                     rdfs:range xsd:boolean .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#value
+dva:value rdf:type owl:DatatypeProperty ;
+          rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+### Added by SW - required for appraisal tool
+dva:Transformation rdf:type owl:Class ;
+                 rdfs:subClassOf LRM:Dependency ;
+                 rdfs:domain LRM:Resource ;
+                 rdfs:range LRM:Resource ;
+                 dva:hasCost xsd:decimal ;
+                 rdfs:comment "Transformation between entities of the same type" ;
+                 rdfs:label "Transformation" .
+
+#### Added by SW
+dva:DigitalVideoArtworkCollection rdf:type owl:Class;
+                  rdfs:subClassOf LRM:AggregatedResource ;
+                  rdfs:comment "Defines a collection of digital video artworks" ;
+                  rdfs:label "Digital Video Artwork Collection" .
+
+
+#### Added by SW
+dva:RecoveryOption rdf:type owl:Class;
+                   rdfs:comment "Recovery options of video artworks" ;
+                   rdfs:label "Recovery Option" .
+
+
+#### Added by SW
+dva:Change rdf:type owl:Class;
+           rdfs:comment "A change to an entity of a given type" ;
+           rdfs:label "Change" .
+
+
+###  http://purl.org/NET/cidoc-crm/core#E21_Person
+<http://purl.org/NET/cidoc-crm/core#E21_Person> owl:equivalentClass dva:Person .
+
+
+###  http://purl.org/NET/cidoc-crm/core#E28_Conceptual_Object
+<http://purl.org/NET/cidoc-crm/core#E28_Conceptual_Object> rdf:type owl:Class .
+
+
+###  http://purl.org/NET/cidoc-crm/core#E31_Document
+<http://purl.org/NET/cidoc-crm/core#E31_Document> rdf:type owl:Class ;
+                                                  owl:equivalentClass dva:Document .
+
+
+###  http://purl.org/NET/cidoc-crm/core#E50_Date
+<http://purl.org/NET/cidoc-crm/core#E50_Date> rdf:type owl:Class .
+
+
+###  http://purl.org/NET/cidoc-crm/core#E6_Destruction
+<http://purl.org/NET/cidoc-crm/core#E6_Destruction> rdf:type owl:Class .
+
+
+###  http://purl.org/NET/cidoc-crm/core#E71_Man-Made_Thing
+<http://purl.org/NET/cidoc-crm/core#E71_Man-Made_Thing> rdf:type owl:Class .
+
+
+###  http://purl.org/NET/cidoc-crm/core#E74_Group
+<http://purl.org/NET/cidoc-crm/core#E74_Group> rdf:type owl:Class ;
+                                               owl:equivalentClass dva:Group .
+
+
+###  http://purl.org/NET/cidoc-crm/core#E8_Acquisition
+<http://purl.org/NET/cidoc-crm/core#E8_Acquisition> rdf:type owl:Class .
+
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement
+rdf:Statement rdf:type owl:Class .
+
+
+###  http://www.w3.org/2002/07/owl#topObjectProperty
+owl:topObjectProperty rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#AbstractResource
+LRM:AbstractResource rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#Activity
+LRM:Activity rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#Agent
+LRM:Agent rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#AggregatedResource
+LRM:AggregatedResource rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#ConcreteResource
+LRM:ConcreteResource rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#ConjunctiveDependency
+LRM:ConjunctiveDependency rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#Dependency
+LRM:Dependency rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#DigitalResource
+LRM:DigitalResource rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#DisjunctiveDependency
+LRM:DisjunctiveDependency rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#EndogenousActivity
+LRM:EndogenousActivity rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#HumanAgent
+LRM:HumanAgent rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#Identity
+LRM:Identity rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#Location
+LRM:Location rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#RDF-Delta
+LRM:RDF-Delta rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#Resource
+LRM:Resource rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#SoftwareAgent
+LRM:SoftwareAgent rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#Specification
+LRM:Specification rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#TransformationEvent
+LRM:TransformationEvent rdf:type owl:Class .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#AccessActivity
+dva:AccessActivity rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty dva:accessesResource ;
+                                         owl:someValuesFrom LRM:DigitalResource
+                                       ] ;
+                   rdfs:subClassOf LRM:Activity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#AcquisitionActivity
+dva:AcquisitionActivity rdf:type owl:Class ;
+                        rdfs:subClassOf <http://purl.org/NET/cidoc-crm/core#E8_Acquisition> ,
+                                        LRM:Activity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#AnalogBroadcastStandard
+dva:AnalogBroadcastStandard rdf:type owl:Class ;
+                            rdfs:subClassOf dva:VideoDescription ;
+                            rdfs:comment "E.g. NTSC, PAL, etc." ,
+                                         "The video color encoding system, if the video originates from analog television broadcasts." ;
+                            rdfs:label "Analog Broadcast Standard" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#ArchivingCost
+dva:ArchivingCost rdf:type owl:Class ;
+                  rdfs:subClassOf dva:Cost ;
+                  rdfs:label "Archiving Cost" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Artist
+dva:Artist rdf:type owl:Class ;
+           rdfs:subClassOf dva:Creator .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#AspectRatio
+dva:AspectRatio rdf:type owl:Class ;
+                rdfs:subClassOf dva:VideoDescription ;
+                rdfs:comment "E.g. 16:9, 4:3, etc." ,
+                             "The aspect ratio of an image describes the proportional relationship between its width and its height. It is commonly expressed as two numbers separated by a colon, as in 16:9." ;
+                rdfs:label "Aspect Ratio" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#AssessmentActivity
+dva:AssessmentActivity rdf:type owl:Class ;
+                       rdfs:subClassOf dva:AcquisitionActivity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#AssistantCurator
+dva:AssistantCurator rdf:type owl:Class ;
+                     rdfs:subClassOf dva:StaffMember .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#AudioCodec
+dva:AudioCodec rdf:type owl:Class ;
+               rdfs:subClassOf dva:Codec ;
+               rdfs:label "Audio Codec" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#AudioStream
+dva:AudioStream rdf:type owl:Class ;
+                rdfs:subClassOf dva:Stream ;
+                rdfs:label "Audio Stream" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#BitRate
+dva:BitRate rdf:type owl:Class ;
+            rdfs:subClassOf dva:VideoDescription ;
+            rdfs:comment "The bitrate is the data rate for a video file. Video data rates are given in bits per second." ;
+            rdfs:label "Bit Rate" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#ChromaFormat
+dva:ChromaFormat rdf:type owl:Class ;
+                 rdfs:subClassOf dva:VideoDescription ;
+                 rdfs:label "Chroma Format" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Codec
+dva:Codec rdf:type owl:Class ;
+          rdfs:subClassOf <http://www.ics.forth.gr/isl/CRMdig/D14_Software> ,
+                          LRM:SoftwareAgent .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#CodecDescription
+dva:CodecDescription rdf:type owl:Class ;
+                     rdfs:subClassOf dva:VideoDescription ;
+                     rdfs:label "Codec Description" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#CodingStandard
+dva:CodingStandard rdf:type owl:Class ;
+                   rdfs:subClassOf dva:VideoDescription ;
+                   rdfs:comment "Also known as coding format or compression format." ,
+                                "E.g. H.264/MPEG-4 AVC" ;
+                   rdfs:label "Coding Standard" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#ColourSpaceType
+dva:ColourSpaceType rdf:type owl:Class ;
+                    rdfs:subClassOf dva:VideoDescription ;
+                    rdfs:comment "A color space is a specific organization of colors. It allows for reproducible representations of color, in both analog and digital representations. A color space may be arbitrary, with particular colors assigned to a set of physical color swatches and corresponding assigned names or numbers." ,
+                                 "E.g. YUV, RGB, etc." ;
+                    rdfs:label "Colour Space Type" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#CompressionType
+dva:CompressionType rdf:type owl:Class ;
+                    rdfs:subClassOf dva:VideoDescription ;
+                    rdfs:comment "E.g. lossy, lossless or uncompressed" ,
+                                 "The type of video compression." ;
+                    rdfs:label "Compression Type" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Computer
+dva:Computer rdf:type owl:Class ;
+             rdfs:subClassOf dva:Equipment .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Conservator
+dva:Conservator rdf:type owl:Class ;
+                rdfs:subClassOf dva:StaffMember .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Container
+dva:Container rdf:type owl:Class ;
+              rdfs:subClassOf <http://www.ics.forth.gr/isl/CRMdig/D14_Software> ,
+                              LRM:SoftwareAgent .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#CopyActivity
+dva:CopyActivity rdf:type owl:Class ;
+                 owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                              owl:onProperty dva:hasCopyOutput ;
+                                                              owl:someValuesFrom LRM:Resource
+                                                            ]
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty dva:hasCopyInput ;
+                                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                              owl:onClass LRM:Resource
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ;
+                 rdfs:subClassOf LRM:Activity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Cost
+dva:Cost rdf:type owl:Class ;
+         rdfs:subClassOf LRM:Description .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#CreationActivity
+dva:CreationActivity rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                           owl:onProperty dva:createsResource ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass LRM:Resource
+                                         ] ;
+                     rdfs:subClassOf <http://purl.org/NET/cidoc-crm/core#E65_Creation> ,
+                                     LRM:Activity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Creator
+dva:Creator rdf:type owl:Class ;
+            rdfs:subClassOf dva:Person .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#DataDependency
+dva:DataDependency rdf:type owl:Class ;
+                   rdfs:subClassOf LRM:Dependency .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#DestructionActivity
+dva:DestructionActivity rdf:type owl:Class ;
+                        owl:equivalentClass [ rdf:type owl:Restriction ;
+                                              owl:onProperty dva:destroysResource ;
+                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                              owl:onClass LRM:Resource
+                                            ] ;
+                        rdfs:subClassOf <http://purl.org/NET/cidoc-crm/core#E6_Destruction> ,
+                                        LRM:Activity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#DigitalPreservationManager
+dva:DigitalPreservationManager rdf:type owl:Class ;
+                               rdfs:subClassOf dva:StaffMember .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#DigitalVideo
+dva:DigitalVideo rdf:type owl:Class ;
+                 rdfs:subClassOf <http://www.ics.forth.gr/isl/CRMdig/D1_Digital_Object> ,
+                                 LRM:DigitalResource ;
+                 rdfs:label "Digital Video" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#DigitalVideoArt
+dva:DigitalVideoArt rdf:type owl:Class ;
+                    rdfs:subClassOf <http://purl.org/NET/cidoc-crm/core#E28_Conceptual_Object> ,
+                                    LRM:AbstractResource ;
+                    rdfs:label "Digital Video Art" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#DigitalVideoArtwork
+dva:DigitalVideoArtwork rdf:type owl:Class ;
+                        rdfs:subClassOf <http://purl.org/NET/cidoc-crm/core#E71_Man-Made_Thing> ,
+                                        LRM:ConcreteResource .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#DisplayActivity
+dva:DisplayActivity rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                          owl:onProperty dva:displaysResource ;
+                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onClass LRM:Resource
+                                        ] ;
+                    rdfs:subClassOf LRM:Activity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#DisplayCost
+dva:DisplayCost rdf:type owl:Class ;
+                rdfs:subClassOf dva:Cost ;
+                rdfs:label "Display Cost" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#DisplayDevice
+dva:DisplayDevice rdf:type owl:Class ;
+                  rdfs:subClassOf <http://www.ics.forth.gr/isl/CRMdig/D8_Digital_Device> ,
+                                  dva:Equipment .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Document
+dva:Document rdf:type owl:Class ;
+             rdfs:subClassOf LRM:ConcreteResource .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#DocumentationActivity
+dva:DocumentationActivity rdf:type owl:Class ;
+                          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                owl:onProperty dva:documentsResource ;
+                                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                owl:onClass LRM:Resource
+                                              ] ;
+                          rdfs:subClassOf LRM:Activity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#EditingSoftware
+dva:EditingSoftware rdf:type owl:Class ;
+                    rdfs:subClassOf <http://www.ics.forth.gr/isl/CRMdig/D14_Software> ,
+                                    LRM:SoftwareAgent ;
+                    rdfs:label "Editing Software" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#EmbeddingType
+dva:EmbeddingType rdf:type owl:Class ;
+                  rdfs:subClassOf dva:VideoDescription ;
+                  rdfs:comment "E.g. hard, prerendered, soft, etc." ,
+                               "The type of embedment used to attach a subtitle stream to a video." ;
+                  rdfs:label "Embedding Type" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Equipment
+dva:Equipment rdf:type owl:Class ;
+              rdfs:subClassOf LRM:ConcreteResource .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#EquipmentCost
+dva:EquipmentCost rdf:type owl:Class ;
+                  rdfs:subClassOf dva:Cost ;
+                  rdfs:label "Equipment Cost" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#ErrorItem
+dva:ErrorItem rdf:type owl:Class ;
+              rdfs:subClassOf LRM:AbstractResource ;
+              rdfs:label "Error Item" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#ExaminationActivity
+dva:ExaminationActivity rdf:type owl:Class ;
+                        rdfs:subClassOf dva:AssessmentActivity ;
+                        owl:disjointWith dva:PlaybackActivity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#FrameRate
+dva:FrameRate rdf:type owl:Class ;
+              rdfs:subClassOf dva:VideoDescription ;
+              rdfs:comment "E.g. 60 FPS" ,
+                           "Frame rate, also known as frame frequency, is the frequency (rate) at which an imaging device produces unique consecutive images called frames. The term applies equally well to film and video cameras, computer graphics, and motion capture systems. Frame rate is most often expressed in frames per second (FPS) and is also expressed in progressive scan monitors as hertz (Hz)." ;
+              rdfs:label "Frame Rate" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Group
+dva:Group rdf:type owl:Class ;
+          rdfs:subClassOf LRM:HumanAgent .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#HDD
+dva:HDD rdf:type owl:Class ;
+        rdfs:subClassOf <http://www.ics.forth.gr/isl/CRMdig/D13_Digital_Information_Carrier> ,
+                        dva:StorageDevice .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#HardwareDependency
+dva:HardwareDependency rdf:type owl:Class ;
+                       owl:equivalentClass [ owl:intersectionOf ( LRM:Dependency
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty LRM:from ;
+                                                                    owl:someValuesFrom dva:Equipment
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#LTO
+dva:LTO rdf:type owl:Class ;
+        rdfs:subClassOf <http://www.ics.forth.gr/isl/CRMdig/D13_Digital_Information_Carrier> ,
+                        dva:StorageDevice .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#LoanActivity
+dva:LoanActivity rdf:type owl:Class ;
+                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty dva:loansResource ;
+                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onClass LRM:Resource
+                                     ] ;
+                 rdfs:subClassOf LRM:Activity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#MaintenanceActivity
+dva:MaintenanceActivity rdf:type owl:Class ;
+                        owl:equivalentClass [ rdf:type owl:Restriction ;
+                                              owl:onProperty dva:maintainsResource ;
+                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                              owl:onClass LRM:Resource
+                                            ] ;
+                        rdfs:subClassOf <http://purl.org/NET/cidoc-crm/core#E11_Modification> ,
+                                        LRM:Activity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#MediaPlayer
+dva:MediaPlayer rdf:type owl:Class ;
+                rdfs:subClassOf <http://www.ics.forth.gr/isl/CRMdig/D14_Software> ,
+                                LRM:SoftwareAgent ;
+                rdfs:label "Media Player" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Memory
+dva:Memory rdf:type owl:Class ;
+           rdfs:subClassOf dva:Equipment .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#MigrationActivity
+dva:MigrationActivity rdf:type owl:Class ;
+                      owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty dva:migratesFromResource ;
+                                                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                   owl:onClass LRM:Resource
+                                                                 ]
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty dva:migratesToResource ;
+                                                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                   owl:onClass LRM:Resource
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ;
+                      rdfs:subClassOf LRM:Activity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Monitor
+dva:Monitor rdf:type owl:Class ;
+            rdfs:subClassOf dva:DisplayDevice ;
+            owl:disjointWith dva:Projector .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#OperatingSystem
+dva:OperatingSystem rdf:type owl:Class ;
+                    rdfs:subClassOf <http://www.ics.forth.gr/isl/CRMdig/D14_Software> ,
+                                    LRM:SoftwareAgent ;
+                    rdfs:label "Operating System" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#OpticalDisc
+dva:OpticalDisc rdf:type owl:Class ;
+                rdfs:subClassOf <http://www.ics.forth.gr/isl/CRMdig/D13_Digital_Information_Carrier> ,
+                                dva:StorageDevice .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Organization
+dva:Organization rdf:type owl:Class ;
+                 rdfs:subClassOf dva:Group .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Person
+dva:Person rdf:type owl:Class ;
+           rdfs:subClassOf LRM:HumanAgent .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#PlaybackActivity
+dva:PlaybackActivity rdf:type owl:Class ;
+                     rdfs:subClassOf dva:AssessmentActivity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Processor
+dva:Processor rdf:type owl:Class ;
+              rdfs:subClassOf dva:Equipment .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Projector
+dva:Projector rdf:type owl:Class ;
+              rdfs:subClassOf dva:DisplayDevice .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#RangeType
+dva:RangeType rdf:type owl:Class ;
+              rdfs:subClassOf dva:VideoDescription ;
+              rdfs:comment "E.g. Broadcast range or full range." ,
+                           "The type of range a video is created for." ;
+              rdfs:label "Range Type" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Registrar
+dva:Registrar rdf:type owl:Class ;
+              rdfs:subClassOf dva:StaffMember .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Representative
+dva:Representative rdf:type owl:Class ;
+                   rdfs:subClassOf dva:Person .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#SampleRate
+dva:SampleRate rdf:type owl:Class ;
+               rdfs:subClassOf dva:VideoDescription ;
+               rdfs:comment "E.g. 74.25 MHz" ,
+                            "E.g. 96 kHz" ,
+                            "The audio sample rate is the number of samples of audio carried per second, measured in Hz or kHz (one kHz being 1 000 Hz). For example, 44 100 samples per second can be expressed as either 44 100 Hz, or 44.1 kHz." ,
+                            "The video sample rate of a digital video format determines how often the light intensity of each video line is sampled." ;
+               rdfs:label "Sample Rate" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#ScanType
+dva:ScanType rdf:type owl:Class ;
+             rdfs:subClassOf dva:VideoDescription ;
+             rdfs:comment "Progressive or interlaced scan" ;
+             rdfs:label "Scan Type" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#SetOfStandards
+dva:SetOfStandards rdf:type owl:Class ;
+                   rdfs:subClassOf dva:VideoDescription ;
+                   rdfs:comment "'BT.709', 'BT.601', etc." ,
+                                "Sets of standards standardize the format of a video stream." ;
+                   rdfs:label "Set Of Standards" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#ShootingDevice
+dva:ShootingDevice rdf:type owl:Class ;
+                   rdfs:subClassOf <http://www.ics.forth.gr/isl/CRMdig/D8_Digital_Device> ,
+                                   dva:Equipment .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Size
+dva:Size rdf:type owl:Class ;
+         rdfs:subClassOf LRM:Description .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#SoftwareDependency
+dva:SoftwareDependency rdf:type owl:Class ;
+                       owl:equivalentClass [ owl:intersectionOf ( LRM:Dependency
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty LRM:from ;
+                                                                    owl:someValuesFrom LRM:SoftwareAgent
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#StaffMember
+dva:StaffMember rdf:type owl:Class ;
+                rdfs:subClassOf dva:Person .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#StorageActivity
+dva:StorageActivity rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                          owl:onProperty dva:storesResource ;
+                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onClass LRM:Resource
+                                        ] ;
+                    rdfs:subClassOf LRM:Activity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#StorageDevice
+dva:StorageDevice rdf:type owl:Class ;
+                  rdfs:subClassOf <http://www.ics.forth.gr/isl/CRMdig/D8_Digital_Device> ,
+                                  dva:Equipment .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Stream
+dva:Stream rdf:type owl:Class ;
+           rdfs:subClassOf <http://www.ics.forth.gr/isl/CRMdig/D1_Digital_Object> ,
+                           LRM:DigitalResource .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#SubtitleStream
+dva:SubtitleStream rdf:type owl:Class ;
+                   rdfs:subClassOf dva:Stream ;
+                   rdfs:label "Subtitle Stream" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#SubtitleTextFormat
+dva:SubtitleTextFormat rdf:type owl:Class ;
+                       rdfs:subClassOf dva:VideoDescription ;
+                       rdfs:comment "E.g. SubRip, SubViewer, etc." ,
+                                    "The file format of subtitles." ;
+                       rdfs:label "Subtitle Text Format" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Supplier
+dva:Supplier rdf:type owl:Class ;
+             rdfs:subClassOf dva:Group ,
+                             dva:Person .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Technician
+dva:Technician rdf:type owl:Class ;
+               rdfs:subClassOf dva:StaffMember .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#VideoCodec
+dva:VideoCodec rdf:type owl:Class ;
+               rdfs:subClassOf dva:Codec ;
+               rdfs:label "Video Codec" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#VideoCodecLevel
+dva:VideoCodecLevel rdf:type owl:Class ;
+                    rdfs:subClassOf dva:CodecDescription ;
+                    rdfs:comment "A video codec level is a specified set of constraints that indicate a degree of required decoder performance for a profile." ,
+                                 "E.g. 4" ;
+                    rdfs:label "Video Codec Level" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#VideoCodecProfile
+dva:VideoCodecProfile rdf:type owl:Class ;
+                      rdfs:subClassOf dva:CodecDescription ;
+                      rdfs:comment "E.g. baseline profile, extended profile, main profile, high profile, etc." ,
+                                   "The video codec profile is a set of capabilities and constraints apllied in the encoder. It allows the decoder  to recognize the requirements to decode a specific stream." ;
+                      rdfs:label "Video Codec Profile" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#VideoDescription
+dva:VideoDescription rdf:type owl:Class ;
+                     rdfs:subClassOf LRM:Description ;
+                     rdfs:label "Video Description" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#VideoQualityMeasurement
+dva:VideoQualityMeasurement rdf:type owl:Class ;
+                            rdfs:subClassOf dva:VideoDescription ;
+                            rdfs:comment "Measurement carried out according to the video quality metric." ;
+                            rdfs:label "Video Quality Measurement" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#VideoQualityMetric
+dva:VideoQualityMetric rdf:type owl:Class ;
+                       rdfs:subClassOf dva:VideoDescription ;
+                       rdfs:comment "E.g. VQM" ,
+                                    "Process or software used to measure the quality of a video." ;
+                       rdfs:label "Video Quality Metric" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#VideoStream
+dva:VideoStream rdf:type owl:Class ;
+                rdfs:subClassOf dva:Stream ;
+                rdfs:label "Video Stream" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#WarningItem
+dva:WarningItem rdf:type owl:Class ;
+                rdfs:subClassOf LRM:AbstractResource ;
+                rdfs:label "Warning Item" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#YUVSampleRange
+dva:YUVSampleRange rdf:type owl:Class ;
+                   rdfs:subClassOf dva:VideoDescription ;
+                   rdfs:comment "E.g. 16-235" ,
+                                "YUV Sample Range" ;
+                   rdfs:label "YUV Sample Range" .
+
+
+#################################################################
+#    Individuals - static
+#################################################################
+
+###  http://xrce.xerox.com/LRM#to
+LRM:to rdf:type owl:NamedIndividual ,
+                owl:topObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#used
+LRM:used rdf:type owl:NamedIndividual ,
+                  owl:topObjectProperty .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#intention_1
+dva:intention_1 rdf:type owl:NamedIndividual ,
+                         LRM:Description ;
+                dva:value "Compatibility"^^xsd:string ;
+                rdfs:label "compatibility intention" .
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#intention_2
+dva:intention_2 rdf:type owl:NamedIndividual ,
+                         LRM:Description ;
+                dva:value "Functional"^^xsd:string ;
+                rdfs:label "functional intention" .
+
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#intention_1
+dva:intention_3 rdf:type owl:NamedIndividual ,
+                         LRM:Description ;
+                dva:value "Transformation"^^xsd:string ;
+                rdfs:label "transformation intention" .
+
+
+#################################################################
+#  Autogenerated Individuals
+#################################################################
+
+
+

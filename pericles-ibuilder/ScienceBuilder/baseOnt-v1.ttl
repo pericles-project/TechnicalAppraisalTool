@@ -1,0 +1,964 @@
+@prefix : <https://dl.dropboxusercontent.com/u/27469926/exp_t.owl> .
+@prefix LRM: <http://xrce.xerox.com/LRM#> .
+@prefix exp: <https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix TIME: <http://xrce.xerox.com/TIME#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://dl.dropboxusercontent.com/u/27469926/exp_t.owl> .
+
+<https://dl.dropboxusercontent.com/u/27469926/exp_t.owl> rdf:type owl:Ontology ;
+                                                          owl:imports LRM:LRM-schema ,
+                                                                      <https://dl.dropboxusercontent.com/u/3157623/ontologies/crmdig/crmdig.owl> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#object
+rdf:object rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate
+rdf:predicate rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#changedBy
+LRM:changedBy rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#created
+LRM:created rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#creationTime
+LRM:creationTime rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#deletion
+LRM:deletion rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#executedBy
+LRM:executedBy rdf:type owl:ObjectProperty ;
+               owl:equivalentProperty exp:performedBy .
+
+
+###  http://xrce.xerox.com/LRM#executes
+LRM:executes rdf:type owl:ObjectProperty ;
+             owl:equivalentProperty exp:performs .
+
+
+###  http://xrce.xerox.com/LRM#from
+LRM:from rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#hasPart
+LRM:hasPart rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#identification
+LRM:identification rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#impact
+LRM:impact rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#insertion
+LRM:insertion rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#intention
+LRM:intention rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#preceding
+LRM:preceding rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#precondition
+LRM:precondition rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#realizedAs
+LRM:realizedAs rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#specification
+LRM:specification rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#to
+LRM:to rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#transformed
+LRM:transformed rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#triggers
+LRM:triggers rdf:type owl:ObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#used
+LRM:used rdf:type owl:ObjectProperty .
+
+
+### Added by SW
+### https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#isMemberOf
+exp:isMemberOf rdf:type owl:ObjectProperty ;
+               rdfs:domain exp:Experiment ;
+               rdfs:range exp:ExperimentCollection ;
+               rdfs:comment "Indicates if an experiment (the subject) is a member of a given collection (the object)." ;
+               rdfs:label "is member of collection" .
+
+
+#### Added by SW
+exp:hasRecoveryOption rdf:type owl:ObjectProperty ;
+                      rdfs:domain exp:Experiment ;
+                      rdfs:range exp:Change ;
+                      rdfs:comment "Indicates if an experiment (the subject) is a member of a given collection (the object)." ;
+                      rdfs:label "has Recovery Option" .
+
+
+#### Added by SW
+exp:hasChange rdf:type owl:ObjectProperty ;
+              rdfs:domain exp:RecoveryOption ;
+              rdfs:range  exp:Change;
+              rdfs:comment "Associates a " ;
+              rdfs:label "has Change" .
+
+
+#### Added by SW
+exp:hasChangeType rdf:type owl:ObjectProperty ;
+                  rdfs:domain exp:Change ;
+                  rdfs:range LRM:Resource ;
+                  rdfs:comment "This is the type of an entity to be changed, e.g. exp:Database" ;
+                  rdfs:label "has Change Type" .
+
+
+#### Added by SW
+exp:hasChangeValue rdf:type owl:ObjectProperty ;
+                   rdfs:domain exp:Change ;
+                   rdfs:range owl:NamedIndividual ;
+                   rdfs:comment "This is the instance to which an entity should be changed e.g. exp:PDF" ;
+                   rdfs:label "has Change Value" .
+
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#accessesResource
+exp:accessesResource rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf exp:targetsResource ;
+                     rdf:type owl:AsymmetricProperty ,
+                              owl:IrreflexiveProperty ;
+                     rdfs:domain exp:AccessActivity ;
+                     rdfs:range LRM:Resource ;
+                     rdfs:comment "Shows the item accessed by an access activity." ;
+                     rdfs:label "accesses resource" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#acquiresResource
+exp:acquiresResource rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf exp:targetsResource ;
+                     rdfs:domain exp:AcquisitionActivity ;
+                     rdfs:range LRM:Resource ;
+                     rdfs:comment "Shows the item acquired by an acquisition activity." ;
+                     rdfs:label "acquires resource" .
+
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#activityLocation
+exp:activityLocation rdf:type owl:ObjectProperty ;
+                     rdfs:domain LRM:Activity ;
+                     rdfs:range LRM:Location ;
+                     rdfs:label "activity location" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#createsResource
+exp:createsResource rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf exp:targetsResource ;
+                    rdf:type owl:FunctionalProperty ,
+                             owl:AsymmetricProperty ,
+                             owl:IrreflexiveProperty ;
+                    rdfs:domain exp:CreationActivity ;
+                    rdfs:range LRM:Resource ;
+                    rdfs:comment "Shows the item created by a creation activity." ;
+                    rdfs:label "creates resource" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#destroysResource
+exp:destroysResource rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf exp:targetsResource ;
+                     rdf:type owl:FunctionalProperty ,
+                              owl:AsymmetricProperty ,
+                              owl:IrreflexiveProperty ;
+                     rdfs:domain exp:DestructionActivity ;
+                     rdfs:range LRM:Resource ;
+                     rdfs:label "destroys resource" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#displaysResource
+exp:displaysResource rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf exp:targetsResource ;
+                     rdf:type owl:FunctionalProperty ,
+                              owl:AsymmetricProperty ,
+                              owl:IrreflexiveProperty ;
+                     rdfs:domain exp:DisplayActivity ;
+                     rdfs:range LRM:Resource ;
+                     rdfs:comment "Shows the item that is displayed by a display activity." ;
+                     rdfs:label "displays resource" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#documentsResource
+exp:documentsResource rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf exp:targetsResource ;
+                      rdfs:domain exp:DocumentationActivity ;
+                      rdfs:range LRM:Resource ;
+                      rdfs:label "documents resource" .
+
+
+
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#hasCopyInput
+exp:hasCopyInput rdf:type owl:ObjectProperty ,
+                          owl:FunctionalProperty ,
+                          owl:AsymmetricProperty ,
+                          owl:IrreflexiveProperty ;
+                 rdfs:domain exp:CopyActivity ;
+                 rdfs:range LRM:Resource ;
+                 rdfs:comment "Shows the item that is copied by a copy activity." ;
+                 rdfs:label "has copy input" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#hasCopyOutput
+exp:hasCopyOutput rdf:type owl:ObjectProperty ,
+                           owl:AsymmetricProperty ,
+                           owl:IrreflexiveProperty ;
+                  rdfs:domain exp:CopyActivity ;
+                  rdfs:range LRM:Resource ;
+                  rdfs:comment "Shows the item that is generated by a copy activity." ;
+                  rdfs:label "has copy output" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#hasDate
+exp:hasDate rdf:type owl:ObjectProperty ;
+            rdfs:domain LRM:Resource ;
+            rdfs:range <http://purl.org/NET/cidoc-crm/core#E50_Date> .
+
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#hasSize
+exp:hasSize rdf:type owl:ObjectProperty ,
+                     owl:AsymmetricProperty ,
+                     owl:IrreflexiveProperty ;
+            rdfs:domain LRM:Resource ;
+            rdfs:range exp:Size ;
+            rdfs:label "has size" .
+
+
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#isCopyOf
+exp:isCopyOf rdf:type owl:ObjectProperty ,
+                      owl:TransitiveProperty ;
+             rdfs:domain LRM:Resource ;
+             rdfs:range LRM:Resource ;
+             rdfs:comment """Corresponds an item to another item that occured by a copy activity.
+Should be generated automatically from ItemCopy activities with SWRL rules.""" ;
+             rdfs:label "is copy of" .
+
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#maintainsResource
+exp:maintainsResource rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf exp:targetsResource ;
+                      rdf:type owl:FunctionalProperty ,
+                               owl:AsymmetricProperty ,
+                               owl:IrreflexiveProperty ;
+                      rdfs:domain exp:MaintenanceActivity ;
+                      rdfs:range LRM:Resource ;
+                      rdfs:comment "Shows the item maintained by a maintenance activity." ;
+                      rdfs:label "maintains resource" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#migratesFromResource
+exp:migratesFromResource rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf exp:targetsResource ;
+                         rdfs:domain exp:MigrationActivity ;
+                         rdfs:range LRM:Resource ;
+                         rdfs:label "migrates from resource" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#migratesToResource
+exp:migratesToResource rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf exp:targetsResource ;
+                       rdfs:domain exp:MigrationActivity ;
+                       rdfs:range LRM:Resource ;
+                       rdfs:label "migrates to resource" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#performedBy
+exp:performedBy rdf:type owl:ObjectProperty ;
+                owl:inverseOf exp:performs ;
+                rdf:type owl:AsymmetricProperty ,
+                         owl:IrreflexiveProperty ;
+                rdfs:domain LRM:Activity ;
+                rdfs:range LRM:Agent ;
+                rdfs:label "performed  by" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#performs
+exp:performs rdf:type owl:ObjectProperty ,
+                      owl:AsymmetricProperty ,
+                      owl:IrreflexiveProperty ;
+             rdfs:domain LRM:Agent ;
+             rdfs:range LRM:Activity .
+
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#storesResource
+exp:storesResource rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf exp:targetsResource ;
+                   rdf:type owl:FunctionalProperty ,
+                            owl:AsymmetricProperty ,
+                            owl:IrreflexiveProperty ;
+                   rdfs:domain exp:StorageActivity ;
+                   rdfs:range LRM:Resource ;
+                   rdfs:comment "Shows the item stored by a storage activity." ;
+                   rdfs:label "stores resource" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#targetedByActivity
+exp:targetedByActivity rdf:type owl:ObjectProperty ;
+                       owl:inverseOf exp:targetsResource ;
+                       rdfs:domain LRM:Resource ;
+                       rdfs:range LRM:Activity ;
+                       rdfs:label "targeted by activity" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#targetsResource
+exp:targetsResource rdf:type owl:ObjectProperty ;
+                    rdfs:label "targets resource" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+### Added by SW
+exp:hasGoogleName  rdf:type owl:DatatypeProperty ;
+                   rdfs:domain LRM:Entity ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "Name used for entity by Google Trends" .
+
+### Added by SW
+exp:hasWikipediaName  rdf:type owl:DatatypeProperty ;
+                   rdfs:domain LRM:Entity ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "Name used for entity by Wikipedia" .
+
+### Added by SW
+exp:hasGithubName  rdf:type owl:DatatypeProperty ;
+                   rdfs:domain LRM:Entity ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "Name used for software entity by Github repository" .
+
+### Added by SW
+exp:hasSourceForgeName  rdf:type owl:DatatypeProperty ;
+                   rdfs:domain LRM:Entity ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "Name used for software entity by Github repository" .
+
+
+### Added by SW
+exp:hasWeight rdf:type owl:DatatypeProperty , 
+                       owl:FunctionalProperty ;
+              rdfs:domain LRM:Dependency ;
+              rdfs:range xsd:decimal .  # could also add range retriction here
+
+
+### Added by SW
+exp:hasCost rdf:type owl:DatatypeProperty ;
+            rdfs:domain exp:Transformation ;
+            rdfs:range xsd:decimal ;   # could also add range retriction here
+            rdfs:comment "Transformation cost for entity" .
+
+
+### Added by SW
+exp:hasDateForAction rdf:type owl:DatatypeProperty ;
+            rdfs:domain owl:Class ;
+            rdfs:range xsd:date ;   # could also add range retriction here
+            rdfs:comment "Date for performing a potential action on an object" .
+
+
+### Added by SW
+exp:hasImpact rdf:type owl:DatatypeProperty ;
+              rdfs:domain LRM:Entity ;
+              rdfs:range xsd:string ;   # could also add range retriction here
+              rdfs:comment "Magnitude of risk on an entity" .
+
+
+### Added by SW
+exp:hasAccessionDate rdf:type owl:DatatypeProperty ;
+                     rdfs:domain LRM:Entity ;
+                     rdfs:range xsd:date ;   
+                     rdfs:comment "Date the experiment was accessioned" .
+
+
+### Added by SW
+exp:hasRiskLevel rdf:type owl:DatatypeProperty ;
+                     rdfs:domain LRM:Entity ;
+                     rdfs:range xsd:string ;   # could also add range retriction here
+                     rdfs:comment "Risk level of the experiment" .
+
+#### Added by SW
+exp:hasPrimaryRiskType rdf:type owl:DatatypeProperty ;
+                       rdfs:domain exp:Experiment ;
+                       rdfs:range xsd:string ;   # e.g. Obsolescence
+                       rdfs:comment "Primary risk type of an experiment" .
+
+#### Added by SW
+exp:hasRiskType rdf:type owl:DatatypeProperty ;
+                rdfs:domain LRM:Entity ;
+                rdfs:range xsd:string ;   # e.g. Obsolescence
+                rdfs:comment "Risk type of an experiment component " .
+
+
+### Added by SW
+exp:hasConfidence rdf:type owl:DatatypeProperty ;
+                     rdfs:domain LRM:Entity ;
+                     rdfs:range xsd:duration ;   
+                     rdfs:comment "Date the experiment was accessioned" .
+
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#atTime
+exp:atTime rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:dateTime ;
+           rdfs:comment """Specifies the exact date-time that an Activity or Event took place.
+
+Same as prov:atTime""" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#hasDescription
+exp:hasDescription rdf:type owl:DatatypeProperty ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "Same as dc:description" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#hasErrorText
+exp:hasErrorText rdf:type owl:DatatypeProperty ;
+                 rdfs:domain exp:ErrorItem .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#hasUnit
+exp:hasUnit rdf:type owl:DatatypeProperty ;
+            rdfs:range xsd:string .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#hasValue
+exp:hasValue rdf:type owl:DatatypeProperty ;
+             rdfs:range xsd:string .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#hasVersion
+exp:hasVersion rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:string .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#hasWarningText
+exp:hasWarningText rdf:type owl:DatatypeProperty ;
+                   rdfs:domain exp:WarningItem .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#includesMetadata
+exp:includesMetadata rdf:type owl:DatatypeProperty ;
+                     rdfs:range xsd:boolean .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#value
+exp:value rdf:type owl:DatatypeProperty ;
+          rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+### Added by SW - required for appraisal tool
+exp:Transformation rdf:type owl:Class ;
+                 rdfs:subClassOf LRM:Dependency ;
+                 rdfs:domain LRM:Resource ;
+                 rdfs:range LRM:Resource ;
+                 exp:hasCost xsd:decimal ;
+                 rdfs:comment "Transformation between entities of the same type" ;
+                 rdfs:label "Transformation" .
+
+#### Added by SW
+exp:ExperimentCollection rdf:type owl:Class;
+                  rdfs:subClassOf LRM:AggregatedResource ;
+                  rdfs:comment "Defines a collection of experiments" ;
+                  rdfs:label "Experiment Collection" .
+
+
+#### Added by SW
+exp:RecoveryOption rdf:type owl:Class;
+                   rdfs:comment "Recovery options of experiments" ;
+                   rdfs:label "Recovery Option" .
+
+
+#### Added by SW
+exp:Change rdf:type owl:Class;
+           rdfs:comment "A change to an entity of a given type" ;
+           rdfs:label "Change" .
+
+
+###  http://purl.org/NET/cidoc-crm/core#E21_Person
+<http://purl.org/NET/cidoc-crm/core#E21_Person> owl:equivalentClass exp:Person .
+
+
+###  http://purl.org/NET/cidoc-crm/core#E28_Conceptual_Object
+<http://purl.org/NET/cidoc-crm/core#E28_Conceptual_Object> rdf:type owl:Class .
+
+
+###  http://purl.org/NET/cidoc-crm/core#E31_Document
+<http://purl.org/NET/cidoc-crm/core#E31_Document> rdf:type owl:Class ;
+                                                  owl:equivalentClass exp:Document .
+
+
+###  http://purl.org/NET/cidoc-crm/core#E50_Date
+<http://purl.org/NET/cidoc-crm/core#E50_Date> rdf:type owl:Class .
+
+
+###  http://purl.org/NET/cidoc-crm/core#E6_Destruction
+<http://purl.org/NET/cidoc-crm/core#E6_Destruction> rdf:type owl:Class .
+
+
+###  http://purl.org/NET/cidoc-crm/core#E71_Man-Made_Thing
+<http://purl.org/NET/cidoc-crm/core#E71_Man-Made_Thing> rdf:type owl:Class .
+
+
+###  http://purl.org/NET/cidoc-crm/core#E74_Group
+<http://purl.org/NET/cidoc-crm/core#E74_Group> rdf:type owl:Class ;
+                                               owl:equivalentClass exp:Group .
+
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement
+rdf:Statement rdf:type owl:Class .
+
+
+###  http://www.w3.org/2002/07/owl#topObjectProperty
+owl:topObjectProperty rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#AbstractResource
+LRM:AbstractResource rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#Activity
+LRM:Activity rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#Agent
+LRM:Agent rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#AggregatedResource
+LRM:AggregatedResource rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#ConcreteResource
+LRM:ConcreteResource rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#ConjunctiveDependency
+LRM:ConjunctiveDependency rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#Dependency
+LRM:Dependency rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#DigitalResource
+LRM:DigitalResource rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#DisjunctiveDependency
+LRM:DisjunctiveDependency rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#EndogenousActivity
+LRM:EndogenousActivity rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#HumanAgent
+LRM:HumanAgent rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#Identity
+LRM:Identity rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#Location
+LRM:Location rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#RDF-Delta
+LRM:RDF-Delta rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#Resource
+LRM:Resource rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#SoftwareAgent
+LRM:SoftwareAgent rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#Specification
+LRM:Specification rdf:type owl:Class .
+
+
+###  http://xrce.xerox.com/LRM#TransformationEvent
+LRM:TransformationEvent rdf:type owl:Class .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#AccessActivity
+exp:AccessActivity rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty exp:accessesResource ;
+                                         owl:someValuesFrom LRM:DigitalResource
+                                       ] ;
+                   rdfs:subClassOf LRM:Activity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#ArchivingCost
+exp:ArchivingCost rdf:type owl:Class ;
+                  rdfs:subClassOf exp:Cost ;
+                  rdfs:label "Archiving Cost" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#Scientist
+exp:Scientist rdf:type owl:Class ;
+           rdfs:subClassOf exp:Creator .
+
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#AssistantCurator
+exp:AssistantCurator rdf:type owl:Class ;
+                     rdfs:subClassOf exp:StaffMember .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#Computer
+exp:Computer rdf:type owl:Class ;
+             rdfs:subClassOf exp:Equipment .
+
+
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#CopyActivity
+exp:CopyActivity rdf:type owl:Class ;
+                 owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                              owl:onProperty exp:hasCopyOutput ;
+                                                              owl:someValuesFrom LRM:Resource
+                                                            ]
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty exp:hasCopyInput ;
+                                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                              owl:onClass LRM:Resource
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ;
+                 rdfs:subClassOf LRM:Activity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#Cost
+exp:Cost rdf:type owl:Class ;
+         rdfs:subClassOf LRM:Description .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#CreationActivity
+exp:CreationActivity rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                           owl:onProperty exp:createsResource ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass LRM:Resource
+                                         ] ;
+                     rdfs:subClassOf <http://purl.org/NET/cidoc-crm/core#E65_Creation> ,
+                                     LRM:Activity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#Creator
+exp:Creator rdf:type owl:Class ;
+            rdfs:subClassOf exp:Person .
+
+
+#### Added by SW
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#Database
+exp:Database rdf:type owl:Class ;
+                rdfs:subClassOf <http://www.ics.forth.gr/isl/CRMdig/D14_Software> ,
+                                LRM:SoftwareAgent ;
+                rdfs:label "Database" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#DataDependency
+exp:DataDependency rdf:type owl:Class ;
+                   rdfs:subClassOf LRM:Dependency .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#DestructionActivity
+exp:DestructionActivity rdf:type owl:Class ;
+                        owl:equivalentClass [ rdf:type owl:Restriction ;
+                                              owl:onProperty exp:destroysResource ;
+                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                              owl:onClass LRM:Resource
+                                            ] ;
+                        rdfs:subClassOf <http://purl.org/NET/cidoc-crm/core#E6_Destruction> ,
+                                        LRM:Activity .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#DigitalPreservationManager
+exp:DigitalPreservationManager rdf:type owl:Class ;
+                               rdfs:subClassOf exp:StaffMember .
+
+
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#Document
+exp:Document rdf:type owl:Class ;
+             rdfs:subClassOf LRM:ConcreteResource .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#DocumentationActivity
+exp:DocumentationActivity rdf:type owl:Class ;
+                          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                owl:onProperty exp:documentsResource ;
+                                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                owl:onClass LRM:Resource
+                                              ] ;
+                          rdfs:subClassOf LRM:Activity .
+
+
+#### Added by SW
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#DocumentFormat
+exp:DocumentFormat rdf:type owl:Class ;
+                rdfs:subClassOf exp:Format ;
+                rdfs:label "Document Format" .
+
+
+#### Added by SW
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#DocumentViewer
+exp:DocumentViewer rdf:type owl:Class ;
+                rdfs:subClassOf <http://www.ics.forth.gr/isl/CRMdig/D14_Software> ,
+                                LRM:SoftwareAgent ;
+                rdfs:label "Document Viewer" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#EditingSoftware
+exp:EditingSoftware rdf:type owl:Class ;
+                    rdfs:subClassOf <http://www.ics.forth.gr/isl/CRMdig/D14_Software> ,
+                                    LRM:SoftwareAgent ;
+                    rdfs:label "Editing Software" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#Equipment
+exp:Equipment rdf:type owl:Class ;
+              rdfs:subClassOf LRM:ConcreteResource .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#EquipmentCost
+exp:EquipmentCost rdf:type owl:Class ;
+                  rdfs:subClassOf exp:Cost ;
+                  rdfs:label "Equipment Cost" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#ErrorItem
+exp:ErrorItem rdf:type owl:Class ;
+              rdfs:subClassOf LRM:AbstractResource ;
+              rdfs:label "Error Item" .
+
+
+#### Added by SW
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#Experiment
+exp:Experiment rdf:type owl:Class ;
+                        rdfs:subClassOf <http://purl.org/NET/cidoc-crm/core#E71_Man-Made_Thing> ,
+                                        LRM:ConcreteResource .
+
+
+#### Added by SW
+###  https://dl.dropboxusercontent.com/u/27469926/dva_t.owl#Format
+exp:Format rdf:type owl:Class ;
+          rdfs:subClassOf <http://www.ics.forth.gr/isl/CRMdig/D14_Software> ,
+                          LRM:SoftwareAgent .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#Group
+exp:Group rdf:type owl:Class ;
+          rdfs:subClassOf LRM:HumanAgent .
+
+
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#HardwareDependency
+exp:HardwareDependency rdf:type owl:Class ;
+                       owl:equivalentClass [ owl:intersectionOf ( LRM:Dependency
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty LRM:from ;
+                                                                    owl:someValuesFrom exp:Equipment
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] .
+
+
+#### Added by SW
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#ImageFormat
+exp:ImageFormat rdf:type owl:Class ;
+                rdfs:subClassOf exp:Format ;
+                rdfs:label "Image Format" .
+
+
+
+#### Added by SW
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#ImageViewer
+exp:ImageViewer rdf:type owl:Class ;
+                rdfs:subClassOf <http://www.ics.forth.gr/isl/CRMdig/D14_Software> ,
+                                LRM:SoftwareAgent ;
+                rdfs:label "Image Viewer" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#MaintenanceActivity
+exp:MaintenanceActivity rdf:type owl:Class ;
+                        owl:equivalentClass [ rdf:type owl:Restriction ;
+                                              owl:onProperty exp:maintainsResource ;
+                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                              owl:onClass LRM:Resource
+                                            ] ;
+                        rdfs:subClassOf <http://purl.org/NET/cidoc-crm/core#E11_Modification> ,
+                                        LRM:Activity .
+
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#MigrationActivity
+exp:MigrationActivity rdf:type owl:Class ;
+                      owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty exp:migratesFromResource ;
+                                                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                   owl:onClass LRM:Resource
+                                                                 ]
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty exp:migratesToResource ;
+                                                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                   owl:onClass LRM:Resource
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ;
+                      rdfs:subClassOf LRM:Activity .
+
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#Organization
+exp:Organization rdf:type owl:Class ;
+                 rdfs:subClassOf exp:Group .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#Person
+exp:Person rdf:type owl:Class ;
+           rdfs:subClassOf LRM:HumanAgent .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#ScienceExperimentation
+exp:ScienceExperimentation rdf:type owl:Class ;
+                    rdfs:subClassOf <http://purl.org/NET/cidoc-crm/core#E28_Conceptual_Object> ,
+                                    LRM:AbstractResource ;
+                    rdfs:label "Science Experimentation" .
+
+
+#### Added by SW
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#ScriptingLanguage
+exp:ScriptingLanguage rdf:type owl:Class ;
+                rdfs:subClassOf <http://www.ics.forth.gr/isl/CRMdig/D14_Software> ,
+                                LRM:SoftwareAgent ;
+                rdfs:label "Scripting Language" .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#Size
+exp:Size rdf:type owl:Class ;
+         rdfs:subClassOf LRM:Description .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#SoftwareDependency
+exp:SoftwareDependency rdf:type owl:Class ;
+                       owl:equivalentClass [ owl:intersectionOf ( LRM:Dependency
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty LRM:from ;
+                                                                    owl:someValuesFrom LRM:SoftwareAgent
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#StaffMember
+exp:StaffMember rdf:type owl:Class ;
+                rdfs:subClassOf exp:Person .
+
+
+
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#WarningItem
+exp:WarningItem rdf:type owl:Class ;
+                rdfs:subClassOf LRM:AbstractResource ;
+                rdfs:label "Warning Item" .
+
+
+
+
+#################################################################
+#    Individuals - static
+#################################################################
+
+###  http://xrce.xerox.com/LRM#to
+LRM:to rdf:type owl:NamedIndividual ,
+                owl:topObjectProperty .
+
+
+###  http://xrce.xerox.com/LRM#used
+LRM:used rdf:type owl:NamedIndividual ,
+                  owl:topObjectProperty .
+
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#intention_1
+exp:intention_1 rdf:type owl:NamedIndividual ,
+                         LRM:Description ;
+                exp:value "Compatibility"^^xsd:string ;
+                rdfs:label "compatibility intention" .
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#intention_2
+exp:intention_2 rdf:type owl:NamedIndividual ,
+                         LRM:Description ;
+                exp:value "Functional"^^xsd:string ;
+                rdfs:label "functional intention" .
+
+###  https://dl.dropboxusercontent.com/u/27469926/exp_t.owl#intention_1
+exp:intention_3 rdf:type owl:NamedIndividual ,
+                         LRM:Description ;
+                exp:value "Transformation"^^xsd:string ;
+                rdfs:label "transformation intention" .
+
+
+#################################################################
+#  Autogenerated Individuals
+#################################################################
+
+
+
+
+

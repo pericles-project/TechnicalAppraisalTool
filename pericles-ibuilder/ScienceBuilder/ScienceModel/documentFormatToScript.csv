@@ -1,0 +1,13 @@
+DocFormat/ScriptLang,Adobe ColdFusion,AppleScript,CoffeeScript,Jcl,Lisp,Lua,Oraperl,Perl Data Language,PHP,PowerShell,Scheme,VBScript,Winbatch
+DocBook,1,1,1,1,1,1,1,1,1,1,1,1,1
+DTD,1,1,0.5,1,0.5,0.5,0.5,1,1,0.5,1,1,0.5
+HTML5,1,1,0.5,1,1,1,0.5,1,1,1,1,1,0.5
+OpenDocument,1,1,0.5,1,0.5,1,0.5,1,1,1,1,0.5,0.5
+OpenXPS,1,0.5,0,1,1,1,0.5,1,1,1,1,0.5,0.5
+PDF,1,0,0.5,1,0.5,0,0.5,1,1,0,1,0.5,0.5
+PostScript,1,0,0.5,1,0.5,0.5,1,1,1,1,1,0.5,1
+RTF,1,0,0,1,0,0,0.5,0.5,1,1,1,0,0.5
+Symbolic link,1,1,1,0.5,1,1,0.5,1,0.5,1,0.5,0.5,1
+TeX,0.5,1,1,0.5,1,1,1,1,0.5,0.5,0.5,1,0
+XHTML,1,1,0.5,0,1,1,0.5,1,0.5,0.5,1,1,0.5
+WordPerfect,0.5,0.5,0,0.5,1,0.5,1,0.5,0.5,0,0.5,0.5,0

@@ -1,0 +1,14 @@
+ScriptLang/Database,Apache Derby,DB2,Paradox Database,LucidDB,Microsoft Access,MonetDB,MySQL,PostgreSQL,solidDB,Superbase,Tibero
+Adobe ColdFusion,1,1,1,1,0,0,0,0,1,0,1
+AppleScript,1,1,1,1,1,1,0,0,1,1,0
+CoffeeScript,0,1,1,0.5,0.5,0.5,0,0,1,0.5,1
+Jcl,0,0,0,1,1,1,1,1,1,1,1
+Lisp,1,1,1,1,1,1,0,0,1,1,0.5
+Lua,1,1,1,1,1,1,1,1,1,1,1
+Oraperl,1,0.5,1,0,1,1,1,1,1,1,0.5
+Perl Data Language,0,1,1,0.5,0.5,0.5,0.5,1,1,1,0
+PHP,0,0.5,1,1,1,1,0.5,1,1,1,1
+PowerShell,0,0,1,1,0.5,0.5,1,0.5,0,0,1
+Scheme,0.5,1,1,1,1,1,1,0.5,1,1,0.5
+VBScript,1,0.5,1,1,1,1,1,1,0.5,0.5,1
+Winbatch,0,1,1,0,0.5,0.5,0,0,1,1,1

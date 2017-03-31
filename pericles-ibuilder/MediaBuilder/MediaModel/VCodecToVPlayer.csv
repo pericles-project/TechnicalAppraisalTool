@@ -1,0 +1,9 @@
+Codec/Player,ALLPlayer,Core Pocket Media Player ,CrystalPlayer,DSPlayer,GOM Player,iTunes,jetAudio,JRiver Media Center,Kodi,KM Player,Mac Bluray Player,MediaPortal,MPlayer,Mplayerxp,Plex Media Player,SMPlayer,Songbird ,Splash Lite,TotalMedia Theatre,GNOME Videos,VLC media player,Winamp,Windows Media Player,Xine
+MPEG 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+H263,1,1,1,0.5,1,1,0.5,1,1,1,1,1,1,1,1,1,1,0.5,1,1,1,0.5,1,1
+H264,1,1,1,0.5,0.5,1,0.5,1,1,1,1,1,1,1,1,1,1,0.5,1,1,1,0.5,1,1
+H265,1,0.5,1,0,1,1,0.5,1,1,0.5,1,1,0.5,1,1,1,1,0,1,1,1,0,0.5,1
+RealVideo,1,0,1,0.5,0.5,0,0.5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0.5,0.5,1
+Theora,1,1,1,0.5,0.5,0.5,0.5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0.5,1,1
+VP3,1,0,1,0.5,0.5,0.5,1,1,1,1,0,1,1,1,0,1,1,0.5,0,1,1,1,0.5,0
+VP6,1,0,1,0,0,0,0.5,0.5,1,0.5,0,0.5,1,0.5,0,0.5,1,0.5,0,0.5,1,0.5,0.5,0

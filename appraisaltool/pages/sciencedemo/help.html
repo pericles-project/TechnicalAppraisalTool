@@ -1,0 +1,186 @@
+<!-- Copyright King's College London, 2017. 
+ See the NOTICE file distributed with this work for additional information
+ regarding copyright ownership.  King's College London licences this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+
+ Author: Jun Zhang -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>PERICLES Technical Appraisal Tool</title>
+	
+	<link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon" />
+
+	<link href="../../css/pace-theme-minimal.css" rel="stylesheet" />
+	
+    <!-- Bootstrap Core CSS -->
+    <link href="../../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+	
+	<!-- DataTables CSS -->
+    <link href="../../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+	
+	<!-- DataTables Responsive CSS -->
+    <link href="../../bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="../../dist/css/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../../bower_components/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+	<!-- Jquery CSS -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+	
+	<link rel="stylesheet" href="../../css/bootstrap-datepicker.min.css">
+	
+	<!-- Bootstrap File Input CSS http://plugins.krajee.com/file-basic-usage-demo -->
+	<link rel="stylesheet" href="../../css/fileinput.min.css" media="all">
+	
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.min.css" rel="stylesheet" type="text/css" />
+	
+	<link rel="stylesheet" href="../../dist/css/ladda-themeless.min.css">
+    
+</head>
+
+<body>
+
+	<div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<a class="navbar-brand" href="index.html">Pericles</a>-->
+				
+				<ul class="nav navbar-nav">
+				  <li><img src="../../img/pericles-logo.png" alt="Pericles" style="width:154px;height:50px;">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				  <li><a href="../index.html"><span class="glyphicon glyphicon-home"></span>&nbsp;Start</a></li>
+				  <li><a href="collectionview.html"><span class="glyphicon glyphicon-th-list"></span>&nbsp;Collection View</a></li>
+				  <li><a href="componentview.html"><span class="glyphicon glyphicon-th"></span>&nbsp;Component View</a></li>
+				  <li class="active"><a href="help.html"><span class="glyphicon glyphicon-question-sign"></span>&nbsp;FAQ</a></li>
+				</ul>
+				
+            </div>
+            <!-- /.navbar-header -->
+		</nav>
+		
+    <!-- /#wrapper -->
+	</div>
+	
+	<br>
+	
+	<h1 class="text-center">Frequently Asked Questions</h1>
+	<div class="row">
+		<div class="rte col-md-offset-2 col-md-8 col-sm-12 col-sm-offset-0">
+		<br>
+			<h3>What is the purpose of the technical appraisal tool?</h3>
+			<p>The tool assists the user in assessing the proximity and impact of external risks to complex digital objects. Currently</p>
+			
+			<br>
+			
+			<h3>What is a complex digital object?</h3>
+			<p>A complex digital object is made up of interdependent simple digital objects or components (e.g. files, software applications, hardware specifications).</p>
+			
+			<br>
+			
+			<h3>What types of complex digital objects can be appraised?</h3>
+			<p>Currently the tool supports digital video artworks (DVAs) and space science experiments.</p>
+			<p>A DVA comprises a digital video and its playback environment. More precisely, this comprises a video file (compressed with a video codec and stored in a container or wrapper), a media player, an operating system and a computer.</p>
+			<p>A science experiment comprises a database for raw data, a script written in a specific scripting language, images and documents in specific formats together with associated viewers.</p>
+			<p>A visual representation of the object structures can be viewed by clicking on any object from the Collection View.</p>
+			
+			<br>
+			
+			<h3>What types of risks can be assessed?</h3>
+			<p>The main risk that occurs is availability of the components of the complex digital object. This can be caused through obsolescence of the components or failure of the associated hardware (e.g. computers).</p>
+			
+			<br>
+			
+			<h3>What information is provided about the risks?</h3>
+			<p>Besides the type of the risk, the tool provides</p>
+			<ul>
+				<li>Date for Action: this is the expected date at which the user is recommended to take action to mitigate for the primary risk to the object. This might involve replacing one or more of the components.</li>
+				<li>Confidence: the statistical confidence interval associated to the date for action. This provides the user with a date range in which they are recommended to perform mitigating actions on the object to ensure ongoing reusability.</li>
+				<li>Impact: this has three levels which are determined based on the cost of the least expensive mitigating actions.</li>
+			</ul>
+			
+			<br>
+			
+			<h3>What is the structure of the tool?</h3>
+			<p>The tool has separate areas form media and science. This can be selected on the landing page or from Start on the top menu bar.The UI is divided into three main parts.</p>
+			<ul>
+				<li><b>Collection View</b> shows all the objects represented in the system together with their associated risks.</li>
+				<li><b>Component View</b> can be selected from the top menu bar and shows all the specific technologies used in the complex digital objects and their associated individual risks.</li>
+				<li><b>Object View</b> can be selected by clicking on any object in the collection view.</li>
+			</ul>
+			
+			<br>
+			
+			<h3>Where are the digital objects stored?</h3>
+			<p>The technical appraisal tool stores representations of the objects in a triple store (either the PERICLES Entity Registry Model Repository) or Fuseki. The objects themselves need to be stored in an external system, which could be an archive or repository.</p>
+			
+			<br>
+			
+			<h3>What data sources are used?</h3>
+			<p>The tool harvests and analyses data automatically from search engines, software repositories and Wikipedia.</p>
+			<br>
+			
+			<h3>What ontologies are used?</h3>
+			<p>The tool uses inbuilt digital ecosystem models for the media and science domains. These determine the component technologies used in the objects, the compatibility between those components and the transformation costs for replacing components. The models can be edited using the separate PERICLES-IBuilder application, but not currently through the technical appraisal tool UI.</p>
+			
+			<br>
+			
+			<h3>What are "recovery options"?</h3>
+			<p>A recovery option is a replacement of one or more components in an artwork. The objective of a recovery option is to move forward the date for action by replacing components at risk of obsolescence or failure, and thus extend the potential lifetime of the object. There are often multiple options depending on how far the date for action is moved forward. The intended retention period of the object will be a factor in selecting an appropriate recovery option. Also, the more changes that are made to the object, the more work that is required and hence the cost will be higher. The tool selects the optimal recovery options for a given object. Recovery options may involve transcoding video or image files, rewriting scripts or replacing hardware. If no recovery options are provided, then no actions are currently recommended.</p>
+			
+			<br>
+		
+		</div>
+	</div>
+
+
+	<script src="../../js/pace.js"></script>
+	
+    <!-- jQuery -->
+    <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	
+</body>
+</html>

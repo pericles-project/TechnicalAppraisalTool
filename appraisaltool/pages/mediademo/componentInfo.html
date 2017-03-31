@@ -1,0 +1,215 @@
+<!-- Copyright King's College London, 2017. 
+ See the NOTICE file distributed with this work for additional information
+ regarding copyright ownership.  King's College London licences this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+
+ Author: Jun Zhang -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Pericles</title>
+
+    
+</head>
+
+<body>
+	
+    <div class="row">
+		<div class="col-lg-12">
+			<h3 class="page-header">Media Component View: Risk-Impact Analysis</h3>
+		</div>
+		
+		<div class="col-lg-6">
+			<h5 id="path"><span class='glyphicon glyphicon-folder-open'></span>&nbsp;&nbsp;Components
+		</div>
+		<div class="col-lg-6" align="right">
+			<h5><span class='glyphicon glyphicon-info-sign'></span>&nbsp;<a data-toggle="modal" href="#componentViewHelpModal" id="componentViewHelpLink">Help</a></h5>
+		</div>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="componentViewHelpModal" role="dialog" tabindex='-1'>
+			<div class="modal-dialog modal-lg">
+			
+			  <!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header bg-primary">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Help for the component view page</h4>
+					</div>
+					<div class="modal-body">
+						<div id="componentViewHelpContent"></div>
+					</div>
+				</div>
+			  
+			</div>
+		</div>
+	</div>	
+	<br>
+		<!-- /.row -->
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<b>Components</b>
+					</div>
+					<!-- /.panel-heading -->
+					<div class="panel-body">
+						<div class="dataTable_wrapper">
+							
+							<!--example table showing how to retrieve data from a file-->
+							<table id="componentInfo" width="100%" class="table table-striped table-bordered table-hover">
+								<thead>
+									<tr>
+										<th title="Name or identifier for the component.">Name</th>
+										<th title="The type of the component, e.g. Video Player or Image Format.">Type</th>
+										<th title="The percentage of objects in which the component is used.">Used in % of all Objects</th>
+										<th title="Describes the risk to the component. This can be either Obsolescence or if appropriate Hardware Failure.">Risk Type</th>
+										<th title="The predicted date that action is required to replace instances of the component occurring in objects registered in the tool.">Date for Action</th>
+										<th title="Confidence interval for the date for action. This is calculated based on statistical analysis and gives a time range around the Date for Action within which action is required by the user.">Confidence</th>
+									</tr>
+								</thead>
+								
+							</table>
+						
+							
+						</div>
+					 
+					</div>
+					<!-- /.panel-body -->
+				</div>
+				<!-- /.panel -->
+			</div>
+			<!-- /.col-lg-12 -->
+		</div>
+		<!-- /.row -->
+		<br>
+	</div>
+	<br>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="videoCodecModal" role="dialog" tabindex='-1'>
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header bg-primary">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Video Codec Stats</h4>
+				</div>
+				<div class="modal-body">					
+					<div class="flot-chart" style="width:550px;height:400px">
+						<div class="flot-chart-content" id="videoCodecPieChart2"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="containerFormatModal" role="dialog" tabindex='-1'>
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header bg-primary">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Container Format Stats</h4>
+				</div>
+				<div class="modal-body">					
+					<div class="flot-chart" style="width:550px;height:400px">
+						<div class="flot-chart-content" id="containerFormatPieChart2"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="videoPlayerModal" role="dialog" tabindex='-1'>
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header bg-primary">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Video Player Stats</h4>
+				</div>
+				<div class="modal-body">					
+					<div class="flot-chart" style="width:550px;height:400px">
+						<div class="flot-chart-content" id="videoPlayerPieChart2"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="operatingSystemModal" role="dialog" tabindex='-1'>
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header bg-primary">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Operating System Stats</h4>
+				</div>
+				<div class="modal-body">					
+					<div class="flot-chart" style="width:550px;height:400px">
+						<div class="flot-chart-content" id="operatingSystemPieChart2"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="computerModal" role="dialog" tabindex='-1'>
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header bg-primary">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Computer Stats</h4>
+				</div>
+				<div class="modal-body">					
+					<div class="flot-chart" style="width:550px;height:400px">
+						<div class="flot-chart-content" id="computerPieChart2"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Flot Charts JavaScript -->
+    <script src="../../bower_components/flot/excanvas.min.js"></script>
+    <script src="../../bower_components/flot/jquery.flot.js"></script>
+    <script src="../../bower_components/flot/jquery.flot.pie.js"></script>
+    <script src="../../bower_components/flot/jquery.flot.resize.js"></script>
+    <script src="../../bower_components/flot/jquery.flot.time.js"></script>
+    <script src="../../bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <script src="../../js/flot-data.js"></script>
+	
+</body>
+
+</html>

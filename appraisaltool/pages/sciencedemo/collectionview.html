@@ -1,0 +1,1988 @@
+<!-- Copyright King's College London, 2017. 
+ See the NOTICE file distributed with this work for additional information
+ regarding copyright ownership.  King's College London licences this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+
+ Author: Jun Zhang -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>PERICLES Technical Appraisal Tool</title>
+	
+	<link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon" />
+	
+	<link href="../../css/pace-theme-minimal.css" rel="stylesheet" />
+	
+    <!-- Bootstrap Core CSS -->
+    <link href="../../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+	
+	<!-- DataTables CSS -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css"/>
+	
+	<!-- DataTables Responsive CSS -->
+    <link href="../../bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="../../dist/css/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../../bower_components/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+	<!-- Jquery CSS -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+	
+	<link rel="stylesheet" href="../../css/bootstrap-datepicker.min.css">
+	
+	<!-- Bootstrap File Input CSS http://plugins.krajee.com/file-basic-usage-demo -->
+	<link rel="stylesheet" href="../../css/fileinput.min.css" media="all">
+	
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.min.css" rel="stylesheet" type="text/css" />
+	
+	<link rel="stylesheet" href="../../dist/css/ladda-themeless.min.css">
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+				<ul class="nav navbar-nav">
+				  <li><img src="../../img/pericles-logo.png" alt="Pericles" style="width:154px;height:50px;">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				  <li><a href="../index.html"><span class="glyphicon glyphicon-home"></span>&nbsp;Start</a></li>
+				  <li class="active"><a href="collectionview.html"><span class="glyphicon glyphicon glyphicon-list"></span>&nbsp;Collection View</a></li>
+				  <li><a href="componentview.html"><span class="glyphicon glyphicon-th"></span>&nbsp;Component View</a></li>
+				  <li><a href="help.html"><span class="glyphicon glyphicon-question-sign"></span>&nbsp;General Questions</a></li>
+				</ul>
+				
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation" >
+                <div class="sidebar-nav navbar-collapse">
+                    
+					<ul class="nav" id="side-menu">
+						
+						<li class="sidebar-search">
+							<div class="dropdown">
+								<button class="btn btn-block btn-primary dropdown-toggle" type="button" data-toggle="dropdown">New
+								<span class="caret"></span></button>
+								<ul class="dropdown-menu">
+									<!-- Trigger the modal with links -->
+									<li><a href="#" data-toggle="modal" data-target="#createCollectionModal">Collection</a></li>
+									<li><a href="#" data-toggle="modal" data-target="#createArtworkModal">Object</a></li>
+								</ul>
+							</div>
+							
+						</li>
+						
+						<!-- Sidebar showing the collections-->
+						<li>
+							<a href="" class="allCollectionsLink"><i class="glyphicon glyphicon-th-list"></i> Collections<span class="fa arrow"></span></a>
+							<ul class="" id="collectionsList">
+							</ul>	
+						</li>
+												
+                    </ul>
+					
+					
+					
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+		</nav>
+		
+		<!-- Artwork Collection Creation Modal -->
+		<div class="modal fade" id="createCollectionModal" role="dialog" tabindex='-1'>
+			<div class="modal-dialog">
+			
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header bg-primary">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">New collection</h4>
+					</div>
+					<form role="form" action="" method="post" id="createCollectionForm">
+						<div class="modal-body">
+							<br>
+							<div class="form-group">
+								<input type="text" class="form-control" name="newCollectionName" id="newCollectionName" placeholder="Enter new collection name" minlength="1" required>
+							</div>
+						</div>
+						
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+							<button type="submit" class="btn btn-success btn-default pull-right" data-loading-text="Creating..." id="createCollectionButton" data-backdrop="static"><span class="glyphicon glyphicon-plus"></span> Create</button>
+						</div>
+					</form>
+				</div>
+			  
+			</div>
+		</div>
+		
+		<!-- CollectionCreationProgressModal -->
+		<div id="collectionCreationProgressModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="progress-bar progress-bar progress-bar-striped active" id="collectionCreationProgressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:100%;height:30px;font-size:14px;line-height:30px;">
+					Creating new collection...
+				</div>
+			</div>
+
+		  </div>
+		</div>
+		
+		<!-- CollectionDeletionProgressModal -->
+		<div id="collectionDeletionProgressModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="progress-bar progress-bar progress-bar-striped active" id="collectionDeletionProgressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:100%;height:30px;font-size:14px;line-height:30px;">
+					Deleting selected collection and all objects in this collection...
+				</div>
+			</div>
+
+		  </div>
+		</div>
+		
+		<!-- Artwork Creation Modal -->
+		<div class="modal fade" id="createArtworkModal" role="dialog" tabindex='-1'>
+			<div class="modal-dialog modal-lg">
+			
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header bg-primary">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">New object</h4>
+					</div>
+					<form role="form" action="" method="post" class="form-horizontal" id="createArtworkForm">
+						<div class="modal-body">
+							<div class="form-group">
+							    <label class="control-label col-sm-3">Collection:</label>
+								<div class="col-sm-4 dropdown">
+									<select class="form-control" name="collectionNamesSelection" id="collectionNamesSelection" form="createArtworkForm">
+									</select>
+								</div>
+								
+							</div>
+							
+							<div class="form-group">
+								<label class="control-label col-sm-3">Name:</label>*
+								<div class="col-sm-4">
+									<input type="text" class="form-control" name="newArtworkName" id="newArtworkName" placeholder="Enter new object name" form="createArtworkForm" minlength="1" required>
+								</div>
+							</div>
+							
+							<div class="form-group">
+							    <label class="control-label col-sm-3">Accession Date:</label>*
+								<div class="col-sm-4">
+									<div class="input-group date" data-provide="datepicker" name="accessionDatePicker" id="accessionDatePicker">
+										<input type="text" class="form-control" name="accessionDateInput" id="accessionDateInput" form="createArtworkForm" required>
+										<div class="input-group-addon">
+											<span class="glyphicon glyphicon-th"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+							    <label class="control-label col-sm-3">Database:</label>
+								<div class="col-sm-4 dropdown">			
+									<select class="form-control" name="databaseNamesSelection" id="databaseNamesSelection" form="createArtworkForm">
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="control-label col-sm-3">Scripting Language:</label>
+								<div class="col-sm-4 dropdown">
+									<select class="form-control" name="scriptingLanguageNamesSelection" id="scriptingLanguageNamesSelection" form="createArtworkForm">
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="control-label col-sm-3">Image Format:</label>
+								<div class="col-sm-4 dropdown">
+									<select class="form-control" name="imageFormatNamesSelection" id="imageFormatNamesSelection" form="createArtworkForm">
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="control-label col-sm-3">Image Viewer:</label>
+								<div class="col-sm-4 dropdown">
+									<select class="form-control" name="imageViewerNamesSelection" id="imageViewerNamesSelection" form="createArtworkForm">
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="control-label col-sm-3">Document Format:</label>
+								<div class="col-sm-4 dropdown">
+									<select class="form-control" name="documentFormatNamesSelection" id="documentFormatNamesSelection" form="createArtworkForm">
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="control-label col-sm-3">Document Viewer:</label>
+								<div class="col-sm-4 dropdown">
+									<select class="form-control" name="documentViewerNamesSelection" id="documentViewerNamesSelection" form="createArtworkForm">
+									</select>
+								</div>
+							</div>
+						</div> 
+					
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+							<button type="submit" class="btn btn-success btn-default pull-right" id="createArtworkButton" form="createArtworkForm"><span class="glyphicon glyphicon-plus"></span> Create</button>
+						</div>
+					</form>
+				</div>
+			  
+			</div>
+		</div>
+		
+		<!-- ArtworkCreationProgressModal -->
+		<div id="artworkCreationProgressModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="progress-bar progress-bar progress-bar-striped active" id="artworkCreationProgressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:100%;height:30px;font-size:14px;line-height:30px;">
+					Creating and analysing the new object...
+				</div>
+			</div>
+
+		  </div>
+		</div>
+		
+		<!-- ArtworkDeletionProgressModal -->
+		<div id="artworkDeletionProgressModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="progress-bar progress-bar progress-bar-striped active" id="artworkDeletionProgressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:100%;height:30px;font-size:14px;line-height:30px;">
+					Deleting selected object(s)...
+				</div>
+			</div>
+
+		  </div>
+		</div>
+		
+		<!-- ApplyRecoveryOptionProgressModal -->
+		<div id="artworkRecoveryProgressModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="progress-bar progress-bar progress-bar-striped active" id="artworkRecoveryProgressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:100%;height:30px;font-size:14px;line-height:30px;">
+					Applying the recovery option and analysing the new model...
+				</div>
+			</div>
+
+		  </div>
+		</div>
+		
+        <div id="page-wrapper">
+            
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+	
+	
+	<script src="../../js/pace.js"></script>
+    <!-- jQuery -->
+    <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+	
+	<!-- DataTables JavaScript -->
+    <script src="../../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="../../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+    <script src="../../bower_components/datatables-responsive/js/dataTables.responsive.js"></script>
+
+	<!-- Custom Theme JavaScript -->
+    <script src="../../dist/js/sb-admin-2.js"></script>
+	
+    <!-- Morris Charts JavaScript -->
+    <script src="../../bower_components/raphael/raphael-min.js"></script>
+    <!--<script src="../../bower_components/morrisjs/morris.min.js"></script>
+    <script src="../../js/morris-data.js"></script>-->
+	
+	
+	<!-- Scripts for form validations -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.1/jquery.validate.min.js"></script>
+	
+	<script src="../../js/bootstrap-datepicker.min.js" charset="UTF-8"></script>
+
+	<script src="../../js/fileinput.min.js"></script>
+	
+	<script src="../../js/bootbox.min.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.min.js"></script>
+	
+	<script src="../../dist/js/spin.min.js"></script>
+	<script src="../../dist/js/ladda.min.js"></script>
+	
+	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+	<script src="//cdn.datatables.net/plug-ins/1.10.13/sorting/datetime-moment.js"></script>
+	
+	<script>
+		
+		var wsUrl = location.protocol+"//"+location.hostname+":"+location.port;
+		
+		$(document).ready(function() {
+			
+			$.fn.dataTable.moment('DD/MM/YYYY');
+			
+			$.ajaxSetup ({
+				// Disable caching of AJAX responses
+				cache: false
+			});
+			
+			$(".analysedVideoCodec").hide();
+			$(".analysedContainerFormat").hide();
+			$(".videoCodecNamesSelection").hide();
+			$(".containerFormatNamesSelection").hide();
+			
+			//$("#createCollectionSuccess").hide();
+			$("#page-wrapper").load("allCollectionsInfo.html", function() {
+				// Activate the bubble editor on click of a table cell
+				
+				$('#collectionInfo').DataTable( {
+					responsive: true,
+					"columnDefs": [ { className: "dt-body-right", "targets": [ 0 ] }, {
+							"targets": 7,
+							"orderable": false
+						}
+					],
+					
+					//scrollY: 240,
+					"ajax": {
+						"url": wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/allartworksinfo",
+						"dataSrc": "",
+						"sAjaxDataProp": "",
+					},
+					"columns": [
+						{"data" : "artworkName"},
+						{"data" : "accessionDate"},
+						{"data" : "riskLevel",
+						 "defaultContent": ""},
+						{"data" : "primaryRisk",
+						 "defaultContent": ""},
+						{"data" : "dateForAction",
+						 "defaultContent": ""},
+						{"data" : "confidence",
+						 "defaultContent": ""},
+						{"data" : "impact",
+						 "defaultContent": ""},
+						{"data" : "artworkName"}
+					],
+					
+
+					"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull) {		
+						$('td:eq(0)', nRow).html('<a href="/getArtwork?collectionName='+aData.collectionName+'&artworkName='+aData.artworkName+'"  class="artworkLink">'+aData.artworkName+'</a>');
+						
+						if (aData.riskLevel < 3) {
+							$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+						}
+						else if (aData.riskLevel < 7) {
+							$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+						}
+						else {
+							$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+						}
+						
+						$('td:eq(7)', nRow).html('<input type="checkbox" id="deleteArtworkCheckBox" name="deleteArtworkCheckBox" value="'+ aData.artworkName +'">');
+						
+						$('[data-toggle="tooltip"]').tooltip();
+					}
+					
+				});
+
+			});
+
+			$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/allcollectionnames", function(data) {
+				$.each(data, function(index, value) {
+					$("#collectionsList").append('<li><a href="getCollection?collectionName=' + value + '" class="ajaxLoadedCollectionLink" id="' + value + '">' + value + '</a><a href="deleteCollection?collectionName='+value+'" id="'+value+'" class="deleteCollection"><span class="glyphicon glyphicon-trash"></span></a></li>');
+				});
+				 
+				$('#collectionsList').metisMenu();
+			});
+			
+			$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/allcollectionnames", function(data) {
+				$.each(data, function(index, value) {
+					$("#collectionNamesSelection").append('<option value=' + value.replace(/ /g,"_") + '>'+ value + '</option>');
+				});
+			});
+			
+			$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/database/alldatabasenames", function(data) {
+				$.each(data, function(index, value) {
+					$("#databaseNamesSelection").append('<option value=' + value.replace(/ /g,"_") + '>'+ value + '</option>');
+				});
+			});
+			
+			$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/scriptinglanguage/allscriptinglanguagenames", function(data) {
+				$.each(data, function(index, value) {
+					$("#scriptingLanguageNamesSelection").append('<option value=' + value.replace(/ /g,"_") + '>'+ value  + '</option>');
+				});
+			});
+			
+			$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/imageformat/allimageformatnames", function(data) {
+				$.each(data, function(index, value) {
+					$("#imageFormatNamesSelection").append('<option value=' + value.replace(/ /g,"_") + '>'+ value  + '</option>');
+				});
+			});
+			
+			$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/imageviewer/allimageviewernames", function(data) {
+				$.each(data, function(index, value) {
+					$("#imageViewerNamesSelection").append('<option value=' + value.replace(/ /g,"_") + '>'+ value  + '</option>');
+				});
+			});
+			
+			$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/documentformat/alldocumentformatnames", function(data) {
+				$.each(data, function(index, value) {
+					$("#documentFormatNamesSelection").append('<option value=' + value.replace(/ /g,"_") + '>'+ value  + '</option>');
+				});
+			});
+			
+			$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/documentviewer/alldocumentviewernames", function(data) {
+				$.each(data, function(index, value) {
+					$("#documentViewerNamesSelection").append('<option value=' + value.replace(/ /g,"_") + '>'+ value  + '</option>');
+				});
+			});
+			
+			
+			$(document).on("click", "#manualVideoMetaDataInput", function(event) {
+				if ($(this).is(':checked')) {
+					$("#videoCodecNamesSelection").prop('disabled', false);
+					$("#containerFormatNamesSelection").prop('disabled', false);
+					$(".videoCodecNamesSelection").show();
+					$(".containerFormatNamesSelection").show();
+					$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/videoformat/allvideocodecnames", function(data) {
+						$.each(data, function(index, value) {
+							$("#videoCodecNamesSelection").append('<option value=' + value.replace(/ /g,"_") + '>'+ value + '</option>');
+						});
+					});
+					
+					$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/videoformat/allcontainerformatnames", function(data) {
+						$.each(data, function(index, value) {
+							$("#containerFormatNamesSelection").append('<option value=' + value.replace(/ /g,"_") + '>'+ value + '</option>');
+						});
+					});
+				}
+				else {
+					$("#videoCodecNamesSelection").prop('disabled', true);
+					$("#containerFormatNamesSelection").prop('disabled', true);
+					$(".videoCodecNamesSelection").hide();
+					$(".containerFormatNamesSelection").hide();
+					$("#videoCodecNamesSelection").empty();
+					$("#containerFormatNamesSelection").empty();
+				}
+			});
+			
+			//More options about the file input can be found at http://plugins.krajee.com/file-input#ajax-uploads
+			$('.videoMetadataRadioButton').on('click', function() {
+				var type = $('.videoMetadataRadioButton:checked').val();
+				if (type == "auto") {
+					$('#videoFileUploadInput').fileinput('enable');
+					$('#videoFileUploadInput').fileinput('refresh');
+					
+					$("#videoCodecNamesSelection").prop('disabled', true);
+					$("#containerFormatNamesSelection").prop('disabled', true);
+					
+					$("#videoCodecNamesSelection").empty();
+					$("#containerFormatNamesSelection").empty();
+					$(".videoCodecNamesSelection").hide();
+					$(".containerFormatNamesSelection").hide();
+				}
+				else {
+					$('#videoFileUploadInput').attr('disabled', 'disabled');
+					$('#videoFileUploadInput').fileinput('clear');
+					$('#videoFileUploadInput').fileinput('refresh');
+					$(".analysedVideoCodec").hide();
+					$(".analysedContainerFormat").hide();
+					
+					$("#analysedVideoCodecInput").val("");
+					$("#analysedContainerFormatInput").val("");
+					
+					$("#videoCodecNamesSelection").prop('disabled', false);
+					$("#containerFormatNamesSelection").prop('disabled', false);
+					
+					$(".videoCodecNamesSelection").show();
+					$(".containerFormatNamesSelection").show();
+					
+					$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/videoformat/allvideocodecnames", function(data) {
+						$.each(data, function(index, value) {
+							$("#videoCodecNamesSelection").append('<option value=' + value.replace(/ /g,"_") + '>'+ value + '</option>');
+						});
+					});
+					
+					$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/videoformat/allcontainerformatnames", function(data) {
+						$.each(data, function(index, value) {
+							$("#containerFormatNamesSelection").append('<option value=' + value.replace(/ /g,"_") + '>'+ value + '</option>');
+						});
+					});
+				}
+			});
+			
+			$("#videoFileUploadInput").fileinput({
+				uploadUrl: wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/creation/videometadata",
+				uploadAsync: true
+			});
+			
+			$('#videoFileUploadInput').on('fileuploaderror', function(event, data, previewId, index) {
+				var form = data.form, files = data.files, extra = data.extra, 
+				response = data.response, reader = data.reader;
+			});
+
+			$('#videoFileUploadInput').on('fileuploaded', function(event, data, previewId, index) {
+				var form = data.form, files = data.files, extra = data.extra,
+					response = data.response, reader = data.reader;
+				if (response.Audio != null) {
+					if (response.Video != null) {
+						$("#analysedVideoCodecInput").val(response.Video.CodecID);
+						$("#analysedContainerFormatInput").val(response.Video.Format);
+					} else {
+						$("#analysedVideoCodecInput").val(response.Audio.Format);
+						$("#analysedContainerFormatInput").val(response.General.Format);
+					}
+					$(".analysedVideoCodec").show();
+					$(".analysedContainerFormat").show();
+				}
+				else {
+					bootbox.alert({ 
+						message: "Please upload a video/audio file and/or check the file name!",
+						buttons: {
+							ok: {
+								label: " OK",
+								className:"btn btn-danger btn-medium glyphicon glyphicon-exclamation-sign"
+							}
+						}
+					});
+				}
+			});
+			
+			function getURLParameter(url, sParam) {
+				var pageUrl = url;
+				
+				var trimmedPageUrl = pageUrl;
+				if (pageUrl.includes("?")) {
+					trimmedPageUrl = pageUrl.substring(pageUrl.indexOf("?") + 1);
+				}
+				var sUrlVariables = trimmedPageUrl.split("&");
+				for (var i = 0; i < sUrlVariables.length; i++) {
+					var sParameterName = sUrlVariables[i].split("=");
+					if (sParameterName[0] == sParam) {
+						return sParameterName[1];
+					}
+				}
+			}
+			
+			$(document).on("click", ".ajaxLoadedCollectionLink", function(event) {
+				event.preventDefault();
+				
+				$(this).addClass('active');
+				$(this).parent().addClass('active');
+				$(this).parent().siblings('li').removeClass('active');
+				$(this).parent().siblings('li').children().removeClass('active');
+				$(".allCollectionsLink").removeClass('active');
+				
+				var url = $(this).attr("href");
+				var collectionName = getURLParameter(url, 'collectionName');
+				$("#page-wrapper").load("collectionInfo.html", function() {
+					$("#path").html("<span class='glyphicon glyphicon-folder-open'></span>&nbsp;&nbsp;<span><a href='collectionview.html'>Home</a></span> > <span id='collectionPath' name='"+collectionName+"'> "+collectionName+"</span>");
+					
+					$("#collectionInfo").dataTable().fnDestroy();
+					$('#collectionInfo').DataTable({
+						responsive: true,
+						"columnDefs": [ {
+							"orderable": false,
+							"targets": 7
+						}],
+						"ajax": {
+							"url": wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/" + collectionName + "/artworksinfo",
+							"dataSrc": ""
+						},
+						
+						"columns": [
+							{"data" : "artworkName"},
+							{"data" : "accessionDate"},
+							{"data" : "riskLevel",
+							 "defaultContent": ""},
+							{"data" : "primaryRisk",
+							 "defaultContent": ""},
+							{"data" : "dateForAction",
+							 "defaultContent": ""},
+							{"data" : "confidence",
+							 "defaultContent": ""},
+							{"data" : "impact",
+							 "defaultContent": ""},
+							{"data" : "artworkName"}
+						],
+						
+						"fnRowCallback": function decorateProgressBar( nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+							$('td:eq(0)', nRow).html('<a href="/getArtwork?collectionName='+collectionName+'&artworkName='+aData.artworkName+'"  class="artworkLink">'+aData.artworkName+'</a>');
+							
+							if (aData.riskLevel < 3) {
+								$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+							}
+							else if (aData.riskLevel < 7) {
+								$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+							}
+							else {
+								$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+							}
+							
+							$('td:eq(7)', nRow).html('<input type="checkbox" id="deleteArtworkCheckBox" name="deleteArtworkCheckBox" value="'+ aData.artworkName +'">');
+						}
+						
+						
+					});
+				
+				});
+				
+			});
+			
+			$(document).on("click", ".allCollectionsLink", function(event){
+				event.preventDefault();
+				$("#collectionsList").children().removeClass('active');
+				$("#collectionsList").children().children().removeClass('active');
+				$("#page-wrapper").load("allCollectionsInfo.html", function() {
+					$('#collectionInfo').DataTable( {
+						responsive: true,
+						"columnDefs": [ {
+							"targets": 7,
+							"orderable": false
+						}],
+						"ajax": {
+							"url": wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/allartworksinfo",
+							"dataSrc": "",
+							"sAjaxDataProp": "",
+						},
+						"columns": [
+							{"data" : "artworkName"},
+							{"data" : "accessionDate"},
+							{"data" : "riskLevel",
+							 "defaultContent": ""},
+							{"data" : "primaryRisk",
+							 "defaultContent": ""},
+							{"data" : "dateForAction",
+							 "defaultContent": ""},
+							{"data" : "confidence",
+							 "defaultContent": ""},
+							{"data" : "impact",
+							 "defaultContent": ""},
+							{"data" : "artworkName"}
+						],
+
+						"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull) {		
+							$('td:eq(0)', nRow).html('<a href="/getArtwork?collectionName='+aData.collectionName+'&artworkName='+aData.artworkName+'"  class="artworkLink">'+aData.artworkName+'</a>');
+							
+							if (aData.riskLevel < 3) {
+								$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+							}
+							else if (aData.riskLevel < 7) {
+								$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+							}
+							else {
+								$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+							}
+							
+							$('td:eq(7)', nRow).html('<input type="checkbox" id="deleteArtworkCheckBox" name="deleteArtworkCheckBox" value="'+ aData.artworkName +'">');
+						}
+						
+					});
+				});
+			});
+			
+			$("#createCollectionForm").submit(function( event ) {
+				event.preventDefault();
+						
+				var newCollectionName = $('#createCollectionForm').find('input[name="newCollectionName"]').val();
+			
+				var formData = "newCollectionName="+newCollectionName;
+				$("#collectionCreationProgressModal").modal({backdrop: 'static', keyboard: false});
+				$.ajax({
+					url : wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/creation/collectioncreation",
+					type: "POST",
+					data : formData,
+					success: function(data, textStatus, jqXHR) {
+						$("#collectionCreationProgressModal").modal('toggle');
+						bootbox.alert({ 
+							message: "New collection <b>"+newCollectionName+"</b> has been created.",
+							buttons: {
+								ok: {
+									label: " OK",
+									className:"btn btn-success btn-medium glyphicon glyphicon-ok"
+								}
+							},
+							callback: function() {
+								$('#collectionsList').empty();
+								$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/allcollectionnames", function(data) {
+									$.each(data, function(index, value) {
+										$("#collectionsList").append('<li><a href="getCollection?collectionName=' + value + '" class="ajaxLoadedCollectionLink" id="' + value + '">' + value + '</a><a href="deleteCollection?collectionName='+value+'" id="'+value+'" class="deleteCollection"><span class="glyphicon glyphicon-trash"></span></a></li>');
+									});
+									$('#collectionsList').metisMenu();
+								});
+								
+								$('#collectionNamesSelection').empty();
+								$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/allcollectionnames", function(data) {
+									$.each(data, function(index, value) {
+										$("#collectionNamesSelection").append('<option value=' + value.replace(/ /g, "_") + '>'+ value + '</option>');
+									});
+								});
+							}
+						});
+						$("input[type=text]").val("");
+						
+						$("#createCollectionModal").modal('toggle');
+					},
+					error: function (jqXHR, textStatus, errorThrown) {
+						$("#collectionCreationProgressModal").modal('toggle');
+						var errorMessage = errorThrown;
+						if (errorThrown == "Conflict") {
+							errorMessage = "Collection name is already existed. Please choose another one."
+						}
+						else {
+							errorMessage = "Collection creation failed."
+						}
+						
+						bootbox.alert({ 
+							message: errorMessage,
+							buttons: {
+								ok: {
+									label: " OK",
+									className:"btn btn-danger btn-medium glyphicon glyphicon-exclamation-sign"
+								}
+							},
+							callback: function() {
+							}
+						});
+						
+					}
+				});
+			});
+			
+			$("#createArtworkForm").submit(function( event ) {
+				event.preventDefault();
+				
+				$("#artworkCreationProgressModal").modal({backdrop: 'static', keyboard: false});
+					
+				var newArtworkName = $('#createArtworkForm').find('input[name="newArtworkName"]').val();
+				
+				var formData = $(this).serializeArray();
+				
+				$("#createArtworkModal").modal('toggle');
+				
+				$.ajax({
+					url : wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/creation/artworkcreation",
+					type: "POST",
+					contentType : "application/x-www-form-urlencoded",
+					data : formData,
+					
+					success: function(data, textStatus, jqXHR) {
+					
+						bootbox.alert({ 
+							message: "New object <b>"+ newArtworkName + "</b> has been created.",
+							buttons: {
+								ok: {
+									label: " OK",
+									className:"btn btn-success btn-medium glyphicon glyphicon-ok"
+								}
+							},
+							callback: function() {
+								var collectionName = $("#collectionPath").attr("name");
+								var artworkName = $("#artworkPath").attr("name");
+								
+								var url = wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/allartworksinfo";
+								if (collectionName != null) {
+									url = wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/" + collectionName + "/artworksinfo";
+								}
+								
+								if (artworkName == null) {
+									$("#collectionInfo").dataTable().fnDestroy();
+									$('#collectionInfo').DataTable( {
+										responsive: true,
+										"columnDefs": [ {
+											"targets": 7,
+											"orderable": false
+										}],
+										"ajax": {
+											"url": url,
+											"dataSrc": "",
+											"sAjaxDataProp": "",
+										},
+										"columns": [
+											{"data" : "artworkName"},
+											{"data" : "accessionDate"},
+											{"data" : "riskLevel",
+											 "defaultContent": ""},
+											{"data" : "primaryRisk",
+											 "defaultContent": ""},
+											{"data" : "dateForAction",
+											 "defaultContent": ""},
+											{"data" : "confidence",
+											 "defaultContent": ""},
+											{"data" : "impact",
+											 "defaultContent": ""},
+											{"data" : "artworkName"}
+										],
+
+										"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull) {		
+											$('td:eq(0)', nRow).html('<a href="/getArtwork?collectionName='+aData.collectionName+'&artworkName='+aData.artworkName+'"  class="artworkLink">'+aData.artworkName+'</a>');
+											
+											if (aData.riskLevel < 3) {
+												$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+											}
+											else if (aData.riskLevel < 7) {
+												$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+											}
+											else {
+												$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+											}
+											
+											$('td:eq(7)', nRow).html('<input type="checkbox" id="deleteArtworkCheckBox" name="deleteArtworkCheckBox" value="'+ aData.artworkName +'">');
+											
+											$('[data-toggle="tooltip"]').tooltip();
+										}
+										
+									});
+								}
+							}
+						});
+						
+						$("input[type=text]").val("");
+						
+						$('#collectionNamesSelection').find('option:first').attr('selected', 'selected');
+						$('#databaseNamesSelection').find('option:first').attr('selected', 'selected');
+						$('#scriptingLanguageNamesSelection').find('option:first').attr('selected', 'selected');
+						$('#imageFormatNamesSelection').find('option:first').attr('selected', 'selected');
+						$('#imageViewerNamesSelection').find('option:first').attr('selected', 'selected');
+						$('#documentFormatNamesSelection').find('option:first').attr('selected', 'selected');
+						$('#documentViewerNamesSelection').find('option:first').attr('selected', 'selected');
+						
+						$("#artworkCreationProgressModal").modal('toggle');
+					},
+					error: function (jqXHR, textStatus, errorThrown) {
+						$("#artworkCreationProgressModal").modal('toggle');
+						var errorMessage = jqXHR.responseText;
+						
+						bootbox.alert({ 
+							message: errorMessage,
+							buttons: {
+								ok: {
+									label: " OK",
+									className:"btn btn-danger btn-medium glyphicon glyphicon-exclamation-sign"
+								}
+							},
+							callback: function() {
+								$("#createArtworkModal").modal('toggle');
+							}
+						});
+					}
+				});
+			});
+			
+			$(document).on('click', ".deleteCollection", function( event ) {
+				event.preventDefault();
+				var url = $(this).attr("href");
+				var collectionName = getURLParameter(url, 'collectionName');
+				var formData = "collectionName="+collectionName;
+				
+				bootbox.confirm("Delete collection <b>" + collectionName + "</b> and all objects in this collection?", function(result) {
+					if (result == true) {
+						$("#collectionDeletionProgressModal").modal({backdrop: 'static', keyboard: false});
+						$.ajax({
+							url : wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/deletion/collectiondeletion",
+							type: "POST",
+							data : formData,
+							success: function(data, textStatus, jqXHR) {
+								$("#collectionDeletionProgressModal").modal('toggle');
+								bootbox.alert({ 
+									message: data,
+									buttons: {
+										ok: {
+											label: " OK",
+											className:"btn btn-success btn-medium glyphicon glyphicon-ok"
+										}
+									},
+									callback: function() {
+										$("#path").html("<span class='glyphicon glyphicon-folder-open'></span>&nbsp;&nbsp;<span><a href='collectionview.html'>Home</a></span>");
+										
+										$('#collectionsList').empty();
+										$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/allcollectionnames", function(data) {
+											$.each(data, function(index, value) {
+												$("#collectionsList").append('<li><a href="getCollection?collectionName=' + value + '" class="ajaxLoadedCollectionLink" id="' + value + '">' + value + '</a><a href="deleteCollection?collectionName='+value+'" id="'+value+'" class="deleteCollection"><span class="glyphicon glyphicon-trash"></span></a></li>');
+											});
+											$('#collectionsList').metisMenu();
+										});
+										
+										$('#collectionNamesSelection').empty();
+										$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/allcollectionnames", function(data) {
+											$.each(data, function(index, value) {
+												$("#collectionNamesSelection").append('<option value=' + value.replace(/ /g, "_") + '>'+ value + '</option>');
+											});
+										});
+										
+										$("#collectionInfo").dataTable().fnDestroy();
+										$('#collectionInfo').DataTable( {
+											responsive: true,
+											"columnDefs": [ {
+												"targets": 7,
+												"orderable": false
+											}],
+											"ajax": {
+												"url": wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/allartworksinfo",
+												"dataSrc": "",
+												"sAjaxDataProp": "",
+											},
+											"columns": [
+												{"data" : "artworkName"},
+												{"data" : "accessionDate"},
+												{"data" : "riskLevel",
+												 "defaultContent": ""},
+												{"data" : "primaryRisk",
+												 "defaultContent": ""},
+												{"data" : "dateForAction",
+												 "defaultContent": ""},
+												{"data" : "confidence",
+												 "defaultContent": ""},
+												{"data" : "impact",
+												 "defaultContent": ""},
+												{"data" : "artworkName"}
+											],
+
+											"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull) {		
+												
+												$('td:eq(0)', nRow).html('<a href="/getArtwork?collectionName='+aData.collectionName+'&artworkName='+aData.artworkName+'"  class="artworkLink">'+aData.artworkName+'</a>');
+												
+												if (aData.riskLevel < 3) {
+													$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+												}
+												else if (aData.riskLevel < 7) {
+													$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+												}
+												else {
+													$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+												}
+												
+												$('td:eq(7)', nRow).html('<input type="checkbox" id="deleteArtworkCheckBox" name="deleteArtworkCheckBox" value="'+ aData.artworkName +'">');
+												
+												$('[data-toggle="tooltip"]').tooltip();
+											}
+											
+										});
+									}
+								});
+							},
+							error: function (jqXHR, textStatus, errorThrown) {
+								$("#collectionDeletionProgressModal").modal('toggle');
+								var errorMessage = errorThrown;
+								
+								bootbox.alert({ 
+									message: errorMessage,
+									buttons: {
+										ok: {
+											label: " OK",
+											className:"btn btn-danger btn-medium glyphicon glyphicon-exclamation-sign"
+										}
+									},
+									callback: function() {
+									}
+								});
+								
+							}
+						});
+					}
+				});
+			});
+			
+			
+			$(document).on('click', ".deleteArtwork", function( event ) {
+				event.preventDefault();
+				var url = $(this).attr("href");
+				var artworkName = getURLParameter(url, 'artworkName');
+				var formData = "artworkName="+artworkName;
+				
+				bootbox.confirm("Are you sure you want to delete the artwork <b>"+artworkName+"</b>?", function(result) {
+					if (result == true) {
+						$.ajax({
+							url : wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/delete/artworkdeletion",
+							type: "POST",
+							data : formData,
+							success: function(data, textStatus, jqXHR) {
+								bootbox.alert({ 
+									message: data,
+									buttons: {
+										ok: {
+											label: " OK",
+											className:"btn btn-success btn-medium glyphicon glyphicon-ok"
+										}
+									},
+									callback: function() {
+										$("#collectionInfo").dataTable().fnDestroy();
+										$('#collectionInfo').DataTable( {
+											responsive: true,
+											"columnDefs": [ {
+												"targets": 7,
+												"orderable": false
+											}],
+											"ajax": {
+												"url": wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/allartworksinfo",
+												"dataSrc": "",
+												"sAjaxDataProp": "",
+											},
+											"columns": [
+												{"data" : "artworkName"},
+												{"data" : "accessionDate"},
+												{"data" : "riskLevel",
+												 "defaultContent": ""},
+												{"data" : "primaryRisk",
+												 "defaultContent": ""},
+												{"data" : "dateForAction",
+												 "defaultContent": ""},
+												{"data" : "confidence",
+												 "defaultContent": ""},
+												{"data" : "impact",
+												 "defaultContent": ""},
+												{"data" : "artworkName"}
+											],
+
+											"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull) {		
+												$('td:eq(0)', nRow).html('<a href="/getArtwork?collectionName='+aData.collectionName+'&artworkName='+aData.artworkName+'"  class="artworkLink">'+aData.artworkName+'</a>');
+												
+												if (aData.riskLevel < 3) {
+													$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+												}
+												else if (aData.riskLevel < 7) {
+													$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+												}
+												else {
+													$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+												}
+												
+												$('td:eq(7)', nRow).html('<input type="checkbox" id="deleteArtworkCheckBox" name="deleteArtworkCheckBox" value="'+ aData.artworkName +'">');
+												
+												$('[data-toggle="tooltip"]').tooltip();
+											}
+											
+										});
+									}
+								});
+								
+								
+							},
+							error: function (jqXHR, textStatus, errorThrown)
+							{
+								var errorMessage = errorThrown;
+								
+								bootbox.alert({ 
+									message: errorMessage,
+									buttons: {
+										ok: {
+											label: " OK",
+											className:"btn btn-danger btn-medium glyphicon glyphicon-exclamation-sign"
+										}
+									},
+									callback: function() {
+									}
+								});
+								
+							}
+						});
+					}
+				});
+			});
+			
+			$('#accessionDatePicker').datepicker({
+				format: "dd/mm/yyyy"
+			});
+			
+		});
+		
+		$(document).on("click", ".artworkLink", function(event) {
+			$.ajaxSetup ({
+				cache: false
+			});
+			
+			event.preventDefault();
+			
+			var artworkUrl = $(this).attr("href");
+			
+			var collectionName = getURLParameter(artworkUrl, 'collectionName');
+			
+			if (collectionName == null) {
+				collectionName = $("#collectionPath").attr("name");
+			}
+			
+			var artworkName = getURLParameter(artworkUrl, 'artworkName');
+			
+			artworkUrl = wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/" + artworkName + "/artworkmodel";
+			$("#page-wrapper").load("artworkInfo.html", function() {
+				$("#path").html("<span class='glyphicon glyphicon-folder-open'></span>&nbsp;&nbsp;<span><a href='collectionview.html'>Home</a></span> > <span id='collectionPath' name='"+collectionName+"'><a class= 'ajaxLoadedCollectionLink' href='"+wsUrl+"/periclesui/pages/getCollection?collectionName="+collectionName+"'>"+collectionName+"</a></span> > <span id='artworkPath' name='"+artworkName+"'> "+artworkName+"</span>");
+				
+				$("#updateArtworkButton").attr("name", artworkName);
+				$.ajax({url: artworkUrl, success: function(result){
+					$("#existingDatabase").val(result[0][1]);
+					$("#newDatabase").val(result[0][1]);
+					$("#existingScriptingLanguage").val(result[1][1]);
+					$("#newScriptingLanguage").val(result[1][1]);
+					$("#existingImageFormat").val(result[2][1]);
+					$("#newImageFormat").val(result[2][1]);
+					$("#existingImageViewer").val(result[3][1]);
+					$("#newImageViewer").val(result[3][1]);
+					$("#existingDocumentFormat").val(result[4][1]);
+					$("#newDocumentFormat").val(result[4][1]);
+					$("#existingDocumentViewer").val(result[5][1]);
+				    $("#newDocumentViewer").val(result[5][1]);
+					
+					var nodes = new vis.DataSet([
+						{id: 1, label: result[0][0]+': '+result[0][1], color:'#FF9999', level: 1},
+						{id: 2, label: result[1][0]+': '+result[1][1], color:'#FFCC99', level: 2},
+						{id: 3, label: result[2][0]+': '+result[2][1], color:'#99FF99', level: 3},
+						{id: 4, label: result[3][0]+': '+result[3][1], color:'#4CC417', level: 4},
+						{id: 5, label: result[4][0]+': '+result[4][1], color:'#99FFFF', level: 3},
+						{id: 6, label: result[5][0]+': '+result[5][1], color:'#5CB3FF', level: 4}
+					]);
+
+					// create an array with edges
+					var edges = new vis.DataSet([
+						{from: 1, to: 2, arrows: 'to', label: 'processed by'},
+						{from: 2, to: 3, arrows: 'to', label: 'outputs'},
+						{from: 2, to: 5, arrows: 'to', label: 'outputs'},
+						{from: 3, to: 4, arrows: 'to', label: 'depends on'},
+						{from: 5, to: 6, arrows: 'to', label: 'depends on'}
+					]);
+				  
+					// create a network
+					var container = document.getElementById('artworkModelNetwork');
+					var data = {
+						nodes: nodes,
+						edges: edges
+					};
+					var options = {
+						nodes: {
+							shape: 'box',
+							shapeProperties: {
+								borderRadius: 5,     // only for box shape
+							},
+							font: {
+								face: 'arial',
+								size: 26	
+							},
+							borderWidth: 1,
+							shadow:true
+						},
+						edges: {
+							width: 1,
+							length: 200,
+							font: {
+								face: 'arial',
+								size: 21	
+							},
+							shadow:true,
+							smooth: {
+								type: 'continuous',
+							}
+						},
+						layout: {
+							hierarchical: {
+								direction: 'UD',
+								nodeSpacing: 400,
+								levelSeparation: 120,
+							}
+						}
+					};
+					var network = new vis.Network(container, data, options);
+				}});
+				
+				$('#artworkInfo').DataTable({
+					responsive: true,
+					"bFilter": false,
+					"ordering": false,
+					"paging": false,
+					"ajax": {
+						"url": artworkUrl,
+						"dataSrc": "",
+					}
+				});
+				
+				var recoveryUrl = wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/"+ artworkName +"/recoveryinfo";
+				var t = $('#recoveryInfo').DataTable({
+					responsive: true,
+					"ajax": {
+						"url": recoveryUrl,
+						"dataSrc": "",
+						"sAjaxDataProp": "",
+					},
+					"language": {
+					  "emptyTable": "No recovery option available"
+					},
+					"columns": [
+						{"data" : "index"},
+						{"data" : "change"},
+						{"data" : "from"},
+						{"data" : "to"},
+						{"data" : "predictedEndDate"},
+						{"data" : "impact"},
+						{"data" : "index"}
+					],
+					
+					"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+						var componentTypeList = 0;
+						var componentNameList;
+						var componentPredictionList;
+						var impactList;
+						
+						if (aData.change.includes(",")) {
+							componentTypeList = aData.change.split(",");
+							var componentListHtml = "";
+							for (i = 0; i < componentTypeList.length; i++) { 
+								componentListHtml = componentListHtml + "<p>"+componentTypeList[i]+"</p>";
+							}
+							$('td:eq(1)', nRow).html(componentListHtml);
+						}
+						
+						if (aData.from.includes(",")) {
+							componentNameList = aData.from.split(",");
+							var componentListHtml = "";
+							for (i = 0; i < componentNameList.length; i++) { 
+								componentListHtml = componentListHtml + "<p>"+componentNameList[i]+"</p>";
+							}
+							$('td:eq(2)', nRow).html(componentListHtml);
+						}
+						
+						if (aData.to.includes(",")) {
+							componentNameList = aData.to.split(",");
+							componentListHtml = "";
+							for (i = 0; i < componentNameList.length; i++) { 
+								componentListHtml = componentListHtml + "<p>"+componentNameList[i]+"</p>";
+							}
+							$('td:eq(3)', nRow).html(componentListHtml);
+						}
+						
+						
+						if (aData.predictedEndDate.includes(",")) {
+							componentPredictionList = aData.predictedEndDate.split(",");
+							componentListHtml = "";
+							for (i = 0; i < componentPredictionList.length; i++) { 
+								componentListHtml = componentListHtml + "<p>"+componentPredictionList[i]+"</p>";
+							}
+							$('td:eq(4)', nRow).html(componentListHtml);
+						}
+						
+						if (aData.impact.includes(",")) {
+							impactList = aData.impact.split(",");
+							var componentListHtml = "";
+							for (i = 0; i < impactList.length; i++) { 
+								componentListHtml = componentListHtml + "<p>"+impactList[i]+"</p>";
+							}
+							$('td:eq(5)', nRow).html(componentListHtml);
+						}
+						
+						var applyChangeHtml = '<a class="btn btn-success doubleCheckRecoveryOptionLink" data-toggle="modal" data-target="#checkRecoveryOptionModal" data-parameters="updateArtworkModel?artworkName='+artworkName;
+												
+						if (aData.change.includes(",")) {
+							for (i = 0; i < componentTypeList.length; i++) {
+								applyChangeHtml = applyChangeHtml+'&'+componentTypeList[i].replace(" ","")+'='+ componentNameList[i];
+							}
+						}
+						else {
+							applyChangeHtml = applyChangeHtml+'&'+aData.change.replace(" ","")+'='+aData.to;
+						}
+						applyChangeHtml = applyChangeHtml + '"><span class="glyphicon glyphicon-ok"></span></a>';
+						
+						$('td:eq(6)', nRow).html(applyChangeHtml);
+					},
+					
+				});
+			});
+		});
+		
+		$(document).on("click", "#updateRiskImpactAnalysis", function(event) {
+			event.preventDefault();
+			var l = Ladda.create(this);
+			l.start();
+			l.setProgress(0.1);
+			l.stop();
+			l.toggle();
+			$.post("your-url", {data : data},
+			  function(response){
+				console.log(response);
+			  }, "json")
+			.always(function() { l.stop(); });
+			
+			return false;
+		});
+		
+		$(document).on('click', "#selectAllArtworks", function( event ) {
+			if(this.checked) {
+				$(':checkbox').each(function() {
+					this.checked = true;
+				});
+			}
+			else {
+				$(':checkbox').each(function() {
+					this.checked = false;
+				});
+			}
+		});
+		
+		$(document).on("click", "#deleteArtworks", function(event) {
+			$.ajaxSetup ({
+				cache: false
+			});
+			event.preventDefault();
+			
+			var val = [];
+			
+			var selectedArtworkNames = "";
+			$('#deleteArtworkCheckBox:checked').each(function(i) {
+				val[i] = $(this).val();
+				if (selectedArtworkNames == "") {
+					selectedArtworkNames = "<b>" + $(this).val() + "</b>";
+				}
+				else {
+					selectedArtworkNames = selectedArtworkNames + "," + "<b>" + $(this).val() + "</b>";
+				}
+			});	
+			
+			if (selectedArtworkNames == "") {
+				bootbox.alert({ 
+					message: "Please selecte object(s) first.",
+					buttons: {
+						ok: {
+							label: " OK",
+							className:"btn btn-success btn-medium glyphicon glyphicon-ok"
+						}
+					}
+				});
+			}
+			else {
+			
+				bootbox.confirm("Delete the selected object(s): " + selectedArtworkNames + "?", function(result) {
+					if (result == true) {
+							
+						var formData = "artworkNames=" + val;
+								
+						$("#artworkDeletionProgressModal").modal({backdrop: 'static', keyboard: false});
+								
+						$.ajax({
+							url : wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/deletion/artworksdeletion",
+							type: "POST",
+							data : formData,
+							success: function(data, textStatus, jqXHR) {
+								$("#artworkDeletionProgressModal").modal('toggle');
+								bootbox.alert({ 
+									message: data,
+									buttons: {
+										ok: {
+											label: " OK",
+											className:"btn btn-success btn-medium glyphicon glyphicon-ok"
+										}
+									},
+									callback: function() {
+										$("#collectionInfo").dataTable().fnDestroy();
+										$('#collectionInfo').DataTable( {
+											responsive: true,
+											"columnDefs": [ {
+												"targets": 7,
+												"orderable": false
+											}],
+											"ajax": {
+												"url": wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/allartworksinfo",
+												"dataSrc": "",
+												"sAjaxDataProp": "",
+											},
+											"columns": [
+												{"data" : "artworkName"},
+												{"data" : "accessionDate"},
+												{"data" : "riskLevel",
+												 "defaultContent": ""},
+												{"data" : "primaryRisk",
+												 "defaultContent": ""},
+												{"data" : "dateForAction",
+												 "defaultContent": ""},
+												{"data" : "confidence",
+												 "defaultContent": ""},
+												{"data" : "impact",
+												 "defaultContent": ""},
+												{"data" : "artworkName"}
+											],
+
+											"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull) {			
+												$('td:eq(0)', nRow).html('<a href="/getArtwork?collectionName='+aData.collectionName+'&artworkName='+aData.artworkName+'"  class="artworkLink">'+aData.artworkName+'</a>');
+												
+												if (aData.riskLevel < 3) {
+													$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+												}
+												else if (aData.riskLevel < 7) {
+													$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+												}
+												else {
+													$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+												}
+												
+												$('td:eq(7)', nRow).html('<input type="checkbox" id="deleteArtworkCheckBox" name="deleteArtworkCheckBox" value="'+ aData.artworkName +'">');
+												
+												$('[data-toggle="tooltip"]').tooltip();
+												
+											}
+											
+										});
+										$(':checkbox').each(function() {
+											this.checked = false;
+										});
+									}
+								});
+							},
+							error: function (jqXHR, textStatus, errorThrown)
+							{
+								var errorMessage = errorThrown;
+								
+								bootbox.alert({ 
+									message: errorMessage,
+									buttons: {
+										ok: {
+											label: " OK",
+											className:"btn btn-danger btn-medium glyphicon glyphicon-exclamation-sign"
+										}
+									},
+									callback: function() {
+										$(':checkbox').each(function() {
+											this.checked = false;
+										});
+									}
+								});
+							}
+						});
+					}	
+				});
+			}
+		});
+		
+		$(document).on("click", "#updateAllArtworksButton", function(event) {
+			event.preventDefault();
+			bootbox.confirm("It may take quite a long time to update all objects. Proceed?", function(result) {
+				if (result == true) {
+					
+					
+					
+					$("#updateAllArtworksProgressBar")
+					.css("width", "100%")
+					.attr("class", "progress-bar progress-bar progress-bar-striped active")
+					.text("Updating all objects...");
+					
+					$("#updateAllArtworksProgressModal").modal({backdrop: 'static', keyboard: false});
+					
+					$.ajax({
+						url: wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/update/allartworksupdate",
+						type: "GET",
+						success: function(result){
+						}
+					});
+			
+					var interval = setInterval(function() {
+						$.ajax({
+							url: wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/update/allartworksupdatestatus",
+							type: "GET",
+							success: function(result){
+								if (result == "Update finished") {
+									clearInterval(interval);
+									
+									
+									$("#updateAllArtworksProgressModal").modal('toggle');
+									
+									bootbox.alert({ 
+										message: "All objects have been updated.",
+										buttons: {
+											ok: {
+												label: " OK",
+												className:"btn btn-success btn-medium glyphicon glyphicon-ok"
+											}
+										},
+										callback: function() {
+											$("#collectionInfo").dataTable().fnDestroy();
+											$('#collectionInfo').DataTable( {
+												responsive: true,
+												"columnDefs": [ { className: "dt-body-right", "targets": [ 0 ] }, {
+														"targets": 7,
+														"orderable": false
+													}
+												],
+												
+												"ajax": {
+													"url": wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/allartworksinfo",
+													"dataSrc": "",
+													"sAjaxDataProp": "",
+												},
+												"columns": [
+													{"data" : "artworkName"},
+													{"data" : "accessionDate"},
+													{"data" : "riskLevel",
+													 "defaultContent": ""},
+													{"data" : "primaryRisk",
+													 "defaultContent": ""},
+													{"data" : "dateForAction",
+													 "defaultContent": ""},
+													{"data" : "confidence",
+													 "defaultContent": ""},
+													{"data" : "impact",
+													 "defaultContent": ""},
+													{"data" : "artworkName"}
+												],
+												
+
+												"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull) {		
+													$('td:eq(0)', nRow).html('<a href="/getArtwork?collectionName='+aData.collectionName+'&artworkName='+aData.artworkName+'"  class="artworkLink">'+aData.artworkName+'</a>');
+													
+													if (aData.riskLevel < 3) {
+														$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+													}
+													else if (aData.riskLevel < 7) {
+														$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+													}
+													else {
+														$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.riskLevel*10+'%;height:20px">'+aData.riskLevel+'</div>');
+													}
+													
+													$('td:eq(7)', nRow).html('<input type="checkbox" id="deleteArtworkCheckBox" name="deleteArtworkCheckBox" value="'+ aData.artworkName +'">');
+													
+													$('[data-toggle="tooltip"]').tooltip();
+												}
+												
+											});
+										}
+									});
+								}
+								else {
+									$("#updateAllArtworksProgressBar")
+									.text(result);
+								}
+								
+							}
+						});
+					}, 500);
+			
+				}
+			})
+		});
+		
+		
+		
+		
+		$(document).on("click", ".doubleCheckRecoveryOptionLink", function(event) {
+			event.preventDefault();
+			var parameters = $(this).data('parameters');
+			var artworkName = getURLParameter(parameters, 'artworkName');
+			var database = getURLParameter(parameters, 'Database');
+			var scriptingLanguage = getURLParameter(parameters, 'ScriptingLanguage');
+			var imageFormat = getURLParameter(parameters, 'ImageFormat');
+			var imageViewer = getURLParameter(parameters, 'ImageViewer');
+			var documentFormat = getURLParameter(parameters, 'DocumentFormat');
+			var documentViewer = getURLParameter(parameters, 'DocumentViewer');
+			
+			$("#artworkName").text(artworkName);
+			$("#artworkName").val(artworkName);
+			
+			if (database != null) {
+				$("#newDatabase").val(database);
+			}
+			if (scriptingLanguage != null) {
+				$("#newScriptingLanguage").val(scriptingLanguage);
+			}
+			if (imageFormat != null) {
+				$("#newImageFormat").val(imageFormat);
+			}
+			if (imageViewer != null) {
+				$("#newImageViewer").val(imageViewer);
+			}
+			if (documentFormat != null) {
+				$("#newDocumentFormat").val(documentFormat);
+			}
+			if (documentViewer != null) {
+				$("#newDocumentViewer").val(documentViewer);
+			}
+		});
+		
+		$(document).on("click", "#applyRecoveryOptionButton", function(event) {
+			event.preventDefault();
+			$("#checkRecoveryOptionModal").modal('toggle');
+			$("#artworkRecoveryProgressModal").modal({backdrop: 'static', keyboard: false});
+			$.ajax({
+					url : wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/update/artworkrecovery",
+					type: "POST",
+					data : "artworkName="+$("#artworkName").val()+
+					       "&newDatabase="+$("#newDatabase").val()+
+						   "&newScriptingLanguage="+$("#newScriptingLanguage").val()+
+						   "&newImageFormat="+$("#newImageFormat").val()+
+						   "&newImageViewer="+$("#newImageViewer").val()+
+						   "&newDocumentFormat="+$("#newDocumentFormat").val()+
+						   "&newDocumentViewer="+$("#newDocumentViewer").val(),
+					
+					success: function(data, textStatus, jqXHR) {
+						$("#artworkRecoveryProgressModal").modal('toggle');
+						bootbox.alert({ 
+							message: "Model of object <b>"+$("#artworkName").val()+"</b> has been updated.",
+							buttons: {
+								ok: {
+									label: " OK",
+									className:"btn btn-success btn-medium glyphicon glyphicon-ok"
+								}
+							},
+							callback: function() {
+								var artworkName = $("#artworkName").val();
+						
+								var artworkUrl = wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/" + artworkName + "/artworkmodel";
+								
+								var collectionName = getURLParameter(artworkUrl, 'collectionName');
+					
+								if (collectionName == null) {
+									collectionName = $("#collectionPath").attr("name");
+								}
+								
+								$("#path").html("<span class='glyphicon glyphicon-folder-open'></span>&nbsp;&nbsp;<span><a href='collectionview.html'>Home</a></span> > <span id='collectionPath' name='"+collectionName+"'><a class= 'ajaxLoadedCollectionLink' href='"+wsUrl+"/periclesui/pages/getCollection?collectionName="+collectionName+"'>"+collectionName+"</a></span> > <span id='artworkPath' name='"+artworkName+"'> "+artworkName+"</span>");
+									
+								$("#updateArtworkButton").attr("name", artworkName);
+								$.ajax({url: artworkUrl, success: function(result){
+									
+									$("#existingDatabase").val(result[0][1]);
+									$("#newDatabase").val(result[0][1]);
+									$("#existingScriptingLanguage").val(result[1][1]);
+									$("#newScriptingLanguage").val(result[1][1]);
+									$("#existingImageFormat").val(result[2][1]);
+									$("#newImageFormat").val(result[2][1]);
+									$("#existingImageViewer").val(result[3][1]);
+									$("#newImageViewer").val(result[3][1]);
+									$("#existingDocumentFormat").val(result[4][1]);
+									$("#newDocumentFormat").val(result[4][1]);
+									$("#existingDocumentViewer").val(result[5][1]);
+									$("#newDocumentViewer").val(result[5][1]);
+									
+									var nodes = new vis.DataSet([
+										{id: 1, label: result[0][0]+': '+result[0][1], color:'#FF9999', level: 1},
+										{id: 2, label: result[1][0]+': '+result[1][1], color:'#FFCC99', level: 2},
+										{id: 3, label: result[2][0]+': '+result[2][1], color:'#99FF99', level: 3},
+										{id: 4, label: result[3][0]+': '+result[3][1], color:'#4CC417', level: 4},
+										{id: 5, label: result[4][0]+': '+result[4][1], color:'#99FFFF', level: 3},
+										{id: 6, label: result[5][0]+': '+result[5][1], color:'#5CB3FF', level: 4}
+									]);
+
+									// create an array with edges
+									var edges = new vis.DataSet([
+										{from: 1, to: 2, arrows: 'to', label: 'processed by'},
+										{from: 2, to: 3, arrows: 'to', label: 'outputs'},
+										{from: 2, to: 5, arrows: 'to', label: 'outputs'},
+										{from: 3, to: 4, arrows: 'to', label: 'depends on'},
+										{from: 5, to: 6, arrows: 'to', label: 'depends on'}
+									]);
+					  
+									// create a network
+									var container = document.getElementById('artworkModelNetwork');
+									var data = {
+										nodes: nodes,
+										edges: edges
+									};
+									var options = {
+										//autoResize: true,
+										//height: '100%',
+										//width: '100%',
+										nodes: {
+											shape: 'box',
+											shapeProperties: {
+												borderRadius: 5,     // only for box shape
+											},
+											//size: 40,
+											font: {
+												face: 'arial',
+												size: 24	
+											},
+											borderWidth: 1,
+											shadow:true
+										},
+										edges: {
+											width: 1,
+											length: 200,
+											font: {
+												face: 'arial',
+												size: 21	
+											},
+											shadow:true,
+											smooth: {
+												type: 'continuous',
+											}
+										},
+										layout: {
+											hierarchical: {
+												direction: 'UD',
+												nodeSpacing: 400,
+												levelSeparation: 120,
+											}
+										}
+									};
+									var network = new vis.Network(container, data, options);
+								}});
+								
+								$("#artworkInfo").dataTable().fnDestroy();
+								$('#artworkInfo').DataTable({
+									responsive: true,
+									"bFilter": false,
+									"ordering": false,
+									"paging": false,
+									"ajax": {
+										"url": artworkUrl,
+										"dataSrc": "",
+									}
+								});
+									
+								var recoveryUrl = wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/"+ artworkName +"/recoveryinfo";
+								$("#recoveryInfo").dataTable().fnDestroy();
+								$('#recoveryInfo').DataTable({
+									responsive: true,
+									"ajax": {
+										"url": recoveryUrl,
+										"dataSrc": "",
+										"sAjaxDataProp": "",
+									},
+									"columns": [
+										{"data" : "index"},
+										{"data" : "change"},
+										{"data" : "from"},
+										{"data" : "to"},
+										{"data" : "predictedEndDate"},
+										{"data" : "impact"},
+										{"data" : "index"}
+									],
+						
+									"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+										var componentTypeList = 0;
+										var componentNameList;
+										var componentPredictionList; 
+										
+										if (aData.change.includes(",")) {
+											componentTypeList = aData.change.split(",");
+											var componentListHtml = "";
+											for (i = 0; i < componentTypeList.length; i++) { 
+												componentListHtml = componentListHtml + "<p>"+componentTypeList[i]+"</p>";
+											}
+											$('td:eq(1)', nRow).html(componentListHtml);
+										}
+										
+										if (aData.from.includes(",")) {
+											componentNameList = aData.from.split(",");
+											componentListHtml = "";
+											for (i = 0; i < componentNameList.length; i++) { 
+												componentListHtml = componentListHtml + "<p>"+componentNameList[i]+"</p>";
+											}
+											$('td:eq(2)', nRow).html(componentListHtml);
+										}
+										
+										if (aData.to.includes(",")) {
+											componentNameList = aData.to.split(",");
+											componentListHtml = "";
+											for (i = 0; i < componentNameList.length; i++) { 
+												componentListHtml = componentListHtml + "<p>"+componentNameList[i]+"</p>";
+											}
+											$('td:eq(3)', nRow).html(componentListHtml);
+										}
+										
+										
+										if (aData.predictedEndDate.includes(",")) {
+											componentPredictionList = aData.predictedEndDate.split(",");
+											componentListHtml = "";
+											for (i = 0; i < componentPredictionList.length; i++) { 
+												componentListHtml = componentListHtml + "<p>"+componentPredictionList[i]+"</p>";
+											}
+											$('td:eq(4)', nRow).html(componentListHtml);
+										}
+										
+										if (aData.impact.includes(",")) {
+											impactList = aData.impact.split(",");
+											var componentListHtml = "";
+											for (i = 0; i < impactList.length; i++) { 
+												componentListHtml = componentListHtml + "<p>"+impactList[i]+"</p>";
+											}
+											$('td:eq(5)', nRow).html(componentListHtml);
+										}
+										
+										var applyChangeHtml = '<a class="btn btn-success doubleCheckRecoveryOptionLink" data-toggle="modal" data-target="#checkRecoveryOptionModal" data-parameters="updateArtworkModel?artworkName='+artworkName;
+							
+										if (aData.change.includes(",")) {
+											for (i = 0; i < componentTypeList.length; i++) {
+												applyChangeHtml = applyChangeHtml+'&'+componentTypeList[i].replace(" ","")+'='+ componentNameList[i];
+											}
+										}
+										else {
+											applyChangeHtml = applyChangeHtml+'&'+aData.change.replace(" ","")+'='+aData.to;
+										}
+										applyChangeHtml = applyChangeHtml + '"><span class="glyphicon glyphicon-ok"></span></a>';
+										
+										$('td:eq(6)', nRow).html(applyChangeHtml);
+									},
+							
+								});
+							}
+						});
+					},
+					error: function(data, textStatus, jqXHR) {
+						$("#artworkRecoveryProgressModal").modal('toggle');
+						var errorMessage = errorThrown;
+						bootbox.alert({ 
+							message: errorMessage,
+							buttons: {
+								ok: {
+									label: " OK",
+									className:"btn btn-danger btn-medium glyphicon glyphicon-exclamation-sign"
+								}
+							},
+							callback: function() {
+							}
+						});
+					}
+			});
+		});
+		
+		$(document).on("click", "#collectionViewHelpLink", function(event) {
+			event.preventDefault();
+			$("#collectionViewHelpContent").load("collectionviewhelp.html");
+		});
+		
+		
+		$(document).on("click", "#updateArtworksButton", function(event) {
+			event.preventDefault();
+			
+		});
+		
+		$(document).on("click", "#objectViewHelpLink", function(event) {
+			event.preventDefault();
+			$("#objectViewHelpContent").load("objectviewhelp.html");
+		});
+    </script>
+	
+	<script>
+	  
+	</script>
+	
+	<!-- Example can be found at https://coolestguidesontheplanet.com/bootstrap/modal.php -->
+	<style>
+		#createCollectionModal {
+			top:30%;
+		}
+		#createArtworkModal {
+			top:0%;
+			overflow-y: auto;
+		}
+		#collectionsList li {
+			border-bottom: 0!important;
+			//display: block;
+			padding: 10px;
+			//background-color: #0;
+		}
+		.deleteCollection {
+			float: right;
+		}
+		#collectionCreationProgressModal {
+			top:35%;
+		}
+		#collectionDeletionProgressModal {
+			top:35%;
+		}
+		#artworkCreationProgressModal {
+			top:35%;
+		}
+		#artworkDeletionProgressModal {
+			top:35%;
+		}
+		#artworkRecoveryProgressModal {
+			top:35%;
+		}
+		#updateAllArtworksProgressModal {
+			top:35%;
+		}
+		#updateArtworksInThisCollectionProgressModal {
+			top:35%;
+		}
+		#updateArtworkProgressModal {
+			top:35%;
+		}
+		#collectionsList li.active {
+			background-color: #eee;
+			//background-color: yellow;
+		}
+		
+		#collectionsList li.hover {
+			//background-color: #eee;
+			background-color: yellow;
+		}
+		
+		#collectionsList a {
+			//background-color: #0;
+			text-decoration: none;
+		}
+		#artworkModelNetwork {
+			height: 250px;
+		}
+		
+	</style>
+	
+	
+</body>
+
+</html>

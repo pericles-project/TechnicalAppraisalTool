@@ -1,0 +1,294 @@
+<!-- Copyright King's College London, 2017. 
+ See the NOTICE file distributed with this work for additional information
+ regarding copyright ownership.  King's College London licences this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+
+ Author: Jun Zhang -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Pericles</title>
+
+		<link href="../css/pace-theme-minimal.css" rel="stylesheet" />
+	</head>
+
+	<body>
+
+
+		<div class="row">
+			<div class="col-lg-12">
+				<h3 class="page-header">Science Demo Object View: Risk-Impact Analysis</h3>
+			</div>
+			
+			<div class="col-lg-6">
+				<h5 id="path">Artwork</h5>
+				
+			</div>
+			
+			<div class="col-lg-6" align="right">
+				<h5><span class='glyphicon glyphicon-info-sign'></span>&nbsp;<a data-toggle="modal" href="#objectViewHelpModal" id="objectViewHelpLink">Help</a></h5>
+			</div>
+			
+			<!-- Modal -->
+			<div class="modal fade" id="objectViewHelpModal" role="dialog" tabindex='-1'>
+				<div class="modal-dialog modal-lg">
+				
+				  <!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header bg-primary">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Help for the object view page</h4>
+						</div>
+						<div class="modal-body">
+							<div id="objectViewHelpContent"></div>
+						</div>
+					</div>
+				  
+				</div>
+			</div>
+			
+			<!-- Modal -->
+			<div id="updateArtworkProgressModal" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+				  
+						<!--<div class="progress-bar progress-bar-success progress-bar-striped active" id="updateProgressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%;height:30px;font-size:20px;line-height:30px;">-->
+						<div class="progress-bar progress-bar progress-bar-striped active" id="updateArtworkProgressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:100%;height:30px;font-size:14px;line-height:30px;">
+							Updating...
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<br>
+		
+		<div class="row">
+			
+			<div class="col-lg-6">
+				<div class="panel panel-default">
+						<div class="panel-heading">
+							<b>Model Overview</b>
+						</div>
+						<!-- /.panel-heading -->
+						<div class="panel-body">
+							<div class="panel-body">
+								<div id="artworkModelNetwork"></div>
+							</div>
+						 
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
+			</div>
+			<div class="col-lg-6">
+				<!-- /.row -->
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<b>Components</b>
+							</div>
+							<!-- /.panel-heading -->
+							<div class="panel-body">
+								<div class="dataTable_wrapper">
+									
+									<!--example table showing how to retrieve data from a file-->
+									<table id="artworkInfo" width="100%" class="table table-striped table-bordered table-hover">
+										<thead>
+											<tr>
+												<th title="The type of the component, e.g. Video Player or Image Format.">Type</th>
+												<th title="Name or identifier for the component.">Name</th>
+												<th title="Describes the risk to the component. This can be either Obsolescence or if appropriate Hardware Failure.">Risk Type</th>
+												<th title="The predicted date that action is required to replace instances of the component occurring in objects registered in the tool.">Date For Action</th>
+											</tr>
+										</thead>
+										
+									</table>
+								
+									
+								</div>
+							 
+							</div>
+							<!-- /.panel-body -->
+						</div>
+						<!-- /.panel -->
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+			</div>
+		</div>
+		<!-- /.row -->
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<b>Recovery Options</b>
+					</div>
+					<!-- /.panel-heading -->
+					<div class="panel-body">
+						<div class="dataTable_wrapper">
+							<table id="recoveryInfo" width="100%" class="table table-striped table-bordered table-hover">
+								<thead>
+									<tr>
+										<th title="The index number of the recovery option.">No.</th>
+										<th title="The type of the component(s) which need to be changed in each recovery option.">Change</th>
+										<th title="The name of the existing component to be changed.">From</th>
+										<th title="The name of the component the recovery option suggests it to be changed to.">To</th>
+										<th title="The new date for action when each recovery option is applied.">New Date For Action</th>
+										<th title="The impact or cost of the recovery option on a scale from 1-10, where">Impact</th>
+										<th title="Click the tick button to apply a particular recovery option.">Apply Change</th>
+									</tr>
+								</thead>
+								
+							</table>
+						
+							
+						</div>
+					 
+					</div>
+					<!-- /.panel-body -->
+				</div>
+				<!-- /.panel -->
+			</div>
+			<!-- /.col-lg-12 -->
+		</div>
+		<!-- /.row -->
+		
+		<!-- Artwork Collection Creation Modal -->
+		<div class="modal fade" id="checkRecoveryOptionModal" role="dialog" tabindex='-1'>
+			<div class="modal-dialog modal-lg">
+			
+				<!-- Modal content-->
+				<div class="modal-content">
+					<form role="form" action="" method="post" id="applyRecoveryOptionForm" class="form-horizontal">
+						<div class="modal-header bg-primary">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Validate change(s) for <span id="artworkName"></span></h4>
+						</div>
+					
+						<div class="modal-body">
+								<br>
+								
+								<div class="form-group">
+									<div class="col-sm-2"></div>
+									<h4 class="col-sm-3">Existing Model</h4>
+									<div class="col-sm-2"></div>
+									<h4 class="col-sm-3">New Model</h4>
+								</div>
+								
+								<div class="form-group">
+									<label class="control-label col-sm-2">Database:</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control" name="existingDatabase" id="existingDatabase" form="applyRecoveryOptionForm" readonly="readonly">
+									</div>
+									<label class="control-label col-sm-2">Database:</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control" name="newDatabase" id="newDatabase" form="applyRecoveryOptionForm" readonly="readonly">
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label class="control-label col-sm-2">Scripting Language:</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control" name="existingScriptingLanguage" id="existingScriptingLanguage" form="applyRecoveryOptionForm" readonly="readonly">
+									</div>
+									<label class="control-label col-sm-2">Scripting Language:</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control" name="newScriptingLanguage" id="newScriptingLanguage" form="applyRecoveryOptionForm" readonly="readonly">
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label class="control-label col-sm-2">Image Format:</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control" name="existingImageFormat" id="existingImageFormat" form="applyRecoveryOptionForm" readonly="readonly">
+									</div>
+									<label class="control-label col-sm-2">Image Format:</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control" name="newImageFormat" id="newImageFormat" form="applyRecoveryOptionForm" readonly="readonly">
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label class="control-label col-sm-2">Image Viewer:</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control" name="existingImageViewer" id="existingImageViewer" form="applyRecoveryOptionForm" readonly="readonly">
+									</div>
+									<label class="control-label col-sm-2">Image Viewer:</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control" name="newImageViewer" id="newImageViewer" form="applyRecoveryOptionForm" readonly="readonly">
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label class="control-label col-sm-2">Document Format:</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control" name="existingDocumentFormats" id="existingDocumentFormat" form="applyRecoveryOptionForm" readonly="readonly">
+									</div>
+									<label class="control-label col-sm-2">Document Format:</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control" name="newDocumentFormat" id="newDocumentFormat" form="applyRecoveryOptionForm" readonly="readonly">
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label class="control-label col-sm-2">Document Viewer:</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control" name="existingDocumentViewer" id="existingDocumentViewer" form="applyRecoveryOptionForm" readonly="readonly">
+									</div>
+									<label class="control-label col-sm-2">Document Viewer:</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control" name="newDocumentViewer" id="newDocumentViewer" form="applyRecoveryOptionForm" readonly="readonly">
+									</div>
+								</div>
+						</div>
+						
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+							<button type="submit" class="btn btn-success btn-default pull-right" data-loading-text="Creating..." data-backdrop="static" id="applyRecoveryOptionButton"><span class="glyphicon glyphicon-ok"></span> Confirm</button>
+						</div>
+					</form>
+				</div>
+			  
+			</div>
+		</div>
+
+	</body>
+	
+	<script src="../js/pace.js"></script>
+	
+	<style>
+		#artworkModelNetwork {
+			width: 100%;
+			height: 200px;
+			//border: 1px solid lightgray;
+		}
+	</style>
+
+	
+		
+</html>

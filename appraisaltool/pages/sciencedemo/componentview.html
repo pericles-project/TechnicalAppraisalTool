@@ -1,0 +1,883 @@
+<!-- Copyright King's College London, 2017. 
+ See the NOTICE file distributed with this work for additional information
+ regarding copyright ownership.  King's College London licences this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+
+ Author: Jun Zhang -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>PERICLES Appraisal Tool</title>
+
+	<link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon" />
+	
+	<link href="../../css/pace-theme-minimal.css" rel="stylesheet" />
+	
+    <!-- Bootstrap Core CSS -->
+    <link href="../../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+	
+	<!-- DataTables CSS -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css"/>
+	
+	<!-- DataTables Responsive CSS -->
+    <link href="../../bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="../../dist/css/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../../bower_components/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+	<!-- Jquery CSS -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+	
+	<link rel="stylesheet" href="../../css/bootstrap-datepicker.min.css">
+	
+	<!-- Bootstrap File Input CSS http://plugins.krajee.com/file-basic-usage-demo -->
+	<link rel="stylesheet" href="../../css/fileinput.min.css" media="all">
+	
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.min.css" rel="stylesheet" type="text/css" />
+	
+	<link rel="stylesheet" href="../../dist/css/ladda-themeless.min.css">
+    
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               
+				<ul class="nav navbar-nav">
+				  <li><img src="../../img/pericles-logo.png" alt="Pericles" style="width:154px;height:50px;">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				  <li><a href="../index.html"><span class="glyphicon glyphicon-home"></span>&nbsp;Start</a></li>
+				  <li><a href="collectionview.html"><span class="glyphicon glyphicon-th-list"></span>&nbsp;Collection View</a></li>
+				  <li  class="active"><a href="componentview.html"><span class="glyphicon glyphicon-th"></span>&nbsp;Component View</a></li>
+				  <li><a href="help.html"><span class="glyphicon glyphicon-question-sign"></span>&nbsp;General Questions</a></li>
+				</ul>
+				
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+            </ul>
+            
+            <div class="navbar-default sidebar" role="navigation" >
+                <div class="sidebar-nav navbar-collapse">
+                    
+					<ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+							<div class="dropdown">
+								<button class="btn btn-block btn-primary dropdown-toggle" type="button" data-toggle="dropdown">New
+								<span class="caret"></span></button>
+								<ul class="dropdown-menu">
+									<!-- Trigger the modal with links -->
+									<li><a href="#" data-toggle="modal" data-target="#createCollectionModal">Collection</a></li>
+									<li><a href="#" data-toggle="modal" data-target="#createArtworkModal">Object</a></li>
+								</ul>
+							</div>
+							
+						</li>
+						
+						<!-- Sidebar showing the collections-->
+						<li>
+							<a href="collectionview.html" class="allArtworkCollectionsLink"><i class="glyphicon glyphicon-th-list"></i> Collections<span class="fa arrow"></span></a>
+							<!--<ul class="" id="collectionsList">
+							</ul>-->
+						</li>
+												
+                    </ul>
+					
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+		</nav>
+		
+		<!-- Artwork Collection Creation Modal -->
+		<div class="modal fade" id="createCollectionModal" role="dialog" tabindex='-1'>
+			<div class="modal-dialog">
+			
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header bg-primary">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">New collection</h4>
+					</div>
+					<form role="form" action="" method="post" id="createCollectionForm">
+						<div class="modal-body">
+							<br>
+							<div class="form-group">
+								<input type="text" class="form-control" name="newCollectionName" id="newCollectionName" placeholder="Enter new artwork collection name" minlength="1" required>
+							</div>
+						</div>
+						
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+							<button type="submit" class="btn btn-success btn-default pull-right" data-loading-text="Creating..." id="createCollectionButton"><span class="glyphicon glyphicon-plus"></span> Create</button>
+						</div>
+					</form>
+				</div>
+			  
+			</div>
+		</div>
+		
+		<!-- Artwork Creation Modal -->
+		<div class="modal fade" id="createArtworkModal" role="dialog" tabindex='-1'>
+			<div class="modal-dialog modal-lg">
+			
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header bg-primary">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">New object</h4>
+					</div>
+					<form role="form" action="" method="post" class="form-horizontal" id="createArtworkForm">
+						<div class="modal-body">
+							<div class="form-group">
+							    <label class="control-label col-sm-3">Collection:</label>
+								<div class="col-sm-4 dropdown">
+								   	<select class="form-control" name="collectionNamesSelection" id="collectionNamesSelection" form="createArtworkForm">
+									</select>
+								</div>
+								
+							</div>
+							
+							<div class="form-group">
+								<label class="control-label col-sm-3">Name:</label>*
+								<div class="col-sm-4">
+									<input type="text" class="form-control" name="newArtworkName" id="newArtworkName" placeholder="Enter new object name" form="createArtworkForm" minlength="1" required>
+								</div>
+							</div>
+							
+							<div class="form-group">
+							    <label class="control-label col-sm-3">Accession Date:</label>*
+								<div class="col-sm-4">
+									<div class="input-group date" data-provide="datepicker" name="accessionDatePicker" id="accessionDatePicker">
+										<input type="text" class="form-control" name="accessionDateInput" id="accessionDateInput" form="createArtworkForm" required>
+										<div class="input-group-addon">
+											<span class="glyphicon glyphicon-th"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+							    <label class="control-label col-sm-3">Database:</label>
+								<div class="col-sm-4 dropdown">			
+									<select class="form-control" name="databaseNamesSelection" id="databaseNamesSelection" form="createArtworkForm">
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="control-label col-sm-3">Scripting Language:</label>
+								<div class="col-sm-4 dropdown">
+									<select class="form-control" name="scriptingLanguageNamesSelection" id="scriptingLanguageNamesSelection" form="createArtworkForm">
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="control-label col-sm-3">Image Format:</label>
+								<div class="col-sm-4 dropdown">
+									<select class="form-control" name="imageFormatNamesSelection" id="imageFormatNamesSelection" form="createArtworkForm">
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="control-label col-sm-3">Image Viewer:</label>
+								<div class="col-sm-4 dropdown">
+									<select class="form-control" name="imageViewerNamesSelection" id="imageViewerNamesSelection" form="createArtworkForm">
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="control-label col-sm-3">Document Format:</label>
+								<div class="col-sm-4 dropdown">
+									<select class="form-control" name="documentFormatNamesSelection" id="documentFormatNamesSelection" form="createArtworkForm">
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="control-label col-sm-3">Document Viewer:</label>
+								<div class="col-sm-4 dropdown">
+									<select class="form-control" name="documentViewerNamesSelection" id="documentViewerNamesSelection" form="createArtworkForm">
+									</select>
+								</div>
+							</div>
+						</div> 
+					
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+							<button type="submit" class="btn btn-success btn-default pull-right" id="createArtworkButton" form="createArtworkForm"><span class="glyphicon glyphicon-plus"></span> Create</button>
+						</div>
+					</form>
+				</div>
+			  
+			</div>
+		</div>
+		
+		<!-- ArtworkCreationProgressModal -->
+		<div id="artworkCreationProgressModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="progress-bar progress-bar progress-bar-striped active" id="artworkCreationProgressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:100%;height:30px;font-size:14px;line-height:30px;">
+					Creating and analysing the new object...
+				</div>
+			</div>
+
+		  </div>
+		</div>
+		
+        <div id="page-wrapper">
+            
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+	<script src="../../js/pace.js"></script>
+	
+    <!-- jQuery -->
+    <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+	
+	<!-- DataTables JavaScript -->
+    <script src="../../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="../../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+    <script src="../../bower_components/datatables-responsive/js/dataTables.responsive.js"></script>
+
+	<!-- Custom Theme JavaScript -->
+    <script src="../../dist/js/sb-admin-2.js"></script>
+	
+    <!-- Morris Charts JavaScript -->
+    <script src="../../bower_components/raphael/raphael-min.js"></script>
+    <!--<script src="../../bower_components/morrisjs/morris.min.js"></script>
+    <script src="../../js/morris-data.js"></script>-->
+	
+	
+	<!-- Scripts for form validations -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.1/jquery.validate.min.js"></script>
+	
+	<script src="../../js/bootstrap-datepicker.min.js" charset="UTF-8"></script>
+
+	<script src="../../js/fileinput.min.js"></script>
+	
+	<script src="../../js/bootbox.min.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.min.js"></script>
+	
+	<script src="../../dist/js/spin.min.js"></script>
+	<script src="../../dist/js/ladda.min.js"></script>
+	
+	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+	<script src="//cdn.datatables.net/plug-ins/1.10.13/sorting/datetime-moment.js"></script>
+	
+	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+		
+		var wsUrl = location.protocol+"//"+location.hostname+":"+location.port;
+		
+		$(document).ready(function() {
+			
+			$.fn.dataTable.moment('DD/MM/YYYY');
+			
+			$.ajaxSetup ({
+				cache: false
+			});
+			
+			$("#page-wrapper").load("componentInfo.html", function(){
+				
+				$('#componentInfo').DataTable({
+					responsive: true,
+					"ajax": {
+						"url": wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/componentview/allcomponentsinfo",
+						"dataSrc": "",
+						"sAjaxDataProp": "",
+					},
+					"columns": [
+						{"data" : "Name"},
+						{"data" : "Type"},
+						{"data" : "usedPercentage"},
+						{"data" : "riskType"},
+						{"data" : "dateForAction"},
+						{"data" : "confidence"}
+					],
+					
+					"pageLength": 25,
+
+					"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull) {		
+						if (aData.Type == "Database") {
+							$('td:eq(1)', nRow).html('<a data-toggle="modal" id="databaseStatsLink" href="#databaseModal">'+aData.Type+'</a>');
+						}
+						else if (aData.Type == "Scripting Language") {
+							$('td:eq(1)', nRow).html('<a data-toggle="modal" id="scriptingLanguageStatsLink" href="#scriptingLanguageModal">'+aData.Type+'</a>');
+						}
+						else if (aData.Type == "Image Format") {
+							$('td:eq(1)', nRow).html('<a data-toggle="modal" id="imageFormatStatsLink" href="#imageFormatModal">'+aData.Type+'</a>');
+						}
+						else if (aData.Type == "Image Viewer") {
+							$('td:eq(1)', nRow).html('<a data-toggle="modal" id="imageViewerStatsLink" href="#imageViewerModal">'+aData.Type+'</a>');
+						}
+						else if (aData.Type == "Document Format") {
+							$('td:eq(1)', nRow).html('<a data-toggle="modal" id="documentFormatStatsLink" href="#documentFormatModal">'+aData.Type+'</a>');
+						}
+						else if (aData.Type == "Document Viewer") {
+							$('td:eq(1)', nRow).html('<a data-toggle="modal" id="documentViewerStatsLink" href="#documentViewerModal">'+aData.Type+'</a>');
+						}
+						
+						
+						if (aData.usedPercentage < 10) {
+							$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:10%;height:20px">'+aData.usedPercentage+'</div>');
+						}
+						else if (aData.usedPercentage < 50) {
+							$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.usedPercentage+'%;height:20px">'+aData.usedPercentage+'</div>');
+						}
+						else {
+							$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.usedPercentage+'%;height:20px">'+aData.usedPercentage+'</div>');
+						}
+					}
+					
+				});				
+			});
+			
+			$(document).on("click", "#databaseStatsLink", function(event) {
+				event.preventDefault();
+				$.get(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/componentview/stats/Database", function(data, status) {
+					var plotObj = $.plot($("#databasePieChart2"), data, {
+						series: {
+							pie: {
+								show: true,                
+								label: {
+									show:true,
+									radius: 0.8,
+									formatter: function (label, series) {                
+										return '<div style="border:1px solid grey;font-size:8pt;text-align:center;padding:5px;color:white;">' +
+										label + ' : ' +
+										Math.round(series.percent) +
+										'%</div>';
+									},
+									background: {
+										opacity: 0.8,
+										color: '#000'
+									},
+									grid: {
+										hoverable: true
+									}
+								}
+							}
+						}
+					});
+				});
+			});
+			
+			$(document).on("click", "#scriptingLanguageStatsLink", function(event) {
+				event.preventDefault();
+				$.get(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/componentview/stats/ScriptingLanguage", function(data, status) {
+					var plotObj = $.plot($("#scriptingLanguagePieChart2"), data, {
+						series: {
+							pie: {
+								show: true,                
+								label: {
+									show:true,
+									radius: 0.8,
+									formatter: function (label, series) {                
+										return '<div style="border:1px solid grey;font-size:8pt;text-align:center;padding:5px;color:white;">' +
+										label + ' : ' +
+										Math.round(series.percent) +
+										'%</div>';
+									},
+									background: {
+										opacity: 0.8,
+										color: '#000'
+									},
+									grid: {
+										hoverable: true
+									}
+								}
+							}
+						}
+					});
+				});
+			});
+			
+			$(document).on("click", "#imageFormatStatsLink", function(event) {
+				event.preventDefault();
+				$.get(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/componentview/stats/ImageFormat", function(data, status) {
+					var plotObj = $.plot($("#imageFormatPieChart2"), data, {
+						series: {
+							pie: {
+								show: true,                
+								label: {
+									show:true,
+									radius: 0.8,
+									formatter: function (label, series) {                
+										return '<div style="border:1px solid grey;font-size:8pt;text-align:center;padding:5px;color:white;">' +
+										label + ' : ' +
+										Math.round(series.percent) +
+										'%</div>';
+									},
+									background: {
+										opacity: 0.8,
+										color: '#000'
+									},
+									grid: {
+										hoverable: true
+									}
+								}
+							}
+						}
+					});
+				});
+			});
+			
+			$(document).on("click", "#imageViewerStatsLink", function(event) {
+				event.preventDefault();
+				$.get(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/componentview/stats/ImageViewer", function(data, status) {
+					var plotObj = $.plot($("#imageViewerPieChart2"), data, {
+						series: {
+							pie: {
+								show: true,                
+								label: {
+									show:true,
+									radius: 0.8,
+									formatter: function (label, series) {                
+										return '<div style="border:1px solid grey;font-size:8pt;text-align:center;padding:5px;color:white;">' +
+										label + ' : ' +
+										Math.round(series.percent) +
+										'%</div>';
+									},
+									background: {
+										opacity: 0.8,
+										color: '#000'
+									},
+									grid: {
+										hoverable: true
+									}
+								}
+							}
+						}
+					});
+				});
+			});
+			
+			$(document).on("click", "#documentFormatStatsLink", function(event) {
+				event.preventDefault();
+				$.get(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/componentview/stats/DocumentFormat", function(data, status) {
+					var plotObj = $.plot($("#documentFormatPieChart2"), data, {
+						series: {
+							pie: {
+								show: true,                
+								label: {
+									show:true,
+									radius: 0.8,
+									formatter: function (label, series) {                
+										return '<div style="border:1px solid grey;font-size:8pt;text-align:center;padding:5px;color:white;">' +
+										label + ' : ' +
+										Math.round(series.percent) +
+										'%</div>';
+									},
+									background: {
+										opacity: 0.8,
+										color: '#000'
+									},
+									grid: {
+										hoverable: true
+									}
+								}
+							}
+						}
+					});
+				});
+			});
+			
+			$(document).on("click", "#documentViewerStatsLink", function(event) {
+				event.preventDefault();
+				$.get(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/componentview/stats/DocumentViewer", function(data, status) {
+					var plotObj = $.plot($("#documentViewerPieChart2"), data, {
+						series: {
+							pie: {
+								show: true,                
+								label: {
+									show:true,
+									radius: 0.8,
+									formatter: function (label, series) {                
+										return '<div style="border:1px solid grey;font-size:8pt;text-align:center;padding:5px;color:white;">' +
+										label + ' : ' +
+										Math.round(series.percent) +
+										'%</div>';
+									},
+									background: {
+										opacity: 0.8,
+										color: '#000'
+									},
+									grid: {
+										hoverable: true
+									}
+								}
+							}
+						}
+					});
+				});
+			});
+			
+			$(document).on("click", "#componentViewHelpLink", function(event) {
+				event.preventDefault();
+				$("#componentViewHelpContent").load("componentviewhelp.html");
+			});
+			
+			$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/allcollectionnames", function(data) {
+				$.each(data, function(index, value) {
+					$("#collectionNamesSelection").append('<option value=' + value.replace(/ /g,"_") + '>'+ value + '</option>');
+				});
+			});
+			
+			$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/database/alldatabasenames", function(data) {
+				$.each(data, function(index, value) {
+					$("#databaseNamesSelection").append('<option value=' + value.replace(/ /g,"_") + '>'+ value + '</option>');
+				});
+			});
+			
+			$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/scriptinglanguage/allscriptinglanguagenames", function(data) {
+				$.each(data, function(index, value) {
+					$("#scriptingLanguageNamesSelection").append('<option value=' + value.replace(/ /g,"_") + '>'+ value  + '</option>');
+				});
+			});
+			
+			$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/imageformat/allimageformatnames", function(data) {
+				$.each(data, function(index, value) {
+					$("#imageFormatNamesSelection").append('<option value=' + value.replace(/ /g,"_") + '>'+ value  + '</option>');
+				});
+			});
+			
+			$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/imageviewer/allimageviewernames", function(data) {
+				$.each(data, function(index, value) {
+					$("#imageViewerNamesSelection").append('<option value=' + value.replace(/ /g,"_") + '>'+ value  + '</option>');
+				});
+			});
+			
+			$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/documentformat/alldocumentformatnames", function(data) {
+				$.each(data, function(index, value) {
+					$("#documentFormatNamesSelection").append('<option value=' + value.replace(/ /g,"_") + '>'+ value  + '</option>');
+				});
+			});
+			
+			$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/documentviewer/alldocumentviewernames", function(data) {
+				$.each(data, function(index, value) {
+					$("#documentViewerNamesSelection").append('<option value=' + value.replace(/ /g,"_") + '>'+ value  + '</option>');
+				});
+			});
+			
+			function getURLParameter(url, sParam) {
+				var pageUrl = url;
+				
+				var trimmedPageUrl = pageUrl;
+				if (pageUrl.includes("?")) {
+					trimmedPageUrl = pageUrl.substring(pageUrl.indexOf("?") + 1);
+				}
+				var sUrlVariables = trimmedPageUrl.split("&");
+				for (var i = 0; i < sUrlVariables.length; i++) {
+					var sParameterName = sUrlVariables[i].split("=");
+					if (sParameterName[0] == sParam) {
+						return sParameterName[1];
+					}
+				}
+			}
+			
+			$("#createCollectionForm").submit(function( event ) {
+				event.preventDefault();
+						
+				var newCollectionName = $('#createCollectionForm').find('input[name="newCollectionName"]').val();
+				
+				var formData = "newCollectionName="+newCollectionName;
+				
+				$.ajax({
+					url : wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/creation/collectioncreation",
+					type: "POST",
+					data : formData,
+					success: function(data, textStatus, jqXHR) {
+						bootbox.alert({ 
+							message: "New collection <b>"+newCollectionName+"</b> has been created.",
+							buttons: {
+								ok: {
+									label: " OK",
+									className:"btn btn-success btn-medium glyphicon glyphicon-ok"
+								}
+							},
+							callback: function() {
+								$('#collectionsList').empty();
+								$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/allcollectionnames", function(data) {
+									$.each(data, function(index, value) {
+										$("#collectionsList").append('<li><a href="getCollection?collectionName=' + value + '" class="ajaxLoadedCollectionLink" id="' + value + '">' + value + '</a><a href="deleteCollection?collectionName='+value+'" id="'+value+'" class="deleteCollection"><span class="glyphicon glyphicon-trash"></span></a></li>');
+									});
+									$('#collectionsList').metisMenu();
+								});
+								
+								$('#collectionNamesSelection').empty();
+								$.getJSON(wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/collectionview/allcollectionnames", function(data) {
+									$.each(data, function(index, value) {
+										$("#collectionNamesSelection").append('<option value=' + value.replace(/ /g, "_") + '>'+ value + '</option>');
+									});
+								});
+							}
+						});
+						$("input[type=text]").val("");
+						$("#createCollectionModal").modal('toggle');
+					},
+					error: function (jqXHR, textStatus, errorThrown)
+					{
+						var errorMessage = errorThrown;
+						if (errorThrown == "Conflict") {
+							errorMessage = "Collection name is already existed. Please choose another one."
+						}
+						else {
+							errorMessage = "Collection creation failed."
+						}
+						
+						bootbox.alert({ 
+							message: errorMessage,
+							buttons: {
+								ok: {
+									label: " OK",
+									className:"btn btn-danger btn-medium glyphicon glyphicon-exclamation-sign"
+								}
+							},
+							callback: function() {
+							}
+						});
+						
+					}
+				});
+			});
+				
+			$("#createArtworkForm").submit(function( event ) {
+				event.preventDefault();
+				
+				$("#artworkCreationProgressModal").modal({backdrop: 'static', keyboard: false});
+					
+				var newArtworkName = $('#createArtworkForm').find('input[name="newArtworkName"]').val();
+				
+				var formData = $(this).serializeArray();
+				
+				$("#createArtworkModal").modal('toggle');
+				
+				$.ajax({
+					url : wsUrl+ "/appraisaltoolws/rest/v1/sciencedemo/creation/artworkcreation",
+					type: "POST",
+					contentType : "application/x-www-form-urlencoded",
+					data : formData,
+					
+					success: function(data, textStatus, jqXHR) {
+						bootbox.alert({ 
+							//message: data,
+							message: "New object <b>"+ newArtworkName + "</b> has been created.",
+							buttons: {
+								ok: {
+									label: " OK",
+									className:"btn btn-success btn-medium glyphicon glyphicon-ok"
+								}
+							},
+							callback: function() {
+								$("#componentInfo").dataTable().fnDestroy();
+								$('#componentInfo').DataTable({
+					responsive: true,
+					"ajax": {
+						"url": wsUrl+"/appraisaltoolws/rest/v1/sciencedemo/componentview/allcomponentsinfo",
+						"dataSrc": "",
+						"sAjaxDataProp": "",
+					},
+					"columns": [
+						{"data" : "Name"},
+						{"data" : "Type"},
+						{"data" : "usedPercentage"},
+						{"data" : "riskType"},
+						{"data" : "dateForAction"},
+						{"data" : "confidence"}
+					],
+					"pageLength": 25,
+
+					"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull) {		
+						//$('td:eq(0)', nRow).html('<a href="/getComponent?componentName='+aData.Name+'"  class="componentLink">'+aData.Name+'</a>');
+						
+						if (aData.Type == "Database") {
+							$('td:eq(1)', nRow).html('<a data-toggle="modal" id="databaseStatsLink" href="#databaseModal">'+aData.Type+'</a>');
+						}
+						else if (aData.Type == "Scripting Language") {
+							$('td:eq(1)', nRow).html('<a data-toggle="modal" id="scriptingLanguageStatsLink" href="#scriptingLanguageModal">'+aData.Type+'</a>');
+						}
+						else if (aData.Type == "Image Format") {
+							$('td:eq(1)', nRow).html('<a data-toggle="modal" id="imageFormatStatsLink" href="#imageFormatModal">'+aData.Type+'</a>');
+						}
+						else if (aData.Type == "Image Viewer") {
+							$('td:eq(1)', nRow).html('<a data-toggle="modal" id="imageViewerStatsLink" href="#imageViewerModal">'+aData.Type+'</a>');
+						}
+						else if (aData.Type == "Document Format") {
+							$('td:eq(1)', nRow).html('<a data-toggle="modal" id="documentFormatStatsLink" href="#documentFormatModal">'+aData.Type+'</a>');
+						}
+						else if (aData.Type == "Document Viewer") {
+							$('td:eq(1)', nRow).html('<a data-toggle="modal" id="documentViewerStatsLink" href="#documentViewerModal">'+aData.Type+'</a>');
+						}
+						
+						
+						if (aData.usedPercentage < 10) {
+							$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:10%;height:20px">'+aData.usedPercentage+'</div>');
+						}
+						else if (aData.usedPercentage < 50) {
+							$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.usedPercentage+'%;height:20px">'+aData.usedPercentage+'</div>');
+						}
+						else {
+							$('td:eq(2)', nRow).html('<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:'+aData.usedPercentage+'%;height:20px">'+aData.usedPercentage+'</div>');
+						}
+					}
+					
+				});
+							}
+						});
+						
+						$("input[type=text]").val("");
+						
+						$('#collectionNamesSelection').find('option:first').attr('selected', 'selected');
+						$('#databaseNamesSelection').find('option:first').attr('selected', 'selected');
+						$('#scriptingLanguageNamesSelection').find('option:first').attr('selected', 'selected');
+						$('#imageFormatNamesSelection').find('option:first').attr('selected', 'selected');
+						$('#imageViewerNamesSelection').find('option:first').attr('selected', 'selected');
+						$('#documentFormatNamesSelection').find('option:first').attr('selected', 'selected');
+						$('#documentViewerNamesSelection').find('option:first').attr('selected', 'selected');
+						
+						$("#artworkCreationProgressModal").modal('toggle');
+					},
+					error: function (jqXHR, textStatus, errorThrown) {
+						$("#artworkCreationProgressModal").modal('toggle');
+						var errorMessage = errorThrown;
+						if (errorThrown == "Conflict") {
+							errorMessage = "Artwork name is already existed. Please choose another one."
+						}
+						else if (errorThrown == "Bad Request") (
+							errorMessage = "Please upload the video to analyse video codec and container format or select them manually."
+						)
+						else if (errorThrown == "Forbidden") (
+							errorMessage = "Please create an artwork collection first or check the artwork collection name."
+						)
+						else {
+							errorMessage = "Object creation failed."
+						}
+						
+						bootbox.alert({ 
+							message: errorMessage,
+							buttons: {
+								ok: {
+									label: " OK",
+									className:"btn btn-danger btn-medium glyphicon glyphicon-exclamation-sign"
+								}
+							},
+							callback: function() {
+								$("#createArtworkModal").modal('toggle');
+							}
+						});
+					}
+				});
+			});
+			
+			$('#accessionDatePicker').datepicker({
+				format: "dd/mm/yyyy"
+			});
+			
+		});
+		
+		
+    </script>
+	
+	<style>
+		#createCollectionModal {
+			top:30%;
+		}
+		#createArtworkModal {
+			top:0%;
+			overflow-y: auto;
+		}
+		#collectionsList li {
+			border-bottom: 0!important;
+			//display: block;
+			padding: 10px;
+			//background-color: #0;
+		}
+		.deleteCollection {
+			float: right;
+		}
+		#artworkCreationProgressModal {
+			top:35%;
+		}
+		#updateAllArtworksProgressModal {
+			top:35%;
+		}
+		
+		#collectionsList li.active {
+			background-color: #eee;
+			//background-color: yellow;
+		}
+		
+		#collectionsList li.hover {
+			//background-color: #eee;
+			background-color: yellow;
+		}
+		
+		#collectionsList a {
+			//background-color: #0;
+			text-decoration: none;
+		}
+		
+	</style>
+	
+</body>
+
+</html>

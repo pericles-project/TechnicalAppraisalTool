@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+
+<!-- Media demo beans -->
+<bean id="mediademo_propertiesFileReader" class="org.pericles.appraisaltool.mediademo.util.PropertiesFileReader" scope="singleton">
+</bean>
+
+<bean id="mediademo_analysisPythonScriptExecutor" class="org.pericles.appraisaltool.mediademo.dataanalysis.AnalysisPythonScriptExecutor" scope="singleton">
+	<constructor-arg ref="mediademo_propertiesFileReader" />
+</bean>
+
+<bean id="mediademo_harvesterPythonScriptExecutor" class="org.pericles.appraisaltool.mediademo.dataanalysis.HarvesterPythonScriptExecutor" scope="singleton">
+	<constructor-arg ref="mediademo_propertiesFileReader" />
+</bean>
+
+<bean id="mediademo_rScriptExecutor" class="org.pericles.appraisaltool.mediademo.dataanalysis.RScriptExecutor" scope="singleton">
+	<constructor-arg ref="mediademo_propertiesFileReader" />
+</bean>
+
+<bean id="mediademo_fusekiConnector" class="org.pericles.appraisaltool.mediademo.dao.FusekiConnector" scope="singleton">
+</bean>
+
+<bean id="mediademo_fusekiCommandsExecutor" class="org.pericles.appraisaltool.mediademo.dao.FusekiCommandsExecutor" scope="singleton">
+	<constructor-arg ref="mediademo_fusekiConnector" />
+	<constructor-arg ref="mediademo_propertiesFileReader" />
+</bean>
+
+<bean id="mediademo_videoFileMetadataExtractor" class="org.pericles.appraisaltool.mediademo.util.VideoFileMetadataExtractor" scope="singleton">
+</bean>
+
+<bean id="mediademo_wsRequestsHandler" class="org.pericles.appraisaltool.mediademo.logic.WSRequestsHandler" scope="singleton">
+	<constructor-arg ref="mediademo_fusekiCommandsExecutor" />
+	<constructor-arg ref="mediademo_videoFileMetadataExtractor" />
+	<constructor-arg ref="mediademo_harvesterPythonScriptExecutor" />
+	<constructor-arg ref="mediademo_rScriptExecutor" />
+	<constructor-arg ref="mediademo_analysisPythonScriptExecutor" />	
+	<constructor-arg ref="mediademo_propertiesFileReader" />
+</bean>
+
+<!-- Scicence demo beans -->
+<bean id="sciencedemo_propertiesFileReader" class="org.pericles.appraisaltool.sciencedemo.util.PropertiesFileReader" scope="singleton">
+</bean>
+
+<bean id="sciencedemo_analysisPythonScriptExecutor" class="org.pericles.appraisaltool.sciencedemo.dataanalysis.AnalysisPythonScriptExecutor" scope="singleton">
+	<constructor-arg ref="sciencedemo_propertiesFileReader" />
+</bean>
+
+<bean id="sciencedemo_harvesterPythonScriptExecutor" class="org.pericles.appraisaltool.sciencedemo.dataanalysis.HarvesterPythonScriptExecutor" scope="singleton">
+	<constructor-arg ref="sciencedemo_propertiesFileReader" />
+</bean>
+
+<bean id="sciencedemo_rScriptExecutor" class="org.pericles.appraisaltool.sciencedemo.dataanalysis.RScriptExecutor" scope="singleton">
+	<constructor-arg ref="sciencedemo_propertiesFileReader" />
+</bean>
+
+<bean id="sciencedemo_fusekiConnector" class="org.pericles.appraisaltool.sciencedemo.dao.FusekiConnector" scope="singleton">
+</bean>
+
+<bean id="sciencedemo_fusekiCommandsExecutor" class="org.pericles.appraisaltool.sciencedemo.dao.FusekiCommandsExecutor" scope="singleton">
+	<constructor-arg ref="sciencedemo_fusekiConnector" />
+	<constructor-arg ref="sciencedemo_propertiesFileReader" />
+</bean>
+
+<bean id="sciencedemo_videoFileMetadataExtractor" class="org.pericles.appraisaltool.sciencedemo.util.VideoFileMetadataExtractor" scope="singleton">
+</bean>
+
+<bean id="sciencedemo_wsRequestsHandler" class="org.pericles.appraisaltool.sciencedemo.logic.WSRequestsHandler" scope="singleton">
+	<constructor-arg ref="sciencedemo_fusekiCommandsExecutor" />
+	<constructor-arg ref="sciencedemo_videoFileMetadataExtractor" />
+	<constructor-arg ref="sciencedemo_harvesterPythonScriptExecutor" />
+	<constructor-arg ref="sciencedemo_rScriptExecutor" />
+	<constructor-arg ref="sciencedemo_analysisPythonScriptExecutor" />	
+	<constructor-arg ref="sciencedemo_propertiesFileReader" />
+</bean>
+
+</beans>

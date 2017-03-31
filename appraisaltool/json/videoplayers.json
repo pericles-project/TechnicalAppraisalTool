@@ -1,0 +1,1000 @@
+[
+	{
+		"Name": "ALLPlayer",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "ALLPlayer"
+			},
+			{
+				"Wikipedia": "ALLPlayer"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			},
+			{
+				"Name": "Android"
+			}
+		]
+	},
+	{
+		"Name": "Apprentice Video",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "Apprentice Video"
+			},
+			{
+				"Wikipedia": "Apprentice Video"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			},
+			{
+				"Name": "Mac OS X"
+			},
+			{
+				"Name": "Linux"
+			},
+			{
+				"Name": "BSD Unix"
+			}
+		]
+	},
+	{
+		"Name": "Banshee",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "Banshee"
+			},
+			{
+				"Wikipedia": "Banshee"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Mac OS X"
+			},
+			{
+				"Name": "Linux"
+			},
+			{
+				"Name": "BSD Unix"
+			}
+		],
+		
+		"Partially Supported Operating System": [
+			{
+				"Name": "Windows"
+			}
+		]
+	},
+	{
+		"Name": "CorePlayer",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "CorePlayer"
+			},
+			{
+				"Wikipedia": "CorePlayer"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			},
+			{
+				"Name": "Windows CE, Mobile"
+			},
+			{
+				"Name": "Mac OS X"
+			},
+			{
+				"Name": "iOS"
+			},
+			{
+				"Name": "Android"
+			},
+			{
+				"Name": "Linux"
+			},
+			{
+				"Name": "BSD Unix"
+			},
+			{
+				"Name": "Solaris"
+			},
+			{
+				"Name": "Unix-like"
+			}
+		]
+	},
+	{
+		"Name": "CrystalPlayer",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "CrystalPlayer"
+			},
+			{
+				"Wikipedia": "CrystalPlayer"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			}
+		]
+	},
+	{
+		"Name": "DSPlayer",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "DSPlayer"
+			},
+			{
+				"Wikipedia": "DSPlayer"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			}
+		]
+	},
+	{
+		"Name": "FFplay",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "FFplay"
+			},
+			{
+				"Wikipedia": "FFplay"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Mac OS X"
+			},
+			{
+				"Name": "Linux"
+			},
+			{
+				"Name": "BSD Unix"
+			},
+			{
+				"Name": "Solaris"
+			},
+			{
+				"Name": "Unix-like"
+			},
+			{
+				"Name": "DOS"
+			},
+			{
+				"Name": "BeOS, Haiku, ZETA"
+			},
+			{
+				"Name": "OS/2"
+			}
+		]
+	},
+	{
+		"Name": "GOM Player",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "GOM Player"
+			},
+			{
+				"Wikipedia": "GOM Player"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			}
+		]
+	},
+	{
+		"Name": "iTunes",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "iTunes"
+			},
+			{
+				"Wikipedia": "iTunes"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			},
+			{
+				"Name": "Mac OS X"
+			},
+			{
+				"Name": "iOS"
+			}
+		]
+	},
+	{
+		"Name": "jetAudio",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "jetAudio"
+			},
+			{
+				"Wikipedia": "jetAudio"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			},
+			{
+				"Name": "Android"
+			}
+		]
+	},
+	{
+		"Name": "JRiver Media Center",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "JRiver Media Center"
+			},
+			{
+				"Wikipedia": "JRiver Media Center"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			},
+			{
+				"Name": "Mac OS X"
+			}
+		]
+	},
+	{
+		"Name": "K-Multimedia Player",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "KMPlayer"
+			},
+			{
+				"Wikipedia": "K-Multimedia Player"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			},
+			{
+				"Name": "iOS"
+			},
+			{
+				"Name": "Android"
+			}
+		],
+		
+		"Partially Supported Operating System": [
+			{
+				"Name": "Mac OS X"
+			}
+		]
+	},
+	{
+		"Name": "Mac blu-ray Player",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "Mac blu-ray Player"
+			},
+			{
+				"Wikipedia": "Mac blu-ray Player"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			},
+			{
+				"Name": "Mac OS X"
+			},
+			{
+				"Name": "iOS"
+			}
+		]
+	},
+	{
+		"Name": "Media Go",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "Media Go"
+			},
+			{
+				"Wikipedia": "Media Go"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			}
+		]
+	},
+	{
+		"Name": "Media Player Classic",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "Media Player Classic"
+			},
+			{
+				"Wikipedia": "Media Player Classic"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			}
+		]
+	},
+	{
+		"Name": "Media Player Classic Home Cinema",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "Media Player Classic Home Cinema"
+			},
+			{
+				"Wikipedia": "Media Player Classic Home Cinema"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			}
+		]
+	},
+	{
+		"Name": "MediaPortal",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "Media Player Classic Home Cinema"
+			},
+			{
+				"Wikipedia": "Media Player Classic Home Cinema"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			}
+		]
+	},
+	{
+		"Name": "MPlayer",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "MPlayer"
+			},
+			{
+				"Wikipedia": "MPlayer"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			},
+			{
+				"Name": "Mac OS X"
+			},
+			{
+				"Name": "Linux"
+			},
+			{
+				"Name": "BSD Unix"
+			},
+			{
+				"Name": "Solaris"
+			},
+			{
+				"Name": "Unix-like"
+			},
+			{
+				"Name": "DOS"
+			},
+			{
+				"Name": "BeOS, Haiku, ZETA"
+			},
+			{
+				"Name": "OS/2"
+			}
+		]
+	},
+	{
+		"Name": "Mplayerxp",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "Mplayerxp"
+			},
+			{
+				"Wikipedia": "Mplayerxp"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			},
+			{
+				"Name": "Linux"
+			},
+			{
+				"Name": "BSD Unix"
+			}
+		]
+	},
+	{
+		"Name": "Ogle",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "Ogle"
+			},
+			{
+				"Wikipedia": "Ogle"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Linux"
+			},
+			{
+				"Name": "BSD Unix"
+			},
+			{
+				"Name": "Solaris"
+			},
+			{
+				"Name": "Unix-like"
+			}
+		]
+	},
+	{
+		"Name": "Plex Media Player",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "Plex Media Player"
+			},
+			{
+				"Wikipedia": "Plex Media Player"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			},
+			{
+				"Name": "Windows Phone"
+			},
+			{
+				"Name": "Mac OS X"
+			},
+			{
+				"Name": "iOS"
+			},
+			{
+				"Name": "Android"
+			},
+			{
+				"Name": "Linux"
+			}
+		]
+	},
+	{
+		"Name": "QuickTime Player",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "QuickTime Player"
+			},
+			{
+				"Wikipedia": "QuickTime Player"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			},
+			{
+				"Name": "Mac OS X"
+			},
+			{
+				"Name": "iOS"
+			}
+		]
+	},
+	{
+		"Name": "Quintessential Player",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "Quintessential Player"
+			},
+			{
+				"Wikipedia": "Quintessential Player"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			}
+		]
+	},
+	{
+		"Name": "RealPlayer",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "RealPlayer"
+			},
+			{
+				"Wikipedia": "RealPlayer"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			},
+			{
+				"Name": "Windows CE, Mobile"
+			},
+			{
+				"Name": "Mac OS X"
+			},
+			{
+				"Name": "Android"
+			},
+			{
+				"Name": "Linux"
+			},
+			{
+				"Name": "BSD Unix"
+			},
+			{
+				"Name": "Solaris"
+			},
+			{
+				"Name": "Unix-like"
+			}
+		]
+	},
+	{
+		"Name": "SMPlayer",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "SMPlayer"
+			},
+			{
+				"Wikipedia": "SMPlayer"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			},
+			{
+				"Name": "Linux"
+			},
+			{
+				"Name": "BSD Unix"
+			}
+		]
+	},
+	{
+		"Name": "Songbird",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "Songbird"
+			},
+			{
+				"Wikipedia": "Songbird"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			}
+		],
+		
+		"Partially Supported Operating System": [
+			{
+				"Name": "Linux"
+			},
+			{
+				"Name": "Solaris"
+			}
+		]
+	},
+	{
+		"Name": "TotalMedia Theatre",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "TotalMedia Theatre"
+			},
+			{
+				"Wikipedia": "TotalMedia Theatre"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			}
+		]
+	},
+	{
+		"Name": "GNOME Videos",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "GNOME Videos"
+			},
+			{
+				"Wikipedia": "GNOME Videos"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Linux"
+			},
+			{
+				"Name": "BSD Unix"
+			},
+			{
+				"Name": "Solaris"
+			},
+			{
+				"Name": "Unix-like"
+			}
+		]
+	},
+	{
+		"Name": "Videostream",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "Videostream"
+			},
+			{
+				"Wikipedia": "Videostream"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			},
+			{
+				"Name": "Mac OS X"
+			},
+			{
+				"Name": "Android"
+			},
+			{
+				"Name": "Linux"
+			}
+		]
+	},
+	{
+		"Name": "VLC",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "VLC"
+			},
+			{
+				"Wikipedia": "VLC"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			},
+			{
+				"Name": "Windows CE, Mobile"
+			},
+			{
+				"Name": "Windows Phone"
+			},
+			{
+				"Name": "Mac OS X"
+			},
+			{
+				"Name": "iOS"
+			},
+			{
+				"Name": "Android"
+			},
+			{
+				"Name": "Linux"
+			},
+			{
+				"Name": "BSD Unix"
+			},
+			{
+				"Name": "Solaris"
+			},
+			{
+				"Name": "Unix-like"
+			},
+			{
+				"Name": "DOS"
+			},
+			{
+				"Name": "BeOS, Haiku, ZETA"
+			},
+			{
+				"Name": "OS/2"
+			}
+		]
+	},
+	{
+		"Name": "Winamp",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "Winamp"
+			},
+			{
+				"Wikipedia": "Winamp"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			},
+			{
+				"Name": "Android"
+			}
+		],
+		
+		"Partially Supported Operating System": [
+			{
+				"Name": "Mac OS X",
+				"Note": "Beta version"
+			},
+			{
+				"Name": "Linux",
+				"Note": "Last version is Winamp 3"
+			}
+		]
+	},
+	{
+		"Name": "Windows Media Player",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "Windows Media Player"
+			},
+			{
+				"Wikipedia": "Windows Media Player"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			},
+			{
+				"Name": "Windows CE, Mobile"
+			},
+			{
+				"Name": "Windows Phone"
+			}
+		],
+		
+		"Partially Supported Operating System": [
+			{
+				"Name": "Mac OS X",
+				"Note": "Dropped (WMP9)"
+			},
+			{
+				"Name": "Solaris",
+				"Note": "Dropped (WMP6.3)"
+			}
+		]
+	},
+	{
+		"Name": "Kodi",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "Kodi"
+			},
+			{
+				"Wikipedia": "Kodi"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Windows"
+			},
+			{
+				"Name": "Mac OS X"
+			},
+			{
+				"Name": "iOS"
+			},
+			{
+				"Name": "Android"
+			},
+			{
+				"Name": "Linux"
+			},
+			{
+				"Name": "BSD Linux"
+			}
+		],
+		
+		"Partially Supported Operating System": [
+			{
+				"Name": "Windows CE, Mobile",
+				"Note": "Original Xbox only"
+			}
+		]
+	},
+	{
+		"Name": "xine",
+		
+		"Alternative Name": [
+			{
+				"Google Trends": "xine"
+			},
+			{
+				"Wikipedia": "xine"
+			}
+		],
+		
+		"Type": "Video Player",
+		
+		"Fully Supported Operating System": [
+			{
+				"Name": "Linux"
+			},
+			{
+				"Name": "BSD Linux"
+			},
+			{
+				"Name": "Solaris"
+			},
+			{
+				"Name": "Unix-like"
+			}
+		],
+		
+		"Partially Supported Operating System": [
+			{
+				"Name": "Mac OS X",
+				"Note": "WIP for 1.2 series"
+			}
+		]
+	}
+]

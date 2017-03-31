@@ -43,4 +43,5 @@ check that you've remembered the 'ERMR' flag at the end
 To run the tests
 
 > cd pericles-analysis
+
 > nosetests

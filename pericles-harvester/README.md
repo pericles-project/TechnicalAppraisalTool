@@ -14,9 +14,25 @@ The output databases are:
 There is a flag isPlotGraphs in main.py. This can be set to True to plot graphs of the raw and filtered data or False not to. 
 If True is selected, a folder named Graphs needs to be created i.e. "mkdir Graphs" in the PERICLES_Harvester root folder.
 
+The program requires python2.7. First install the modules:
+
+> pip install bs4
+
+> pip install mechanize 
+
+> pip install rson
+
+> pip install simplejson
+
+> pip install matplotlib
+
+> pip install scipy
+
+> pip install numpy
+
 To run:
 
-python2.7 main.py URL dataset dva/exp
+> python2.7 main.py URL dataset dva/exp
 
 #### Command line arguments
 * argv[1] = base URL of Fuseki: e.g. http://localhost:3030

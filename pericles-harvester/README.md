@@ -19,14 +19,15 @@ To run:
 python2.7 main.py URL dataset dva/exp
 
 #### Command line arguments
-#   argv[1] = base URL of Fuseki: e.g. http://localhost:3030
-#   argv[2] = Dataset name in Fuseki e.g. ds
-#   argv[3] = dva or exp (for media or science demos respectively)
+   argv[1] = base URL of Fuseki: e.g. http://localhost:3030
+   argv[2] = Dataset name in Fuseki e.g. ds
+   argv[3] = dva or exp (for media or science demos respectively)
 
 
 Example: python2.7 main.py http://localhost:3030 ds dva
 
 
 To use the Google harvester, a Google email and password are required to be entered in googletrends.py (lines 40 and 45 respectively).
+These currently have default values.
 
 

@@ -6,11 +6,17 @@ There are two separate subfolders, MediaBuilder/ to create the DVA ontology and 
 Here the individual CSV files containing entity names, dependencies and transformation costs can be edited.
 
 To run the program for media:
+
 > cd MediaBuilder
+
 > python2.7 main.py 
+
 or
+
 > cd ScienceBuilder
+
 > python2.7 main.py 
+
 for science.
 
 The programs enables the following to be entered on the command line.

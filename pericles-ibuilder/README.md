@@ -25,3 +25,4 @@ The output is a single Turtle file. Samples are provided - either test-dva.ttl o
 For the appraisal tool, steps 1-2 are required as a minimum, but for testing purposes, it is possible to build the elements separately.
 
 Note - the csv files are sensitive to spaces, so leading and training spaces should be removed if the files are edited.
+ 

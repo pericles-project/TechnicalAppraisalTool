@@ -1,5 +1,5 @@
 # Technical Appraisal Tool
-The technical appraisal tool is aimed at conservators of time-based media collections and science data managers who are responsible for maintaining the long term reusability of complex digital objects. The appraisal tool was conceived as a web-based application. 
+The PERICLES Technical Appraisal Tool is aimed at conservators of time-based media collections and science data managers who are responsible for maintaining the long term reusability of complex digital objects. The appraisal tool was conceived as a web-based application. 
 
 The appraisal tool:
 1. Captures and analyses time-based activity data extracted from external data sources (e.g. search engines, software repositorues, Wkipedia) to predict component obsolscence or failure.

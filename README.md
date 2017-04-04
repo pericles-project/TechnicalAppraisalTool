@@ -17,3 +17,5 @@ The tool can be accessed using any up-to-date web browser. It has been tested an
 This video provides an introduction to the functionality and usage of the technical appraisal tool. 
 
 ## Screenshot
+
+[![Screenshot](https://raw.githubusercontent.com/pericles-project/TechnicalAppraisalTool/master/screenshot.png)](https://raw.githubusercontent.com/pericles-project/TechnicalAppraisalTool/master/screenshot.png)

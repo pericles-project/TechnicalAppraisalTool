@@ -26,7 +26,7 @@ The programs enables the following to be entered on the command line.
    MediaModel/ and ScienceModel/ respectively. Enter y here.
 3. Sample instances of object (i.e. artworks or experiments) are given in the files named instances.csv. 
 
-The output is a single Turtle file. Samples are provided - either test-dva.ttl or test_exp.ttl. 
+The output is a single Turtle file. Samples are provided - either test-dva.ttl or test_exp.ttl. Thus the pericles-ibuilder tool is only required if the ontologies are changed.
 
 For the appraisal tool, steps 1-2 are required as a minimum, but for testing purposes, it is possible to build the elements separately.
 

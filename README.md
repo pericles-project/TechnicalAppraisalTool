@@ -12,10 +12,16 @@ The tool can be accessed using any up-to-date web browser. It has been tested an
 
 ## Demonstration video
 
-[![Youtube video](https://raw.githubusercontent.com/pericles-project/TechnicalAppraisalTool/master/youtubevideo.png)](https://www.youtube.com/watch?v=pd7zWr7KYJw) 
-
 This video provides an introduction to the functionality and usage of the technical appraisal tool. 
+
+[![Youtube video](https://raw.githubusercontent.com/pericles-project/TechnicalAppraisalTool/master/youtubevideo.png)](https://www.youtube.com/watch?v=pd7zWr7KYJw) 
 
 ## Screenshot
 
+The tool has two demonstrators for media and science. The screenshot shows the Collection View for media.
+
 [![Screenshot](https://raw.githubusercontent.com/pericles-project/TechnicalAppraisalTool/master/screenshot.png)](https://raw.githubusercontent.com/pericles-project/TechnicalAppraisalTool/master/screenshot.png)
+
+## Acknowledgement
+
+This work was supported by the European Commission Seventh Framework Programme under Grant Agreement Number FP7-601138 PERICLES. 

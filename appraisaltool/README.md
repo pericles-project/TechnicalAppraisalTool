@@ -13,18 +13,18 @@ Pericles Technical Appraisal Tool - A web based application.
 
 #### Upload appraisaltool (web application) to the server
 1. Upload all files in “appraisaltool” to the server.
-1. Make sure the “appraisaltool” is placed in Tomcat’s “webapps” folder.
+2. Make sure the “appraisaltool” is placed in Tomcat’s “webapps” folder.
 
 #### Build appraisaltoolws.war from source
-1. Use maven to produce .war file from source.
+1. Use maven to produce .war file from source. A prebuilt file appraisaltoolws.war is provided. If this is used, this step can be omitted
 
 #### Upload appraisaltoolws.war (web service) to server
 1. Upload the file “appraisaltoolws.war” to the server.
-1. Make sure the “appraisaltoolws.war” is placed in Tomcat’s “webapps” folder.
+2. Make sure the “appraisaltoolws.war” is placed in Tomcat’s “webapps” folder.
  
 #### Upload pericles-harvester to server
 1. Upload all files in “pericles-harvester” to the server.
-1. Make sure everybody has the right to execute the Python code and has the right to write the output file(s) if there is any.
+2. Make sure everybody has the right to execute the Python code and has the right to write the output file(s) if there is any.
 
 #### Upload pericles-predictor to server
 1. Upload all files in “pericles-predictor” to the server.

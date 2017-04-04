@@ -7,3 +7,8 @@ The appraisal tool:
 3. Determines recovery options of minimal cost which can prolong the reuse of the object.
 
 The tool is based on a Java 8 framework around Apache Tomcat. Analytical components are written in Python 2 and R. The models are represented as OWL ontologies and stored either in Fuseki triple store or the PERICLES Entity Registry Model Repository (ERMR).
+
+## Demonstration video
+
+This [![Youtube video](https://www.github.com/pericles-project/TechnicalAppraisalTool/youtubevideo.png)](https://www.youtube.com/watch?v=pd7zWr7KYJw) provides an introduction to the functionality and usage of the technical appraisal tool. 
+

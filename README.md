@@ -10,4 +10,5 @@ The tool is based on a Java 8 framework around Apache Tomcat. Analytical compone
 
 ## Demonstration video
 
-This [![Youtube video](https://raw.githubusercontent.com/pericles-project/TechnicalAppraisalTool/master/youtubevideo.png)](https://www.youtube.com/watch?v=pd7zWr7KYJw) provides an introduction to the functionality and usage of the technical appraisal tool. 
+[![Youtube video](https://raw.githubusercontent.com/pericles-project/TechnicalAppraisalTool/master/youtubevideo.png)](https://www.youtube.com/watch?v=pd7zWr7KYJw) 
+This video provides an introduction to the functionality and usage of the technical appraisal tool. 

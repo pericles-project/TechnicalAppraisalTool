@@ -1,4 +1,8 @@
-Pericles Technical Appraisal Tool Web Services - RESTFul web services which utilised by Pericles Technical Appraisal Tool. These services can also be used for other purpose. 
+Pericles Technical Appraisal Tool Web Services - RESTFul web services which utilised by Pericles Technical Appraisal Tool. These services can also be used for other purposes. 
+
+The instructions below are for deploying the PERICLES technical appraisal tool web services "appraisaltoolws.war". 
+
+NB. If the instructions for installing appraisaltool/README.md have been completed, these steps can be omitted.
 
 ## Getting started
 

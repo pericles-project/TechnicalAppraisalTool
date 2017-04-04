@@ -8,7 +8,12 @@ The appraisal tool:
 
 The tool is based on a Java 8 framework around Apache Tomcat. Analytical components are written in Python 2 and R. The models are represented as OWL ontologies and stored either in Fuseki triple store or the PERICLES Entity Registry Model Repository (ERMR).
 
+The tool can be accessed using any up-to-date web browser. It has been tested and developed using Chrome.
+
 ## Demonstration video
 
 [![Youtube video](https://raw.githubusercontent.com/pericles-project/TechnicalAppraisalTool/master/youtubevideo.png)](https://www.youtube.com/watch?v=pd7zWr7KYJw) 
+
 This video provides an introduction to the functionality and usage of the technical appraisal tool. 
+
+## Screenshot

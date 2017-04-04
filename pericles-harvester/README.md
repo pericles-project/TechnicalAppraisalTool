@@ -11,10 +11,13 @@ The output databases are:
 * SourceForge - sourceforgedownloadstats.db
 * Github - gitcommittimeseries.db
 
-There is a flag isPlotGraphs in main.py. This can be set to True to plot graphs of the raw and filtered data or False not to. 
-If True is selected, a folder named Graphs needs to be created i.e. "mkdir Graphs" in the PERICLES_Harvester root folder.
+To use the Google harvester, a Google email and password are required to be entered in googletrends.py (lines 40 and 45 respectively).
+These currently have default values.
 
-The program requires python2.7. First install the modules:
+There is a flag isPlotGraphs in main.py. This can be set to True to plot graphs of the raw and filtered data or False not to. 
+If True is selected, a folder named Graphs needs to be created i.e. "mkdir Graphs" in the pericles-harvester/ folder. The default setting is False.
+
+The program requires python2.7 to be installed. Then install the python modules:
 
 > pip install bs4
 
@@ -30,7 +33,7 @@ The program requires python2.7. First install the modules:
 
 > pip install numpy
 
-To run:
+To run from the command line:
 
 > python2.7 main.py URL dataset dva/exp
 
@@ -39,11 +42,11 @@ To run:
 * argv[2] = Dataset name in Fuseki e.g. ds
 * argv[3] = dva or exp (for media or science demos respectively)
 
-
 Example: python2.7 main.py http://localhost:3030 ds dva
 
+If using the harvester as part of the appraisal tool, the execution will be performed automatically. The comand line is only required if the component is used independently or integrated into another tool.
 
-To use the Google harvester, a Google email and password are required to be entered in googletrends.py (lines 40 and 45 respectively).
-These currently have default values.
+
+
 
 

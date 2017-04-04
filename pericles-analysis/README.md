@@ -1,11 +1,15 @@
 The program requires Python 2.7 to be installed.
 
-Install the following Python modules.
+Install the following Python modules:
+
 > pip install requests
+
 > pip install nose
+
 > pip install numpy 
 
-Start Fuseki and upload the Turtle file test_dva.ttl for media or test_exp.ttl for science
+Start Fuseki and upload the Turtle file test_dva.ttl for media or test_exp.ttl for science.
+This can be done through the Fuseki web interface. You will need to enter a name for the Fuseki data set e.g. ds.
 
 To execute enter
 > python2.7 main.py demo fuseki-URL fuseki-dataset objectId file.csv
@@ -26,9 +30,7 @@ or
 
 NB. ERMR not currently implemented in command line arguments.
 
-Alternatively, use the ERMR instead of Fuseki
-upload the Turtle file test_dva.ttl or test_exp.ttl to the ERMR. Example here: dataset - Test1PericlesAnalysis
-test_exp.ttl is uploaded to the ERMR as test_exp_PericlesAnalysis
+Alternatively, use the ERMR instead of Fuseki, upload the Turtle file test_dva.ttl or test_exp.ttl to the ERMR. Example here: dataset - Test1PericlesAnalysis test_exp.ttl is uploaded to the ERMR as test_exp_PericlesAnalysis
 
 > python2.7 main.py dva https://141.5.100.67 Test1PericlesAnalysis artwork_1 ERMR
 

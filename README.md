@@ -25,6 +25,19 @@ The tool has two demonstrators for media and science. The screenshot shows the C
 
 [![Screenshot](https://raw.githubusercontent.com/pericles-project/TechnicalAppraisalTool/master/screenshot.png)](https://raw.githubusercontent.com/pericles-project/TechnicalAppraisalTool/master/screenshot.png)
 
+## Installation
+
+The main tool comprises five projects, which are stored in separate folders.
+* appraisaltool/
+* appraisaltoolws/
+* pericles-harvester/
+* pericles-analysis/
+* pericles-predictor/
+
+There is a separate README.md file describing the installation of each component. They should be installed in the sequence listed above.
+
+An additional tool in pericles-ibuilder/ populates the media and science domain models and returns a corresponding .ttl file required for the appraisal tool. Sample ontologies are provided, so this tool is only required if changes are made to the domain ontologies.
+
 ## Acknowledgement
 
 This work was supported by the European Commission Seventh Framework Programme under Grant Agreement Number FP7-601138 PERICLES. 
